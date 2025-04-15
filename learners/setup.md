@@ -2,53 +2,58 @@
 title: Setup
 ---
 
-FIXME: Setup instructions live in this document. Please specify the tools and
-the data sets the Learner needs to have installed.
+## Overview
 
-## Data Sets
+This lesson is designed to be run on a personal computer.
+All of the software and data used in this lesson are freely available online,
+and instructions on how to obtain them are provided below.
 
-<!--
-FIXME: place any data you want learners to use in `episodes/data` and then use
-       a relative link ( [data zip file](data/lesson-data.zip) ) to provide a
-       link to it, replacing the example.com link.
--->
-Download the [data zip file](https://example.com/FIXME) and unzip it to your Desktop
+## Install Julia  
 
-## Software Setup
+To get started, download and install [Julia](https://julialang.org/downloads/) for your operating system.  
 
-::::::::::::::::::::::::::::::::::::::: discussion
+## Launch Julia  
 
-### Details
+To start programming in Julia, choose one of the following options:  
 
-Setup for different systems can be presented in dropdown menus via a `solution`
-tag. They will join to this discussion block, so you can give a general overview
-of the software used in this lesson here and fill out the individual operating
-systems (and potentially add more, e.g. online setup) in the solutions blocks.
+### **Option A: Jupyter Notebook**  
 
-:::::::::::::::::::::::::::::::::::::::::::::::::::
+1. Open a terminal (or Command Prompt on Windows).
+2. Open **Julia**(Type `julia` and press **Enter**) in your terminal and type:  
 
-:::::::::::::::: solution
+    ```julia
+    using IJulia
+    notebook()
+    ```  
 
-### Windows
+2. A browser window will open. Click **New** → **Julia** to start coding.  
 
-Use PuTTY
+---
 
-:::::::::::::::::::::::::
+### **Option B: VS Code / Codium**  
 
-:::::::::::::::: solution
+1. Install [VS Code](https://code.visualstudio.com/) or [VSCodium](https://vscodium.com/).  
+2. Open VS Code and install the **Julia extension** (search for "Julia" in the Extensions panel).  
+3. Open a new file, save it as `script.jl`, and start writing Julia code.  
 
-### MacOS
+---
 
-Use Terminal.app
+### **Option C: Terminal / REPL**  
 
-:::::::::::::::::::::::::
+1. Open a terminal (or Command Prompt on Windows).  
+2. Type `julia` and press **Enter** to open Julia’s interactive mode.  
+3. Start typing commands, or run a script with:  
+
+    ```bash
+    julia myscript.jl
+    ```  
 
 
-:::::::::::::::: solution
+## Download
 
-### Linux
+You also need to download some files to follow this lesson:
 
-Use Terminal
-
-:::::::::::::::::::::::::
-
+1. Download [juliainflammation-data.zip](data/juliainflammation-data.zip).
+2. Create a folder called `julia-novice-inflammation` on your Desktop.
+3. Move downloaded files to `julia-novice-inflammation`.
+4. Unzip the files.
