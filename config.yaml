@@ -10,14 +10,14 @@
 # incubator: The Carpentries Incubator
 # Note that you can also use a custom carpentry type. For more info,
 # see the documentation: https://carpentries.github.io/sandpaper-docs/editing.html
-carpentry: 'incubator'
+carpentry: 'swc'
 
 # Custom carpentry description
 # This will be used as the alt text for the logo
 # carpentry_description: "Custom Carpentry"
 
 # Overall title for pages.
-title: 'Lesson Title'
+title: 'Programming with Julia'
 
 # Date the lesson was created (YYYY-MM-DD, this is empty by default)
 created: '2025-04-15'
@@ -65,7 +65,7 @@ contact: 'team@carpentries.org'
 
 # Order of episodes in your lesson
 episodes: 
-- introduction.Rmd
+- introduction.md
 
 # Information for Learners
 learners: 
