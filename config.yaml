@@ -65,7 +65,8 @@ contact: 'team@carpentries.org'
 
 # Order of episodes in your lesson
 episodes: 
-- introduction.md
+- julia-fundamentals.md
+- analyzing_patient_data.md
 
 # Information for Learners
 learners: 
