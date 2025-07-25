@@ -84,14 +84,19 @@ Once we’ve stored values in variables, we can use them in calculations:
 ```julia
 weight_lb = 2.2 * weight_kg
 ```
+```output
+132.66
+```
 
 Or modify strings:
 
 ```julia
 patient_id = "inflam_" * patient_id
 ```
+```output
+"inflam_001"
+```
 
-To 
 
 ## Built-in Julia Functions
 
@@ -109,17 +114,20 @@ inflam_001
 ```
 
 
-To display multiple values:
+To display multiple values in Julia, we can pass them to println separated by commas.
 
 ```julia
 println(patient_id, " weight in kilograms: ", weight_kg)
 ```
 
-To inspect data types, use `typeof`:
+This prints the value of `patient_id`, followed by the string `" weight in kilograms: "`, and then the value of `weight_kg`, all in one line.
+
+In Julia, every value has a specific data type (e.g., integer, floating-point number, string).
+To check the type of a value or variable, use the `typeof` function:
 
 ```julia
-println(typeof(60.3))
-println(typeof(patient_id))
+typeof(60.3)
+typeof(patient_id)
 ```
 
 ```output
@@ -127,10 +135,33 @@ Float64
 String
 ```
 
+In this example:
+
+* `60.3` is interpreted as a floating-point number (specifically, a `Float64`).
+* `patient_id` contains a sequence of characters, so its type is `String`.
+
+Understanding data types is important because they determine how values behave in operations, and some functions may only work with certain types.
+
+You can also use `typeof` to explore the structure of more complex objects like arrays or dictionaries:
+
+```julia
+typeof([1, 2, 3])      # Array of integers
+typeof(["a", "b", "c"]) # Array of strings
+```
+
+```output
+Vector{Int64}
+Vector{String}
+```
+
 We can even do math directly in `println`:
 
 ```julia
 println("weight in pounds: ", 2.2 * weight_kg)
+```
+
+```output
+weight in pounds: 132.66
 ```
 
 The above doesn't change `weight_kg`:
@@ -217,9 +248,9 @@ distance = 10.5
 ::::::::::::::: solution
 
 ```julia
-println(typeof(planet))
-println(typeof(apples))
-println(typeof(distance))
+typeof(planet)
+typeof(apples)
+typeof(distance)
 ```
 
 ```output
