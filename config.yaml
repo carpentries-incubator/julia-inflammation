@@ -67,6 +67,7 @@ contact: 'team@carpentries.org'
 episodes: 
 - julia-fundamentals.md
 - analyzing_patient_data.md
+- plotting.md
 
 # Information for Learners
 learners: 
