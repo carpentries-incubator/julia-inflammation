@@ -1,7 +1,7 @@
 ---
 title: Storing Multiple Values in Vectors
 teaching: 30
-exercises: 15
+exercises: 0
 ---
 
 In the previous episode, we analyzed a single file of clinical trial inflammation data. 
