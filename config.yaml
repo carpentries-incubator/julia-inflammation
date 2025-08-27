@@ -74,6 +74,7 @@ episodes:
 - if_else.md
 - functions.md
 - errors.md
+- tests.md
 
 # Information for Learners
 learners: 
