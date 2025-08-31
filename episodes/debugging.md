@@ -103,7 +103,7 @@ and we're better able to give them the information they need to be useful.
 Version control is often used to reset software to a known state during debugging,
 and to explore recent changes to code that might be responsible for bugs.
 
-Git is a great example for aversion control Software.
+Git is a great example for a version control Software.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
