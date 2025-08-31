@@ -103,7 +103,11 @@ end
 ```
 
 ```error
-ERROR: syntax: missing comma or ) in argument list
+ERROR: ParseError:
+# Error @ REPL[1]:3:5
+    msg = "hello, world!"
+    println(msg)
+#   └─────────┘ ── Expected `)`
 Stacktrace:
  [1] top-level scope
    @ none:1
@@ -288,7 +292,7 @@ But it has a syntax error. What is the error, and how can you fix it?
 
 ```julia
 function average numbers
-    total = sum(numbers
+    total = sum numbers
     return total / length(numbers)
 end
 ```
@@ -297,7 +301,7 @@ end
 
  Problems:
    - Missing parentheses in the function definition
-   - Missing closing parenthesis in sum(numbers
+   - Missing closing parenthesis in sum numbers
  Fixed version:
 ```julia
 function average(numbers)
