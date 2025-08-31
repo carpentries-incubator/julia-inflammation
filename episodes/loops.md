@@ -8,6 +8,7 @@ exercises: 0
 
 - Explain what a `for` loop does.
 - Correctly write `for` loops to repeat simple calculations.
+- Explain what a `while` loop does.
 - Trace changes to a loop variable as the loop runs.
 - Trace changes to other variables as they are updated by a `for` loop.
 
@@ -155,12 +156,12 @@ It’s worth tracing the execution of this little program step by step.
 Since there are three names in `people`,
 the statement inside the loop will be executed three times.
 
-* First iteration: `count` is 0 (set on line 1) and `person` is `"Curie"`.
+- First iteration: `count` is 0 (set on line 1) and `person` is `"Curie"`.
   `count = count + 1` updates `count` to `1`.
 
-* Second iteration: `person` is `"Darwin"` and `count` is `1`, so `count` becomes `2`.
+- Second iteration: `person` is `"Darwin"` and `count` is `1`, so `count` becomes `2`.
 
-* Third iteration: `person` is `"Turing"` and `count` becomes `3`.
+- Third iteration: `person` is `"Turing"` and `count` becomes `3`.
 
 Since there are no more elements in `people`, the loop finishes.
 Finally, the `println` statement shows the result.
@@ -203,6 +204,58 @@ println(length([0, 1, 2, 3]))
 and much easier to read than writing a loop to count elements.
 It also works on many different kinds of collections in Julia,
 so we should always use it when we can.
+
+## While Loops
+
+Sometimes, we want to repeat an action until a certain condition is met, rather than looping over a collection.
+For this, Julia provides a "while loop".
+
+The general form is:
+
+```julia
+while condition
+    # do something
+end
+```
+
+Example:
+
+```julia
+count = 0
+
+while count < 5
+    println("count is ", count)
+    count += 1
+end
+```
+
+```output
+count is 0
+count is 1
+count is 2
+count is 3
+count is 4
+```
+
+The loop checks the condition `count < 5` before each iteration.
+As long as the condition is `true`, the loop body runs.
+Once `count` reaches `5`, the condition is `false` and the loop stops.
+
+ou can use while loops when the number of iterations is not known in advance.
+But be careful!: if the condition never becomes false, the loop will run forever (an infinite loop).
+
+!!!WARNING!!!
+Example of a potential infinite loop:
+
+```julia
+x = 0
+while x < 3
+    println(x)
+end
+```
+
+This will print `0` endlessly because `x` never changes.
+
 
 
 ::::::::::::::::::::::::::::::::::::::: challenge
@@ -318,7 +371,8 @@ println(sum)
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-* Use `for variable` to process the elements of a collection (like a vector) one at a time.
-* The body of a `for` loop must be placed inside `for ... end`.
-* Use `length(thing)` to determine the length of a collection (vector, array, string, etc.).
+- Use `for variable` to process the elements of a collection (like a vector) one at a time.
+- The body of a `for` loop must be placed inside `for ... end`.
+- The body of a `while` loop must be placed inside `while ... end`.
+- Use `length(thing)` to determine the length of a collection (vector, array, string, etc.).
 ::::::::::::::::::::::::::::::::::::::::::::::::::
