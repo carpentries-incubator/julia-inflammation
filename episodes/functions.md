@@ -512,6 +512,39 @@ a: 1 b: 2 c: 77
 In summary, Julia’s keyword arguments let us provide sensible defaults for optional parameters,
 making functions easier to use while still flexible.
 
+## Slurping and Splatting
+
+Sometimes we don’t know in advance how many arguments a function should take.
+In Julia, we can use the *slurping* operator `...` to collect multiple arguments into a single variable, and the *splatting* operator `...` to pass the elements of a collection as separate arguments.
+
+For example:
+
+```julia
+function add_all(nums...)
+    return sum(nums)
+end
+
+println(add_all(1, 2, 3))
+println(add_all(10, 20, 30, 40))
+```
+```output
+6
+100
+```
+In `add_all(nums...)`, all inputs are *slurped* into the tuple `nums`.
+
+Splatting: expand a collection into separate arguments
+```julia
+values = [5, 15, 25]
+println(add_all(values...))
+```
+```output
+45
+```
+When we call `add_all(values...)`, the array is *splatted* so that each element is passed as its own argument.
+
+This makes functions more flexible when working with variable numbers of arguments.
+
 
 ## Readable Functions
 
