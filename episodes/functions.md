@@ -546,6 +546,63 @@ When we call `add_all(values...)`, the array is *splatted* so that each element 
 This makes functions more flexible when working with variable numbers of arguments.
 
 
+## Multiple Dispatch
+
+One of Julia’s most powerful features is multiple dispatch.
+This means that the function that gets called depends on the types of all its arguments.
+
+You can define the same function name with different method signatures, and Julia will automatically choose the most specific one.
+
+For example:
+
+```julia
+# Define a function for two integers
+function add_together(a::Int, b::Int)
+    return a + b
+end
+```
+
+```output
+add_together (generic function with 1 method)
+```
+
+Now we can use `add_together` for integers. But if we try using it with floats, we get an error:
+
+```julia
+add_together(1.0, 2.0)
+```
+
+```output
+MethodError: no method matching add_together(::Float64, ::Float64)
+The function `add_together` exists, but no method is defined for this combination of argument types.
+```
+
+Thanks to multiple dispatch, we can simply define a new method for the same function:
+
+```julia
+function add_together(a::Float64, b::Float64)
+    return a + b  
+end
+```
+
+```output
+add_together (generic function with 2 methods)
+```
+
+Now we can call it again, and Julia will automatically use the matching method:
+
+```julia
+add_together(1.0, 2.0)
+```
+
+```output
+3.0
+```
+
+This feature allows you to write clean, readable code while handling many different types naturally.
+
+
+
 ## Readable Functions
 
 Consider these two functions in Julia:
