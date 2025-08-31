@@ -218,9 +218,12 @@ we noticed:
 
 ```julia
 function detect_problems(filename)
-    data = Matrix(CSV.read(filename, DataFrame; header=false))
+    data = readdlm(filename, ',')
 
-    if maximum(data, dims=1)[1] == 0 && maximum(data, dims=1)[21] == 20
+    max_inflam_0 = maximum(data[:, 1])
+    max_inflam_20 = maximum(data[:, 21])
+
+    if max_inflam_0 == 0 && max_inflam_20 == 20
         println("Suspicious looking maxima!")
     elseif sum(minimum(data, dims=1)) == 0
         println("Minima add up to zero!")
@@ -229,11 +232,6 @@ function detect_problems(filename)
     end
 end
 ```
-
-Wait! Didn't we forget to specify what both of these functions should return?
-Well, we didn’t. In Julia, functions don’t have to explicitly return a value.
-They can be used for the sole purpose of grouping together pieces of code that conceptually do one thing.
-In such cases, function names usually describe what they do.
 
 Notice that rather than jumbling this code together in one giant `for` loop,
 we can now read and reuse both ideas separately.
@@ -371,9 +369,8 @@ with its mean shifted to match the desired value.
     0.0
     1.0
 """
-
-function offset\_mean(data, target\_mean\_value)
-return (data .- mean(data)) .+ target\_mean\_value
+function offset_mean(data, target_mean_value)
+return (data .- mean(data)) .+ target_mean_value
 end
 
 ```
@@ -437,7 +434,6 @@ with its mean shifted to match the desired value.
     0.0
     1.0
 """
-
 function  offset_mean(data::AbstractArray, target_mean_value::Float64=0.0)
 return (data .- mean(data)) .+ target_mean_value
 end
@@ -476,21 +472,20 @@ offset data:
 
 This is useful: we can provide a default value for parameters that usually stay the same but still allow flexibility when needed.
 
-
 Julia matches positional arguments from left to right, and any argument not explicitly provided takes its default value.
 We can also override defaults using keyword arguments:
 
 ```julia
-function display(; a=1, b=2, c=3)
+function show_values(; a=1, b=2, c=3)
     println("a: $a b: $b c: $c")
 end
 
 println("no parameters:")
-display()
+show_values()
 println("one parameter:")
-display(a=55)
+show_values(a=55)
 println("two parameters:")
-display(a=55, b=66)
+show_values(a=55, b=66)
 ```
 
 ```output
@@ -506,7 +501,7 @@ We can also set only `c`:
 
 ```julia
 println("only setting the value of c")
-display(c=77)
+show_values(c=77)
 ```
 
 ```output
@@ -611,7 +606,7 @@ function add(a, b)
 end
 ```
 
-**Question:** What happens if we execute the following commands?
+What happens if we execute the following commands?
 
 ```julia
 A = add(7, 3)
@@ -635,6 +630,8 @@ nothing
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Selecting Characters From Strings
 
@@ -696,7 +693,7 @@ Hi, Bob!
 
 ```julia
 function greet(name::AbstractString, greeting::AbstractString="Hello")
-    return "$greeting, $name!"
+    return "$greeting, $name"*"!"
 end
 ```
 :::::::::::::::::::::::::
