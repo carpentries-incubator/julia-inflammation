@@ -226,8 +226,6 @@ autosomes: ["2", "3", "4"]
 last: 4
 ```
 
-Here’s the Julia version of your **keypoints** section, adapted to vectors and Julia’s indexing rules:
-
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 

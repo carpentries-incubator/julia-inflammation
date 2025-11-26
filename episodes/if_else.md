@@ -431,7 +431,7 @@ other_files: ["myscript.jl"]
 2. Test it on a few words and full sentences.
 3. Compare your solution with a neighbor’s — did you handle the letter `y` the same way?
 
-:::::::::::::::::::::::::
+:::::::::::::::  solution
 
 ## Solution
 

@@ -133,8 +133,6 @@ Use a loop to analyze all inflammation datasets:
 * Highlight the dataset with the highest peak using a different color or line style.
 * Print the filename corresponding to the highest peak.
 
-
-
 ::::::::::::::::::::::::::::::::::::::: challenge
 
 ## Plotting Differences
@@ -168,9 +166,9 @@ avg2 = vec(mean(data1, dims=1))
 plot(avg1 - avg2, ylabel="Difference in average", xlabel="Day",
      title="Difference between first and second dataset")
 ```
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::: 
+:::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::: challenge
 
@@ -195,7 +193,6 @@ composite_data = composite_data / length(filenames)
 
 Then generate average, max, and min plots for all patients.
 
----
 
 ::::::::::::::::::::::: solution
 
@@ -249,7 +246,6 @@ Congratulations! We have analyzed the inflammation datasets and uncovered that t
 But rather than discard these synthetic datasets, we can continue to use them as valuable tools for learning programming and data analysis.
 
 
-Here’s a Julia-adapted version of your keypoints with slightly reworded text:
 
 
 

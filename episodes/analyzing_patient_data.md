@@ -230,7 +230,6 @@ This selects rows 1 through 3 and columns 37 through to the end of the array.
 ```
 
 
-Sure! Here's your section, revised specifically for **a DataFrame**, with clear wording and a tone suitable for beginners:
 
 
 ## Analyzing Data
@@ -429,7 +428,7 @@ If `data` is an array
 what does `data[4:3, 5:4]` produce?
 What about `data[4:4, :]`?
 
-\:::::::::::::::::::::::::::  solution
+:::::::::::::::::::::::::::  solution
 
 ## Solution
 
@@ -444,7 +443,7 @@ data[4:4, :]     # Just row 4 (as a 1×n matrix)
  0  1  1  3  3  1  3  5  2  4  4  7  6  …  7  7  9  6  3  2  2  4  2  0  1  1
 ```
 ::::::::::::::::::::::::::::
-
+::::::::::::::::::::::::::::::::::::::::::::::::::
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Stacking Arrays
@@ -501,6 +500,7 @@ D =
 ```
 
 :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Change in Inflammation
@@ -535,7 +535,7 @@ println(diff(patient3_week1))
 [1, 0, 2, 0, -2, 2]
 ```
 
----
+
 
 ### Questions
 
@@ -543,7 +543,7 @@ println(diff(patient3_week1))
 2. If your `data` array has shape `(60, 40)`, what will the shape be after calling `diff(data; dims=?)`, and why?
 3. How can you compute the **largest absolute change** for each patient across all days?
 
-\:::::::::::::::  solution
+:::::::::::::::  solution
 
 ## Solution
 
@@ -560,16 +560,17 @@ This returns a **60×1 array**, where each entry is the maximum absolute change 
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
+
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-* Use `Pkg.add("PackageName")` to install and `using PackageName` to load packages in Julia.
-* Load CSV data into a DataFrame with `CSV.read("file.csv", DataFrame)`.
-* Use `df[row, column]` to access specific values; use `df[!, column]` to access entire columns.
-* Use `size(df)`, `nrow(df)`, and `ncol(df)` to inspect DataFrame dimensions.
-* Convert a DataFrame to a matrix using `Matrix(df)` for numerical operations.
-* Use `mean`, `maximum`, `minimum`, and `std` to compute statistics on data arrays.
-* Use `mean(data, dims=1)` for column-wise and `dims=2` for row-wise operations.
-* Use `diff(data; dims=2)` to calculate daily changes per patient.
+- Use `Pkg.add("PackageName")` to install and `using PackageName` to load packages in Julia.
+- Load CSV data into a DataFrame with `CSV.read("file.csv", DataFrame)`.
+- Use `df[row, column]` to access specific values; use `df[!, column]` to access entire columns.
+- Use `size(df)`, `nrow(df)`, and `ncol(df)` to inspect DataFrame dimensions.
+- Convert a DataFrame to a matrix using `Matrix(df)` for numerical operations.
+- Use `mean`, `maximum`, `minimum`, and `std` to compute statistics on data arrays.
+- Use `mean(data, dims=1)` for column-wise and `dims=2` for row-wise operations.
+- Use `diff(data; dims=2)` to calculate daily changes per patient.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 

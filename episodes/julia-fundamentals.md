@@ -182,8 +182,6 @@ weight in kilograms is now: 65.0
 ```
 
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
 ::::::::::::::::::::::::::::::::::::::: challenge
 
 ## Check Your Understanding
@@ -211,6 +209,7 @@ age_new = age - 20
 ```
 
 :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::: challenge
 
@@ -232,6 +231,7 @@ Hello World!
 (Note: `println` prints without space by default. We insert a space by adding a string with just one space character `" "`.)
 
 :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::: challenge
 
@@ -260,13 +260,13 @@ Float64
 ```
 
 :::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
 - Basic data types in Julia include integers, strings, and floating-point numbers.
 - Use `variable = value` to assign a value to a variable.
 - Use `println(value)` to display output.
-- Use `#` to add comments.
 - Julia provides many built-in functions, such as `typeof`.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::

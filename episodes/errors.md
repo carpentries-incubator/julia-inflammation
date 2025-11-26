@@ -292,7 +292,7 @@ But it has a syntax error. What is the error, and how can you fix it?
 
 ```julia
 function average numbers
-    total = sum numbers
+    total = sum(numbers
     return total / length(numbers)
 end
 ```

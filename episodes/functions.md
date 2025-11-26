@@ -791,11 +791,6 @@ end
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
-Here’s the Julia-adapted version of your key points:
-
----
-
-## Key Points
 
 - Define a function using `function function_name(parameter)` … `end`.
 - Call a function using `function_name(value)`.
