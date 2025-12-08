@@ -2,4 +2,4 @@
 title: Instructor Notes
 ---
 
-This is a placeholder file. Please add content here.
+This lesson introduces Julia not to teach the language in full, but to convey the core programming concepts that apply across all languages. We use Julia because it is free, open-source, has a growing scientific community, and is relatively easy for beginners to pick up. Learners work with example datasets to practice importing, manipulating, and visualizing data, and to see how functions can solve problems step by step. The focus is on building small, composable functions, understanding data structures, and creating reproducible workflows. By gradually developing programs learners gain a practical mental model of how programs run and learn to debug effectively, while seeing that software is a matter of scale rather than magic. Intermediate steps are preserved to help learners trace the growth of a program and encourage good habits like modular code and reproducible research.
