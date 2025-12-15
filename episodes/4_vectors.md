@@ -18,7 +18,7 @@ In this episode, we will learn how to store multiple values in a vector as well 
 
 ## Julia vectors
 
-Unlike packages such as `DataFrames.jl`, vectors are built into the language, so we do not have to load a libraryto use them.
+Unlike packages such as `DataFrames.jl`, vectors are built into the language, so we do not have to load a library to use them.
 We create a vector by putting values inside square brackets and separating the values with commas:
 
 ```julia

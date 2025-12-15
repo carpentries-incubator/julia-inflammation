@@ -120,6 +120,11 @@ nrow(df)
 ncol(df)
 ```
 
+```output
+59
+40
+```
+
 ## Accessing Elements
 
 In Julia, you can access data in a `DataFrame` by column, by name, or by specifying row and column indices.
