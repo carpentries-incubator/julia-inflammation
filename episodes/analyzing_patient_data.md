@@ -268,7 +268,7 @@ Here’s what’s happening:
 Let’s use three Julia functions to get some basic descriptive statistics from our dataset:
 **maximum**, **minimum**, and **standard deviation**.
 
-Just like in Python, we can use **multiple assignment** to store all the results in one line.
+We can use **multiple assignment** to store all the results in one line.
 
 ```julia
 

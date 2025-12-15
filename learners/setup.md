@@ -22,6 +22,9 @@ To start programming in Julia, choose one of the following options:
 2. Open **Julia**(Type `julia` and press **Enter**) in your terminal and type:  
 
     ```julia
+    using Pkg
+    Pkg.add("IJulia") 
+    
     using IJulia
     notebook()
     ```  
