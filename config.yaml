@@ -39,7 +39,7 @@ source: 'https://example.com/FIXME-template-source'
 branch: 'main'
 
 # Who to contact if there are any issues
-contact: 'team@carpentries.org'
+contact: 'simonchrist@gmx.de'
 
 # Navigation ------------------------------------------------
 #
@@ -65,18 +65,18 @@ contact: 'team@carpentries.org'
 
 # Order of episodes in your lesson
 episodes: 
-- julia-fundamentals.md
-- analyzing_patient_data.md
-- plotting.md
-- vectors.md
-- loops.md
-- analysing_multiple_files.md
-- if_else.md
-- functions.md
-- errors.md
-- tests.md
-- debugging.md
-- recap.md
+- 1_julia-fundamentals.md
+- 2_analyzing_patient_data.md
+- 3_plotting.md
+- 4_vectors.md
+- 5_loops.md
+- 6_analyzing_multiple_files.md
+- 7_if_else.md
+- 8_functions.md
+- 9_errors.md
+- 10_tests.md
+- 11_debugging.md
+- 12_recap.md
 
 # Information for Learners
 learners: 
