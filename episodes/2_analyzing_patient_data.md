@@ -23,10 +23,12 @@ exercises: 20
 ## Loading data into Julia
 
 To begin processing the clinical trial inflammation data, we need to load it into Julia. 
-Depending on the file format we have to use different packages. Some examples are [XLSX.jl](https://felipenoris.github.io/XLSX.jl/stable/) or [JSON3.jl](https://quinnj.github.io/JSON3.jl/stable/).
-In this example we work with a `CSV File`. That means we use the package [CSV.jl](https://csv.juliadata.org/stable/)
+Depending on the file format we have to use different packages. Some examples are [XLSX.jl](https://felipenoris.github.io/XLSX.jl/stable/) or [JSON.jl](https://juliaio.github.io/JSON.jl/stable/).
+In this example we work with a `CSV File`.
+That means we use the package [CSV.jl](https://csv.juliadata.org/stable/)
 
-Before we can use a package in Julia, we need to install it. This can be done either by entering the package mode in the Julia REPL or by using `Pkg.add("PackageName")`, for example inside a script.
+Before we can use a package in Julia, we need to install it.
+This can be done either by entering the package mode in the Julia REPL or by using `Pkg.add("PackageName")`, for example inside a script.
 
 To enter the package manager mode, press `]` in the Julia REPL:
 
