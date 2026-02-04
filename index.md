@@ -8,17 +8,12 @@ so this introduction to Julia is built around a common scientific task:
 
 Our real goal isn't to teach you Julia,
 but to teach you the fundamental concepts that all programming depends on.
-We use Julia in our lessons because:
+We use Julia in this lesson because:
 
-1. we have to use something for examples;
+1. of it's expressive syntax;
 2. it's free, open-source, and designed for high-performance computing;
 3. it is increasingly popular in scientific computing and data analysis; and
 4. it has a growing ecosystem of external packages for diverse tasks.
-
-But the two most important things are
-to use whatever language your colleagues are using,
-so you can share your work with them easily,
-and to use that language *well*.
 
 We are studying inflammation in patients who have been given a new treatment for arthritis,
 and need to analyze the first dozen data sets of their daily inflammation.
