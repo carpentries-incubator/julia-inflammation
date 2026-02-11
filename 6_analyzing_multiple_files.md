@@ -132,6 +132,7 @@ Use a loop to analyze all inflammation datasets:
 
 * Highlight the dataset with the highest peak using a different color or line style.
 * Print the filename corresponding to the highest peak.
+:::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::: challenge
 
@@ -166,8 +167,7 @@ avg2 = vec(mean(data1, dims=1))
 plot(avg1 - avg2, ylabel="Difference in average", xlabel="Day",
      title="Difference between first and second dataset")
 ```
-::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::: 
+:::::::::::::::::::::::::::: 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::: challenge

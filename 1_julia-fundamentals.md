@@ -36,7 +36,7 @@ This is great, but not very interesting.
 To do anything useful with data, we need to assign its value to a *variable*.
 In Julia, we assign a value to a variable using the equals sign `=`.
 For example, we can track the weight of a patient who weighs 60 kilograms by
-assigning the value `60` to a variable `weight_kg`::
+assigning the value `60` to a variable `weight_kg`:
 
 ```julia
 weight_kg = 60
@@ -64,8 +64,8 @@ Julia supports various data types. Common ones include:
 - Floating point numbers
 - Strings
 
-For example, `weight_kg = 60` creates an integer variable.
-If we want a more precise value, we can use a floating point value:
+For example, `weight_kg = 60` creates an [integer](https://en.wikipedia.org/wiki/Integer_(computer_science)) variable.
+If we want to represent a fractional number, we can use a [floating point number](https://en.wikipedia.org/wiki/Floating-point_arithmetic):
 
 ```julia
 weight_kg = 60.3
@@ -101,7 +101,7 @@ patient_id = "inflam_" * patient_id
 ## Built-in Julia Functions
 
 Functions are called with parentheses. You can include variables or values inside them.
-Julia provides many built-in functions. To display a value, we use `println` or `print`:
+Julia provides many built-in functions. To display a value, we use `print` or `println`, which adds a newline at the end of the output:
 
 ```julia
 println(weight_lb)
@@ -114,7 +114,7 @@ inflam_001
 ```
 
 
-To display multiple values in Julia, we can pass them to println separated by commas.
+To display multiple values in Julia, we can pass them to `println` separated by commas.
 
 ```julia
 println(patient_id, " weight in kilograms: ", weight_kg)
@@ -137,7 +137,7 @@ String
 
 In this example:
 
-* `60.3` is interpreted as a floating-point number (specifically, a `Float64`).
+* `60.3` is interpreted as a 64-bit floating-point number (specifically, a `Float64`).
 * `patient_id` contains a sequence of characters, so its type is `String`.
 
 Understanding data types is important because they determine how values behave in operations, and some functions may only work with certain types.
@@ -154,7 +154,7 @@ Vector{Int64}
 Vector{String}
 ```
 
-We can even do math directly in `println`:
+We can even do math directly when passing arguments to `println`:
 
 ```julia
 println("weight in pounds: ", 2.2 * weight_kg)
