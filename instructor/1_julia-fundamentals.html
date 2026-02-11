@@ -384,7 +384,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Julia Fundamentals</h1>
-        <p>Last updated on 2026-01-27 |
+        <p>Last updated on 2026-02-11 |
 
         <a href="https://example.com/FIXME-template-source/edit/main/episodes/1_julia-fundamentals.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -440,7 +440,7 @@ data, we need to assign its value to a <em>variable</em>. In Julia, we
 assign a value to a variable using the equals sign <code>=</code>. For
 example, we can track the weight of a patient who weighs 60 kilograms by
 assigning the value <code>60</code> to a variable
-<code>weight_kg</code>::</p>
+<code>weight_kg</code>:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -464,8 +464,9 @@ variables</li>
 <ul><li>Integer numbers</li>
 <li>Floating point numbers</li>
 <li>Strings</li>
-</ul><p>For example, <code>weight_kg = 60</code> creates an integer variable.
-If we want a more precise value, we can use a floating point value:</p>
+</ul><p>For example, <code>weight_kg = 60</code> creates an <a href="https://en.wikipedia.org/wiki/Integer_(computer_science)" class="external-link">integer</a>
+variable. If we want to represent a fractional number, we can use a <a href="https://en.wikipedia.org/wiki/Floating-point_arithmetic" class="external-link">floating
+point number</a>:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -504,7 +505,8 @@ calculations:</p>
 </section><section><h2 class="section-heading" id="built-in-julia-functions">Built-in Julia Functions<a class="anchor" aria-label="anchor" href="#built-in-julia-functions"></a></h2>
 <hr class="half-width"><p>Functions are called with parentheses. You can include variables or
 values inside them. Julia provides many built-in functions. To display a
-value, we use <code>println</code> or <code>print</code>:</p>
+value, we use <code>print</code> or <code>println</code>, which adds a
+newline at the end of the output:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -517,8 +519,8 @@ value, we use <code>println</code> or <code>print</code>:</p>
 <pre class="output" tabindex="0"><code><span><span class="fl">132.66</span></span>
 <span><span class="va">inflam_001</span></span></code></pre>
 </div>
-<p>To display multiple values in Julia, we can pass them to println
-separated by commas.</p>
+<p>To display multiple values in Julia, we can pass them to
+<code>println</code> separated by commas.</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -544,7 +546,7 @@ variable, use the <code>typeof</code> function:</p>
 </div>
 <p>In this example:</p>
 <ul><li>
-<code>60.3</code> is interpreted as a floating-point number
+<code>60.3</code> is interpreted as a 64-bit floating-point number
 (specifically, a <code>Float64</code>).</li>
 <li>
 <code>patient_id</code> contains a sequence of characters, so its
@@ -566,7 +568,8 @@ complex objects like arrays or dictionaries:</p>
 <pre class="output" tabindex="0"><code>Vector{Int64}
 Vector{String}</code></pre>
 </div>
-<p>We can even do math directly in <code>println</code>:</p>
+<p>We can even do math directly when passing arguments to
+<code>println</code>:</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -801,8 +804,8 @@ any links that you are not going to use.
   "url": "https://FIXME-template-source.github.io/NA/instructor/1_julia-fundamentals.html",
   "identifier": "https://FIXME-template-source.github.io/NA/instructor/1_julia-fundamentals.html",
   "dateCreated": "2025-04-15",
-  "dateModified": "2026-01-27",
-  "datePublished": "2026-02-10"
+  "dateModified": "2026-02-11",
+  "datePublished": "2026-02-11"
 }
 
   </script><script>
