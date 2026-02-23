@@ -175,7 +175,7 @@ The above doesn't change `weight_kg`:
 println(weight_kg)
 ```
 
-To change the value of the `weight_kg` variable, we have to assign `weight_kg` to a new variable
+To change the value of the `weight_kg` variable, we have to assign `weight_kg` to a new value
 
 ```julia
 weight_kg = 65.0
