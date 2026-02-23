@@ -384,7 +384,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Julia Fundamentals</h1>
-        <p>Last updated on 2026-02-11 |
+        <p>Last updated on 2026-02-23 |
 
         <a href="https://github.com/carpentries-incubator/julia-inflammation/edit/main/episodes/1_julia-fundamentals.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -458,7 +458,11 @@ name for a value</strong>.</p>
 <code>weight</code> and <code>Weight</code> refer to different
 variables</li>
 </ul></section><section><h2 class="section-heading" id="types-of-data">Types of Data<a class="anchor" aria-label="anchor" href="#types-of-data"></a></h2>
-<hr class="half-width"><p>Julia supports various data types. Common ones include:</p>
+<hr class="half-width"><p>You probably know that computers work with sequences of bits. Bits
+can have either one of two states, which is commonly denoted using the
+numbers 0 and 1. A data type specifies how a given sequence of bits is
+to be interpreted.</p>
+<p>Julia supports various data types. Common ones include:</p>
 <ul><li>Integer numbers</li>
 <li>Floating point numbers</li>
 <li>Strings</li>
@@ -477,7 +481,7 @@ point number</a>:</p>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>patient_id <span class="op">=</span> <span class="st">"001"</span></span></code></pre>
 </div>
 </section><section><h2 class="section-heading" id="using-variables-in-julia">Using Variables in Julia<a class="anchor" aria-label="anchor" href="#using-variables-in-julia"></a></h2>
-<hr class="half-width"><p>Once we’ve stored values in variables, we can use them in
+<hr class="half-width"><p>Once we’ve assigned variables to values, we can use them in
 calculations:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -584,8 +588,8 @@ Vector{String}</code></pre>
 </h3>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">println</span>(weight_kg)</span></code></pre>
 </div>
-<p>To change the value of the weight_kg variable, we have to assign a
-new value to <code>weight_kg</code></p>
+<p>To change the value of the <code>weight_kg</code> variable, we have
+to assign <code>weight_kg</code> to a new variable</p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -597,48 +601,50 @@ new value to <code>weight_kg</code></p>
 </h3>
 <pre class="output" tabindex="0"><code>weight in kilograms is now: 65.0</code></pre>
 </div>
-<div id="check-your-understanding" class="callout challenge">
+<div id="check-your-understanding" class="callout discussion">
 <div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
+<i class="callout-icon" data-feather="message-circle"></i>
 </div>
-<span class="callout-header">Challenge</span>
+<span class="callout-header">Discussion</span>
 <div id="check-your-understanding" class="callout-inner">
 <h3 class="callout-title">Check Your Understanding</h3>
 <div class="callout-content">
-<p>What values do the variables <code>mass</code> and <code>age</code>
-have after each line?</p>
+<p>What values do the variables <code>mass</code>, <code>speed</code>
+and <code>age</code> have?</p>
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>mass <span class="op">=</span> <span class="fl">50.0</span></span>
 <span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>age <span class="op">=</span> <span class="fl">56</span></span>
-<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="fu">println</span>(mass <span class="op">*</span> <span class="fl">2.0</span>)</span>
-<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a>mass <span class="op">=</span> mass <span class="op">*</span> <span class="fl">2.0</span></span>
-<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a>age_new <span class="op">=</span> age <span class="op">-</span> <span class="fl">20</span></span></code></pre>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a>speed <span class="op">=</span> <span class="st">"fast"</span></span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"very "</span> <span class="op">*</span> speed)</span>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a>mass <span class="op">=</span> mass <span class="op">*</span> <span class="fl">2.0</span></span>
+<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a>age_new <span class="op">=</span> age <span class="op">-</span> <span class="fl">20</span></span></code></pre>
+</div>
+<ol style="list-style-type: decimal"><li><code>mass == 50.0, speed == "fast", age == 56</code></li>
+<li><code>mass == 100.0, speed == "very fast", age == 56</code></li>
+<li><code>mass == 100.0, speed == "fast", age == 56</code></li>
+<li>
+<code>mass == 100.0, speed == "fast", age == 36</code>
+::::::::::::::: solution</li>
+</ol><div class="section level2">
+<h2 id="solution">Solution<a class="anchor" aria-label="anchor" href="#solution"></a></h2>
+<ol style="list-style-type: decimal"><li>
+<code>mass</code> indeed gets reassigned at
+<code>mass = mass * 2.0</code>.</li>
+<li>
+<code>println("very " * speed)</code> prints “very fast” as output,
+but does not alter <code>speed</code> itself.</li>
+<li>Thats the correct solution</li>
+<li>
+<code>age_new = age - 20</code> binds the result of
+<code>age - 20</code> to a new variable and does not change
+<code>age</code> itself.</li>
+</ol></div>
 </div>
 </div>
 </div>
-</div>
-<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
-</button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
-<div class="accordion-body">
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code><span><span class="fl">50.0</span></span>
-<span><span class="fl">56</span></span>
-<span><span class="fl">50.0</span></span>
-<span><span class="fl">100.0</span></span>
-<span><span class="fl">56</span> </span></code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
+<p>::::::::::::::::::::::::::::::::::::::::::::::::::</p>
 <div id="sorting-out-references" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -649,21 +655,21 @@ have after each line?</p>
 <div class="callout-content">
 <p>Julia allows multiple assignments in one line. What will this
 print?</p>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>first, second <span class="op">=</span> <span class="st">"Hello"</span>, <span class="st">"World!"</span></span>
-<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="fu">println</span>(first,<span class="st">" "</span>, second)</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>first, second <span class="op">=</span> <span class="st">"Hello"</span>, <span class="st">"World!"</span></span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="fu">println</span>(first,<span class="st">" "</span>, second)</span></code></pre>
 </div>
 </div>
 </div>
 </div>
-<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -686,29 +692,29 @@ insert a space by adding a string with just one space character
 <h3 class="callout-title">Seeing Data Types</h3>
 <div class="callout-content">
 <p>What are the types of the following?</p>
+<div class="codewrapper sourceCode" id="cb25">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>planet <span class="op">=</span> <span class="st">"Earth"</span></span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>apples <span class="op">=</span> <span class="fl">5</span></span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a>distance <span class="op">=</span> <span class="fl">10.5</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
+</button>
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>planet <span class="op">=</span> <span class="st">"Earth"</span></span>
-<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>apples <span class="op">=</span> <span class="fl">5</span></span>
-<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a>distance <span class="op">=</span> <span class="fl">10.5</span></span></code></pre>
-</div>
-</div>
-</div>
-</div>
-<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
-</button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
-<div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb27">
-<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="fu">typeof</span>(planet)</span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="fu">typeof</span>(apples)</span>
-<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a><span class="fu">typeof</span>(distance)</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="fu">typeof</span>(planet)</span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a><span class="fu">typeof</span>(apples)</span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a><span class="fu">typeof</span>(distance)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -802,8 +808,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/julia-inflammation/1_julia-fundamentals.html",
   "identifier": "https://carpentries-incubator.github.io/julia-inflammation/1_julia-fundamentals.html",
   "dateCreated": "2025-04-15",
-  "dateModified": "2026-02-11",
-  "datePublished": "2026-02-17"
+  "dateModified": "2026-02-23",
+  "datePublished": "2026-02-23"
 }
 
   </script><script>
