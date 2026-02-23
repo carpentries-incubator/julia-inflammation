@@ -58,6 +58,10 @@ This means that:
 
 ## Types of Data
 
+You probably know that computers work with sequences of bits.
+Bits can have either one of two states, which is commonly denoted using the numbers 0 and 1.
+A data type specifies how a given sequence of bits is to be interpreted.
+
 Julia supports various data types. Common ones include:
 
 - Integer numbers
@@ -79,7 +83,7 @@ patient_id = "001"
 
 ## Using Variables in Julia
 
-Once we’ve stored values in variables, we can use them in calculations:
+Once we’ve assigned variables to values, we can use them in calculations:
 
 ```julia
 weight_lb = 2.2 * weight_kg
@@ -100,8 +104,10 @@ patient_id = "inflam_" * patient_id
 
 ## Built-in Julia Functions
 
-Functions are called with parentheses. You can include variables or values inside them.
-Julia provides many built-in functions. To display a value, we use `print` or `println`, which adds a newline at the end of the output:
+Functions are called with parentheses.
+You can include variables or values inside them.
+Julia provides many built-in functions.
+To display a value, we use `print` or `println`, which adds a newline at the end of the output:
 
 ```julia
 println(weight_lb)
@@ -170,7 +176,7 @@ The above doesn't change `weight_kg`:
 println(weight_kg)
 ```
 
-To change the value of the weight_kg variable, we have to assign a new value to `weight_kg`
+To change the value of the `weight_kg` variable, we have to assign `weight_kg` to a new variable
 
 ```julia
 weight_kg = 65.0
@@ -186,27 +192,28 @@ weight in kilograms is now: 65.0
 
 ## Check Your Understanding
 
-What values do the variables `mass` and `age` have after each line?
+What values do the variables `mass`, `speed` and `age` have?
 
 ```julia
 mass = 50.0
 age = 56
-println(mass * 2.0)
+speed = "fast"
+println("very " * speed)
 mass = mass * 2.0
 age_new = age - 20
 ```
-
+1. `mass == 50.0, speed == "fast", age == 56`
+2. `mass == 100.0, speed == "very fast", age == 56`
+3. `mass == 100.0, speed == "fast", age == 56`
+4. `mass == 100.0, speed == "fast", age == 36`
 ::::::::::::::: solution
 
 ## Solution
 
-```output
-50.0 
-56
-50.0
-100.0
-56 
-```
+1. `mass` indeed gets reassigned at `mass = mass * 2.0`.
+2. `println("very " * speed)` prints "very fast" as output, but does not alter `speed` itself.
+3. Thats the correct solution
+4. `age_new = age - 20` binds the result of `age - 20` to a new variable and does not change `age` itself.
 
 :::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::::
