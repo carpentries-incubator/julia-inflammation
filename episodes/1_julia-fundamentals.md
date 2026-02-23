@@ -192,27 +192,28 @@ weight in kilograms is now: 65.0
 
 ## Check Your Understanding
 
-What values do the variables `mass` and `age` have after each line?
+What values do the variables `mass`, `speed` and `age` have?
 
 ```julia
 mass = 50.0
 age = 56
-println(mass * 2.0)
+speed = "fast"
+println("very " * speed)
 mass = mass * 2.0
 age_new = age - 20
 ```
-
+1. `mass == 50.0, speed == "fast", age == 56`
+2. `mass == 100.0, speed == "very fast", age == 56`
+3. `mass == 100.0, speed == "fast", age == 56`
+4. `mass == 100.0, speed == "fast", age == 36`
 ::::::::::::::: solution
 
 ## Solution
 
-```output
-50.0 
-56
-50.0
-100.0
-56 
-```
+1. `mass` indeed gets reassigned at `mass = mass * 2.0`.
+2. `println("very " * speed)` prints "very fast" as output, but does not alter `speed` itself.
+3. Thats the correct solution
+4. `age_new = age - 20` binds the result of `age - 20` to a new variable and does not change `age` itself.
 
 :::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::::
