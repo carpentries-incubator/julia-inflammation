@@ -1,9 +1,10 @@
 ---
-title: 'Julia Fundamentals'
+title: "Julia Fundamentals"
 teaching: 10
 exercises: 2
 ---
-:::::::::::::::::::::::::::::::::::::: questions 
+
+:::::::::::::::::::::::::::::::::::::: questions
 
 - What basic data types can I work with in Julia?
 - How can I create a new variable in Julia?
@@ -18,8 +19,6 @@ exercises: 2
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-
-
 ## Variables
 
 Any Julia REPL or script can be used as a calculator:
@@ -33,7 +32,7 @@ Any Julia REPL or script can be used as a calculator:
 ```
 
 This is great, but not very interesting.
-To do anything useful with data, we need to assign its value to a *variable*.
+To do anything useful with data, we need to assign its value to a _variable_.
 In Julia, we assign a value to a variable using the equals sign `=`.
 For example, we can track the weight of a patient who weighs 60 kilograms by
 assigning the value `60` to a variable `weight_kg`:
@@ -68,7 +67,7 @@ Julia supports various data types. Common ones include:
 - Floating point numbers
 - Strings
 
-For example, `weight_kg = 60` creates an [integer](https://en.wikipedia.org/wiki/Integer_(computer_science)) variable.
+For example, `weight_kg = 60` creates an [integer](<https://en.wikipedia.org/wiki/Integer_(computer_science)>) variable.
 If we want to represent a fractional number, we can use a [floating point number](https://en.wikipedia.org/wiki/Floating-point_arithmetic):
 
 ```julia
@@ -88,6 +87,7 @@ Once we’ve assigned variables to values, we can use them in calculations:
 ```julia
 weight_lb = 2.2 * weight_kg
 ```
+
 ```output
 132.66
 ```
@@ -97,10 +97,10 @@ Or modify strings:
 ```julia
 patient_id = "inflam_" * patient_id
 ```
+
 ```output
 "inflam_001"
 ```
-
 
 ## Built-in Julia Functions
 
@@ -118,7 +118,6 @@ println(patient_id)
 132.66
 inflam_001
 ```
-
 
 To display multiple values in Julia, we can pass them to `println` separated by commas.
 
@@ -143,8 +142,8 @@ String
 
 In this example:
 
-* `60.3` is interpreted as a 64-bit floating-point number (specifically, a `Float64`).
-* `patient_id` contains a sequence of characters, so its type is `String`.
+- `60.3` is interpreted as a 64-bit floating-point number (specifically, a `Float64`).
+- `patient_id` contains a sequence of characters, so its type is `String`.
 
 Understanding data types is important because they determine how values behave in operations, and some functions may only work with certain types.
 
@@ -187,7 +186,6 @@ println("weight in kilograms is now: ", weight_kg)
 weight in kilograms is now: 65.0
 ```
 
-
 ::::::::::::::::::::::::::::::::::::::: challenge
 
 ## Check Your Understanding
@@ -202,10 +200,12 @@ println("very " * speed)
 mass = mass * 2.0
 age_new = age - 20
 ```
+
 1. `mass == 50.0, speed == "fast", age == 56`
 2. `mass == 100.0, speed == "very fast", age == 56`
 3. `mass == 100.0, speed == "fast", age == 56`
 4. `mass == 100.0, speed == "fast", age == 36`
+
 ::::::::::::::: solution
 
 ## Solution
@@ -277,5 +277,3 @@ Float64
 - Julia provides many built-in functions, such as `typeof`.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
