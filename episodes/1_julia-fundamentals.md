@@ -58,6 +58,10 @@ This means that:
 
 ## Types of Data
 
+You probably know that computers work with sequences of bits.
+Bits can have either one of two states, which is commonly denoted using the numbers 0 and 1.
+A data type specifies how a given sequence of bits is to be interpreted.
+
 Julia supports various data types. Common ones include:
 
 - Integer numbers
