@@ -408,7 +408,7 @@ For example, we can read a CSV file with:
 ```julia
 using CSV, DataFrames
 
-data = CSV.read("inflammation-01.csv", DataFrame; delim=',')
+data = CSV.read("inflammation-01.csv", DataFrame; delim=',', header = false)
 ```
 
 Notice that the filename is passed as the first positional argument,
