@@ -35,7 +35,7 @@ To start programming in Julia, choose one of the following options:
 
 ### **Option B: VS Code / Codium**  
 
-1. Install [VS Code](https://code.visualstudio.com/) or [VSCodium](https://vscodium.com/).  
+1. Install [VSCodium](https://vscodium.com/) or [VS Code](https://code.visualstudio.com/).  
 2. Open VS Code and install the **Julia extension** (search for "Julia" in the Extensions panel).  
 3. Open a new file, save it as `script.jl`, and start writing Julia code.  
 
