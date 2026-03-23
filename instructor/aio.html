@@ -443,7 +443,7 @@
         
 <section id="aio-1_julia-fundamentals"><p>Content from <a href="1_julia-fundamentals.html">Julia Fundamentals</a></p>
 <hr>
-<p>Last updated on 2026-02-23 |
+<p>Last updated on 2026-03-23 |
 
         <a href="https://github.com/carpentries-incubator/julia-inflammation/edit/main/episodes/1_julia-fundamentals.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 12 minutes</p>
@@ -674,6 +674,247 @@ to assign <code>weight_kg</code> to a new value</p>
 </h3>
 <pre class="output" tabindex="0"><code>weight in kilograms is now: 65.0</code></pre>
 </div>
+</section><section><h2 class="section-heading" id="julia-vectors">Julia vectors<a class="anchor" aria-label="anchor" href="#julia-vectors"></a>
+</h2>
+<hr class="half-width">
+<p>We create a vector by putting values inside square brackets and
+separating the values with commas:</p>
+<div class="codewrapper sourceCode" id="cb22">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>odds <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>]</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"odds are: "</span>, odds)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>odds are: [1, 3, 5, 7]</code></pre>
+</div>
+<p>We can access elements of a vector using indices — numbered positions
+of elements in the vector. These positions are numbered starting at 1 in
+Julia, so the first element has an index of 1.</p>
+<div class="codewrapper sourceCode" id="cb24">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"first element: "</span>, odds[<span class="fl">1</span>])</span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"last element: "</span>, odds[<span class="fl">4</span>])</span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"</span><span class="sc">\"</span><span class="st">end</span><span class="sc">\"</span><span class="st"> keyword element: "</span>, odds[<span class="kw">end</span>])</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>first element: 1
+last element: 7
+"end" keyword element: 7</code></pre>
+</div>
+<div id="ch-ch-ch-ch-changes" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="ch-ch-ch-ch-changes" class="callout-inner">
+<h3 class="callout-title">Ch-Ch-Ch-Ch-Changes</h3>
+<div class="callout-content">
+<p>Data which can be modified in place is called <a href="reference.html#mutable">mutable</a>, while data which cannot be
+modified is called <a href="reference.html#immutable">immutable</a>.
+Strings and numbers are immutable. This does not mean that variables
+with string or number values are constants, but when we want to change
+the value of a string or number variable, we can only replace the old
+value with a completely new value.</p>
+<p>Vectors and other collections, on the other hand, are mutable: we can
+modify them after they have been created. We can change individual
+elements, append new elements, or reorder the whole vector. For some
+operations, like sorting, we can choose whether to use a function that
+modifies the data in-place or a function that returns a modified copy
+and leaves the original unchanged.</p>
+<p>Be careful when modifying data in-place. If two variables refer to
+the same vector, and you modify the vector value, it will change for
+both variables!</p>
+<div class="codewrapper sourceCode" id="cb26">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>mild_salsa <span class="op">=</span> [<span class="st">"peppers"</span>, <span class="st">"onions"</span>, <span class="st">"cilantro"</span>, <span class="st">"tomatoes"</span>]</span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>hot_salsa <span class="op">=</span> mild_salsa</span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a>hot_salsa[<span class="fl">1</span>] <span class="op">=</span> <span class="st">"hot peppers"</span></span>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Ingredients in mild salsa: "</span>, mild_salsa)</span>
+<span id="cb26-5"><a href="#cb26-5" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Ingredients in hot salsa: "</span>, hot_salsa)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Ingredients in mild salsa: ["hot peppers", "onions", "cilantro", "tomatoes"]
+Ingredients in hot salsa: ["hot peppers", "onions", "cilantro", "tomatoes"]</code></pre>
+</div>
+<p>If you want variables with mutable values to be independent, you must
+make a copy of the value when you assign it.</p>
+<div class="codewrapper sourceCode" id="cb28">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>mild_salsa <span class="op">=</span> [<span class="st">"peppers"</span>, <span class="st">"onions"</span>, <span class="st">"cilantro"</span>, <span class="st">"tomatoes"</span>]</span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>hot_salsa <span class="op">=</span> <span class="fu">copy</span>(mild_salsa)  <span class="co"># &lt;-- makes a *copy* of the vector</span></span>
+<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a>hot_salsa[<span class="fl">1</span>] <span class="op">=</span> <span class="st">"hot peppers"</span></span>
+<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Ingredients in mild salsa: "</span>, mild_salsa)</span>
+<span id="cb28-5"><a href="#cb28-5" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Ingredients in hot salsa: "</span>, hot_salsa)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Ingredients in mild salsa: ["peppers", "onions", "cilantro", "tomatoes"]
+Ingredients in hot salsa: ["hot peppers", "onions", "cilantro", "tomatoes"]</code></pre>
+</div>
+<p>Because of pitfalls like this, code which modifies data in place can
+be more difficult to understand. However, it is often far more efficient
+to modify a large data structure in place than to create a modified copy
+for every small change. You should consider both of these aspects when
+writing your code.</p>
+</div>
+</div>
+</div>
+<div id="heterogeneous-vectors" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="heterogeneous-vectors" class="callout-inner">
+<h3 class="callout-title">Heterogeneous Vectors</h3>
+<div class="callout-content">
+<p>Vectors in Julia can also contain elements of different types.</p>
+<div class="codewrapper sourceCode" id="cb30">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>sample_ages <span class="op">=</span> <span class="dt">Any</span>[<span class="fl">10</span>, <span class="fl">12.5</span>, <span class="st">"Unknown"</span>]</span></code></pre>
+</div>
+<p>This gives us flexibility, but comes at a small performance cost
+compared to vectors where all elements have the same type. When
+possible, you should use vectors with a consistent element type for
+efficiency.</p>
+</div>
+</div>
+</div>
+<p>In Julia, functions that modify their arguments in place follow a
+naming convention: their name ends with an exclamation mark !.</p>
+<p>For example:</p>
+<p><code>reverse!(odds)</code> reverses the vector in place</p>
+<p><code>reverse(odds)</code> returns a new, reversed copy while leaving
+odds unchanged</p>
+<p>This convention makes it easy to tell at a glance whether a function
+will mutate its input or not. There are many ways to change the contents
+of vectors besides assigning new values to individual elements.</p>
+<div class="codewrapper sourceCode" id="cb31">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="fu">push!</span>(odds, <span class="fl">11</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"odds after adding a value: "</span>, odds)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>odds after adding a value: [1, 3, 5, 7, 11]</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb33">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a>removed_element <span class="op">=</span> <span class="fu">popfirst!</span>(odds)</span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"odds after removing the first element: "</span>, odds)</span>
+<span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"removed_element: "</span>, removed_element)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>odds after removing the first element: [3, 5, 7, 11]
+removed_element: 1</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb35">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="fu">reverse!</span>(odds)</span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"odds after reversing in place: "</span>, odds)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>odds after reversing in place: [11, 7, 5, 3]</code></pre>
+</div>
+<p>Julia also provides <strong>non-mutating versions</strong> of many
+functions. These return a modified <em>copy</em> of the data and leave
+the original unchanged:</p>
+<div class="codewrapper sourceCode" id="cb37">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a>odds_copy <span class="op">=</span> <span class="fu">reverse</span>(odds)</span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"odds after non-mutating reverse: "</span>, odds)</span>
+<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"copy after reverse: "</span>, odds_copy)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>odds after non-mutating reverse: [11, 7, 5, 3]
+copy after reverse: [3, 5, 7, 11]</code></pre>
+</div>
+<p>As we saw earlier, when we modify a vector in-place, multiple
+variables can refer to the same vector, leading to unintended
+changes:</p>
+<div class="codewrapper sourceCode" id="cb39">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a>odds <span class="op">=</span> [<span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>]</span>
+<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a>primes <span class="op">=</span> odds</span>
+<span id="cb39-3"><a href="#cb39-3" tabindex="-1"></a><span class="fu">push!</span>(primes, <span class="fl">2</span>)</span>
+<span id="cb39-4"><a href="#cb39-4" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"primes: "</span>, primes)</span>
+<span id="cb39-5"><a href="#cb39-5" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"odds: "</span>, odds)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>primes: [3, 5, 7, 2]
+odds: [3, 5, 7, 2]</code></pre>
+</div>
+<p>This happens because <code>primes</code> and <code>odds</code> point
+to the <strong>same vector in memory</strong>. If we want to make an
+independent copy of a vector, we can use the <code>copy</code>
+function:</p>
+<div class="codewrapper sourceCode" id="cb41">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a>odds <span class="op">=</span> [<span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>]</span>
+<span id="cb41-2"><a href="#cb41-2" tabindex="-1"></a>primes <span class="op">=</span> <span class="fu">copy</span>(odds)</span>
+<span id="cb41-3"><a href="#cb41-3" tabindex="-1"></a><span class="fu">push!</span>(primes, <span class="fl">2</span>)</span>
+<span id="cb41-4"><a href="#cb41-4" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"primes: "</span>, primes)</span>
+<span id="cb41-5"><a href="#cb41-5" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"odds: "</span>, odds)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>primes: [3, 5, 7, 2]
+odds: [3, 5, 7]</code></pre>
+</div>
+<p>Subsets of vectors and strings can be accessed using
+<strong>ranges</strong>:</p>
+<div class="codewrapper sourceCode" id="cb43">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a>binomial_name <span class="op">=</span> <span class="st">"Drosophila melanogaster"</span></span>
+<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a>group <span class="op">=</span> binomial_name[<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>]</span>
+<span id="cb43-3"><a href="#cb43-3" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"group: "</span>, group)</span>
+<span id="cb43-4"><a href="#cb43-4" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="#cb43-5" tabindex="-1"></a>species <span class="op">=</span> binomial_name[<span class="fl">11</span><span class="op">:</span><span class="fl">23</span>]</span>
+<span id="cb43-6"><a href="#cb43-6" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"species: "</span>, species)</span>
+<span id="cb43-7"><a href="#cb43-7" tabindex="-1"></a></span>
+<span id="cb43-8"><a href="#cb43-8" tabindex="-1"></a>chromosomes <span class="op">=</span> [<span class="st">"X"</span>, <span class="st">"Y"</span>, <span class="st">"2"</span>, <span class="st">"3"</span>, <span class="st">"4"</span>]</span>
+<span id="cb43-9"><a href="#cb43-9" tabindex="-1"></a>autosomes <span class="op">=</span> chromosomes[<span class="fl">3</span><span class="op">:</span><span class="fl">5</span>]</span>
+<span id="cb43-10"><a href="#cb43-10" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"autosomes: "</span>, autosomes)</span>
+<span id="cb43-11"><a href="#cb43-11" tabindex="-1"></a></span>
+<span id="cb43-12"><a href="#cb43-12" tabindex="-1"></a>last <span class="op">=</span> chromosomes[<span class="kw">end</span>]</span>
+<span id="cb43-13"><a href="#cb43-13" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"last: "</span>, last)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>group: Drosophila
+species: melanogaster
+autosomes: ["2", "3", "4"]
+last: 4</code></pre>
+</div>
 <div id="check-your-understanding" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -684,15 +925,15 @@ to assign <code>weight_kg</code> to a new value</p>
 <div class="callout-content">
 <p>What values do the variables <code>mass</code>, <code>speed</code>
 and <code>age</code> have?</p>
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>mass <span class="op">=</span> <span class="fl">50.0</span></span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>age <span class="op">=</span> <span class="fl">56</span></span>
-<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a>speed <span class="op">=</span> <span class="st">"fast"</span></span>
-<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"very "</span> <span class="op">*</span> speed)</span>
-<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a>mass <span class="op">=</span> mass <span class="op">*</span> <span class="fl">2.0</span></span>
-<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a>age_new <span class="op">=</span> age <span class="op">-</span> <span class="fl">20</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a>mass <span class="op">=</span> <span class="fl">50.0</span></span>
+<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a>age <span class="op">=</span> <span class="fl">56</span></span>
+<span id="cb45-3"><a href="#cb45-3" tabindex="-1"></a>speed <span class="op">=</span> <span class="st">"fast"</span></span>
+<span id="cb45-4"><a href="#cb45-4" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"very "</span> <span class="op">*</span> speed)</span>
+<span id="cb45-5"><a href="#cb45-5" tabindex="-1"></a>mass <span class="op">=</span> mass <span class="op">*</span> <span class="fl">2.0</span></span>
+<span id="cb45-6"><a href="#cb45-6" tabindex="-1"></a>age_new <span class="op">=</span> age <span class="op">-</span> <span class="fl">20</span></span></code></pre>
 </div>
 <ol style="list-style-type: decimal">
 <li><code>mass == 50.0, speed == "fast", age == 56</code></li>
@@ -708,7 +949,7 @@ and <code>age</code> have?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>
@@ -737,11 +978,11 @@ but does not alter <code>speed</code> itself.</li>
 <div class="callout-content">
 <p>Julia allows multiple assignments in one line. What will this
 print?</p>
-<div class="codewrapper sourceCode" id="cb23">
+<div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>first, second <span class="op">=</span> <span class="st">"Hello"</span>, <span class="st">"World!"</span></span>
-<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="fu">println</span>(first,<span class="st">" "</span>, second)</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a>first, second <span class="op">=</span> <span class="st">"Hello"</span>, <span class="st">"World!"</span></span>
+<span id="cb46-2"><a href="#cb46-2" tabindex="-1"></a><span class="fu">println</span>(first,<span class="st">" "</span>, second)</span></code></pre>
 </div>
 </div>
 </div>
@@ -751,7 +992,7 @@ print?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -774,12 +1015,12 @@ insert a space by adding a string with just one space character
 <h3 class="callout-title">Seeing Data Types</h3>
 <div class="callout-content">
 <p>What are the types of the following?</p>
-<div class="codewrapper sourceCode" id="cb25">
+<div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>planet <span class="op">=</span> <span class="st">"Earth"</span></span>
-<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>apples <span class="op">=</span> <span class="fl">5</span></span>
-<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a>distance <span class="op">=</span> <span class="fl">10.5</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb48-1"><a href="#cb48-1" tabindex="-1"></a>planet <span class="op">=</span> <span class="st">"Earth"</span></span>
+<span id="cb48-2"><a href="#cb48-2" tabindex="-1"></a>apples <span class="op">=</span> <span class="fl">5</span></span>
+<span id="cb48-3"><a href="#cb48-3" tabindex="-1"></a>distance <span class="op">=</span> <span class="fl">10.5</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -789,14 +1030,14 @@ insert a space by adding a string with just one space character
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb26">
+<div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="fu">typeof</span>(planet)</span>
-<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a><span class="fu">typeof</span>(apples)</span>
-<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a><span class="fu">typeof</span>(distance)</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a><span class="fu">typeof</span>(planet)</span>
+<span id="cb49-2"><a href="#cb49-2" tabindex="-1"></a><span class="fu">typeof</span>(apples)</span>
+<span id="cb49-3"><a href="#cb49-3" tabindex="-1"></a><span class="fu">typeof</span>(distance)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -819,11 +1060,18 @@ insert a space by adding a string with just one space character
 <ul>
 <li>Basic data types in Julia include integers, strings, and
 floating-point numbers.</li>
-<li>Use <code>variable = value</code> to assign a value to a
-variable.</li>
+<li>Use <code>variable = value</code> to assign a name to a value.</li>
 <li>Use <code>println(value)</code> to display output.</li>
 <li>Julia provides many built-in functions, such as
 <code>typeof</code>.</li>
+<li>Basic data structures include vectors, dictionaries and tuples.</li>
+<li>Vectors can contain any Julia object, including other vectors (i.e.,
+a vector of vectors).</li>
+<li>Vectors are indexed and sliced with square brackets (e.g.,
+<code>vec[1]</code> and <code>vec[2:9]</code>), in the same way as
+strings and arrays.</li>
+<li>Vectors are mutable (i.e., their values can be changed in
+place).</li>
 </ul>
 </div>
 </div>
@@ -1769,7 +2017,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-4_vectors"><p>Content from <a href="4_vectors.html">Storing Multiple Values in Vectors</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-03-23 |
 
         <a href="https://github.com/carpentries-incubator/julia-inflammation/edit/main/episodes/4_vectors.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 30 minutes</p>
@@ -1785,252 +2033,7 @@ trials they have undertaken since the initial trial.</p>
 <p>Our goal now is to process all the inflammation data we have, which
 means that we still have eleven more files to go!</p>
 <p>The natural first step is to collect the names of all the files that
-we have to process. In Julia, a vector is a way to store multiple values
-together. In this episode, we will learn how to store multiple values in
-a vector as well as how to work with vectors.</p>
-<section><h2 class="section-heading" id="julia-vectors">Julia vectors<a class="anchor" aria-label="anchor" href="#julia-vectors"></a>
-</h2>
-<hr class="half-width">
-<p>Unlike packages such as <code>DataFrames.jl</code>, vectors are built
-into the language, so we do not have to load a library to use them. We
-create a vector by putting values inside square brackets and separating
-the values with commas:</p>
-<div class="codewrapper sourceCode" id="cb1">
-<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>odds <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>]</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"odds are: "</span>, odds)</span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>odds are: [1, 3, 5, 7]</code></pre>
-</div>
-<p>We can access elements of a vector using indices — numbered positions
-of elements in the vector. These positions are numbered starting at 1 in
-Julia, so the first element has an index of 1.</p>
-<div class="codewrapper sourceCode" id="cb3">
-<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"first element: "</span>, odds[<span class="fl">1</span>])</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"last element: "</span>, odds[<span class="fl">4</span>])</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"</span><span class="sc">\"</span><span class="st">end</span><span class="sc">\"</span><span class="st"> keyword element: "</span>, odds[<span class="kw">end</span>])</span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>first element: 1
-last element: 7
-"end" keyword element: 7</code></pre>
-</div>
-<div id="ch-ch-ch-ch-changes" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="ch-ch-ch-ch-changes" class="callout-inner">
-<h3 class="callout-title">Ch-Ch-Ch-Ch-Changes</h3>
-<div class="callout-content">
-<p>Data which can be modified in place is called <a href="reference.html#mutable">mutable</a>, while data which cannot be
-modified is called <a href="reference.html#immutable">immutable</a>.
-Strings and numbers are immutable. This does not mean that variables
-with string or number values are constants, but when we want to change
-the value of a string or number variable, we can only replace the old
-value with a completely new value.</p>
-<p>Vectors and other collections, on the other hand, are mutable: we can
-modify them after they have been created. We can change individual
-elements, append new elements, or reorder the whole vector. For some
-operations, like sorting, we can choose whether to use a function that
-modifies the data in-place or a function that returns a modified copy
-and leaves the original unchanged.</p>
-<p>Be careful when modifying data in-place. If two variables refer to
-the same vector, and you modify the vector value, it will change for
-both variables!</p>
-<div class="codewrapper sourceCode" id="cb5">
-<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>mild_salsa <span class="op">=</span> [<span class="st">"peppers"</span>, <span class="st">"onions"</span>, <span class="st">"cilantro"</span>, <span class="st">"tomatoes"</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>hot_salsa <span class="op">=</span> mild_salsa </span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>hot_salsa[<span class="fl">1</span>] <span class="op">=</span> <span class="st">"hot peppers"</span></span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Ingredients in mild salsa: "</span>, mild_salsa)</span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Ingredients in hot salsa: "</span>, hot_salsa)</span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>Ingredients in mild salsa: ["hot peppers", "onions", "cilantro", "tomatoes"]
-Ingredients in hot salsa: ["hot peppers", "onions", "cilantro", "tomatoes"]</code></pre>
-</div>
-<p>If you want variables with mutable values to be independent, you must
-make a copy of the value when you assign it.</p>
-<div class="codewrapper sourceCode" id="cb7">
-<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>mild_salsa <span class="op">=</span> [<span class="st">"peppers"</span>, <span class="st">"onions"</span>, <span class="st">"cilantro"</span>, <span class="st">"tomatoes"</span>]</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>hot_salsa <span class="op">=</span> <span class="fu">copy</span>(mild_salsa)  <span class="co"># &lt;-- makes a *copy* of the vector</span></span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>hot_salsa[<span class="fl">1</span>] <span class="op">=</span> <span class="st">"hot peppers"</span></span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Ingredients in mild salsa: "</span>, mild_salsa)</span>
-<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Ingredients in hot salsa: "</span>, hot_salsa)</span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>Ingredients in mild salsa: ["peppers", "onions", "cilantro", "tomatoes"]
-Ingredients in hot salsa: ["hot peppers", "onions", "cilantro", "tomatoes"]</code></pre>
-</div>
-<p>Because of pitfalls like this, code which modifies data in place can
-be more difficult to understand. However, it is often far more efficient
-to modify a large data structure in place than to create a modified copy
-for every small change. You should consider both of these aspects when
-writing your code.</p>
-</div>
-</div>
-</div>
-<div id="heterogeneous-vectors" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="heterogeneous-vectors" class="callout-inner">
-<h3 class="callout-title">Heterogeneous Vectors</h3>
-<div class="callout-content">
-<p>Vectors in Julia can also contain elements of different types.</p>
-<div class="codewrapper sourceCode" id="cb9">
-<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>sample_ages <span class="op">=</span> <span class="dt">Any</span>[<span class="fl">10</span>, <span class="fl">12.5</span>, <span class="st">"Unknown"</span>]</span></code></pre>
-</div>
-<p>This gives us flexibility, but comes at a small performance cost
-compared to vectors where all elements have the same type. When
-possible, you should use vectors with a consistent element type for
-efficiency.</p>
-</div>
-</div>
-</div>
-<p>In Julia, functions that modify their arguments in place follow a
-naming convention: their name ends with an exclamation mark !.</p>
-<p>For example:</p>
-<p><code>reverse!(odds)</code> reverses the vector in place</p>
-<p><code>reverse(odds)</code> returns a new, reversed copy while leaving
-odds unchanged</p>
-<p>This convention makes it easy to tell at a glance whether a function
-will mutate its input or not. There are many ways to change the contents
-of vectors besides assigning new values to individual elements.</p>
-<div class="codewrapper sourceCode" id="cb10">
-<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">push!</span>(odds, <span class="fl">11</span>)  </span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"odds after adding a value: "</span>, odds)</span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>odds after adding a value: [1, 3, 5, 7, 11]</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb12">
-<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>removed_element <span class="op">=</span> <span class="fu">popfirst!</span>(odds)   </span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"odds after removing the first element: "</span>, odds)</span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"removed_element: "</span>, removed_element)</span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>odds after removing the first element: [3, 5, 7, 11]
-removed_element: 1</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb14">
-<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">reverse!</span>(odds)  </span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"odds after reversing in place: "</span>, odds)</span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>odds after reversing in place: [11, 7, 5, 3]</code></pre>
-</div>
-<p>Julia also provides <strong>non-mutating versions</strong> of many
-functions. These return a modified <em>copy</em> of the data and leave
-the original unchanged:</p>
-<div class="codewrapper sourceCode" id="cb16">
-<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>odds_copy <span class="op">=</span> <span class="fu">reverse</span>(odds)   </span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"odds after non-mutating reverse: "</span>, odds)</span>
-<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"copy after reverse: "</span>, odds_copy)</span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>odds after non-mutating reverse: [11, 7, 5, 3]
-copy after reverse: [3, 5, 7, 11]</code></pre>
-</div>
-<p>As we saw earlier, when we modify a vector in-place, multiple
-variables can refer to the same vector, leading to unintended
-changes:</p>
-<div class="codewrapper sourceCode" id="cb18">
-<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>odds <span class="op">=</span> [<span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>]</span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>primes <span class="op">=</span> odds</span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="fu">push!</span>(primes, <span class="fl">2</span>)</span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"primes: "</span>, primes)</span>
-<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"odds: "</span>, odds)</span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>primes: [3, 5, 7, 2]
-odds: [3, 5, 7, 2]</code></pre>
-</div>
-<p>This happens because <code>primes</code> and <code>odds</code> point
-to the <strong>same vector in memory</strong>. If we want to make an
-independent copy of a vector, we can use the <code>copy</code>
-function:</p>
-<div class="codewrapper sourceCode" id="cb20">
-<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>odds <span class="op">=</span> [<span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>]</span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>primes <span class="op">=</span> <span class="fu">copy</span>(odds)</span>
-<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="fu">push!</span>(primes, <span class="fl">2</span>)</span>
-<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"primes: "</span>, primes)</span>
-<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"odds: "</span>, odds)</span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>primes: [3, 5, 7, 2]
-odds: [3, 5, 7]</code></pre>
-</div>
-<p>Subsets of vectors and strings can be accessed using
-<strong>ranges</strong>:</p>
-<div class="codewrapper sourceCode" id="cb22">
-<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>binomial_name <span class="op">=</span> <span class="st">"Drosophila melanogaster"</span></span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>group <span class="op">=</span> binomial_name[<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>]</span>
-<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"group: "</span>, group)</span>
-<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a></span>
-<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a>species <span class="op">=</span> binomial_name[<span class="fl">11</span><span class="op">:</span><span class="fl">23</span>]</span>
-<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"species: "</span>, species)</span>
-<span id="cb22-7"><a href="#cb22-7" tabindex="-1"></a></span>
-<span id="cb22-8"><a href="#cb22-8" tabindex="-1"></a>chromosomes <span class="op">=</span> [<span class="st">"X"</span>, <span class="st">"Y"</span>, <span class="st">"2"</span>, <span class="st">"3"</span>, <span class="st">"4"</span>]</span>
-<span id="cb22-9"><a href="#cb22-9" tabindex="-1"></a>autosomes <span class="op">=</span> chromosomes[<span class="fl">3</span><span class="op">:</span><span class="fl">5</span>]</span>
-<span id="cb22-10"><a href="#cb22-10" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"autosomes: "</span>, autosomes)</span>
-<span id="cb22-11"><a href="#cb22-11" tabindex="-1"></a></span>
-<span id="cb22-12"><a href="#cb22-12" tabindex="-1"></a>last <span class="op">=</span> chromosomes[<span class="kw">end</span>]</span>
-<span id="cb22-13"><a href="#cb22-13" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"last: "</span>, last)</span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>group: Drosophila
-species: melanogaster
-autosomes: ["2", "3", "4"]
-last: 4</code></pre>
-</div>
+we have to process.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -2038,25 +2041,10 @@ last: 4</code></pre>
 <span class="callout-header">Key Points</span>
 <div class="callout-inner">
 <div class="callout-content">
-<ul>
-<li>
-<code>[value1, value2, value3, ...]</code> creates a vector.</li>
-<li>Vectors can contain any Julia object, including other vectors (i.e.,
-a vector of vectors).</li>
-<li>Vectors are indexed and sliced with square brackets (e.g.,
-<code>vec[1]</code> and <code>vec[2:9]</code>), in the same way as
-strings and arrays.</li>
-<li>Vectors are mutable (i.e., their values can be changed in
-place).</li>
-</ul>
+
 </div>
 </div>
-</div>
-<!--
-Place links that you need to refer to multiple times across pages here. Delete
-any links that you are not going to use.
- -->
-</section></section><section id="aio-5_loops"><p>Content from <a href="5_loops.html">Automating Repetition with Loops</a></p>
+</div></section><section id="aio-5_loops"><p>Content from <a href="5_loops.html">Automating Repetition with Loops</a></p>
 <hr>
 <p>Last updated on 2026-01-27 |
 
@@ -2389,7 +2377,7 @@ changes.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The body of the loop is executed 6 times, once for each character in
 <code>"oxygen"</code>.</p>
@@ -2426,7 +2414,7 @@ using multiplication (and without exponentiation).</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2465,7 +2453,7 @@ adding each element and printing the final value, so
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2716,7 +2704,7 @@ leftmost plots of the first two figures.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2778,7 +2766,7 @@ below:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3149,7 +3137,7 @@ Why did you pick this answer?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p><code>B</code> gets printed because <code>4 &gt; 5</code> is false,
 and <code>4 == 4</code> is the first true condition. Even though
@@ -3187,7 +3175,7 @@ numbers?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Hint </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Julia has a built-in function <code>abs()</code> that returns the
 absolute value of a number:</p>
@@ -3210,7 +3198,7 @@ absolute value of a number:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Solution 1 </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3233,7 +3221,7 @@ absolute value of a number:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Solution 2 </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3283,7 +3271,7 @@ or less readable than writing it without in-place operators?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3375,7 +3363,7 @@ can be ignored for now.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3423,7 +3411,7 @@ other_files: ["myscript.jl"]</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Show me the solution </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4738,7 +4726,7 @@ get that error.</p>
   solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4778,7 +4766,7 @@ you fix it?</p>
   solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Problems: - Missing parentheses in the function definition - Missing
 closing parenthesis in sum numbers Fixed version:</p>
@@ -5025,7 +5013,7 @@ conditions at once.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>

@@ -446,11 +446,18 @@
 <ul>
 <li>Basic data types in Julia include integers, strings, and
 floating-point numbers.</li>
-<li>Use <code>variable = value</code> to assign a value to a
-variable.</li>
+<li>Use <code>variable = value</code> to assign a name to a value.</li>
 <li>Use <code>println(value)</code> to display output.</li>
 <li>Julia provides many built-in functions, such as
 <code>typeof</code>.</li>
+<li>Basic data structures include vectors, dictionaries and tuples.</li>
+<li>Vectors can contain any Julia object, including other vectors (i.e.,
+a vector of vectors).</li>
+<li>Vectors are indexed and sliced with square brackets (e.g.,
+<code>vec[1]</code> and <code>vec[2:9]</code>), in the same way as
+strings and arrays.</li>
+<li>Vectors are mutable (i.e., their values can be changed in
+place).</li>
 </ul></section><section id="2_analyzing_patient_data"><h2 class="section-heading"><a href="2_analyzing_patient_data.html">Analyzing Patient Data</a></h2>
 <hr class="half-width">
 <ul>
@@ -476,18 +483,7 @@ patient.</li>
 <li>Use the <code>Plots.jl</code> package to create simple and flexible
 visualizations.</li>
 </ul></section><section id="4_vectors"><h2 class="section-heading"><a href="4_vectors.html">Storing Multiple Values in Vectors</a></h2>
-<hr class="half-width">
-<ul>
-<li>
-<code>[value1, value2, value3, ...]</code> creates a vector.</li>
-<li>Vectors can contain any Julia object, including other vectors (i.e.,
-a vector of vectors).</li>
-<li>Vectors are indexed and sliced with square brackets (e.g.,
-<code>vec[1]</code> and <code>vec[2:9]</code>), in the same way as
-strings and arrays.</li>
-<li>Vectors are mutable (i.e., their values can be changed in
-place).</li>
-</ul></section><section id="5_loops"><h2 class="section-heading"><a href="5_loops.html">Automating Repetition with Loops</a></h2>
+<hr class="half-width"></section><section id="5_loops"><h2 class="section-heading"><a href="5_loops.html">Automating Repetition with Loops</a></h2>
 <hr class="half-width">
 <ul>
 <li>Use <code>for variable</code> to process the elements of a
