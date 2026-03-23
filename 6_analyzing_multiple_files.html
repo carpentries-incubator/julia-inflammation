@@ -374,7 +374,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Analyzing Multiple Files</h1>
-        <p>Last updated on 2026-02-11 |
+        <p>Last updated on 2026-03-23 |
 
         <a href="https://github.com/carpentries-incubator/julia-inflammation/edit/main/episodes/6_analyzing_multiple_files.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -450,7 +450,7 @@ then take a slice of the first three filenames:</p>
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="im">using</span> <span class="bu">Glob</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="im">using</span> <span class="bu">DelimitedFiles</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="im">using</span> <span class="bu">CSV</span></span>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
 <span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="im">using</span> <span class="bu">Statistics</span></span>
 <span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a></span>
@@ -462,7 +462,7 @@ then take a slice of the first three filenames:</p>
 <span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a>    <span class="fu">println</span>(filename)</span>
 <span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a></span>
 <span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a>    <span class="co"># Load data</span></span>
-<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a>    data <span class="op">=</span> <span class="fu">readdlm</span>(filename, <span class="ch">','</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a>    data <span class="op">=</span> <span class="fu">Matrix</span>(CSV.<span class="fu">read</span>(filename, header <span class="op">=</span> <span class="cn">false</span>))</span>
 <span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a></span>
 <span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a>    <span class="co"># Create subplots</span></span>
 <span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a>    plt1 <span class="op">=</span> <span class="fu">plot</span>(<span class="fu">mean</span>(data, dims<span class="op">=</span><span class="fl">1</span>)<span class="ch">', ylabel="average", legend=false)</span></span>
@@ -553,19 +553,19 @@ leftmost plots of the first two figures.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="im">using</span> <span class="bu">DelimitedFiles</span></span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="im">using</span> <span class="bu">CSV</span></span>
 <span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="im">using</span> <span class="bu">Statistics</span></span>
 <span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
 <span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a></span>
 <span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co"># Load data</span></span>
 <span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>filenames <span class="op">=</span> <span class="fu">sort</span>(<span class="fu">glob</span>(<span class="st">"inflammation*.csv"</span>, <span class="st">"."</span>))</span>
-<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>data0 <span class="op">=</span> <span class="fu">readdlm</span>(filenames[<span class="fl">1</span>], <span class="ch">','</span>)</span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>data1 <span class="op">=</span> <span class="fu">readdlm</span>(filenames[<span class="fl">2</span>], <span class="ch">','</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>data0 <span class="op">=</span> <span class="fu">Matrix</span>(CSV.<span class="fu">read</span>(filenames[<span class="fl">1</span>], header <span class="op">=</span> <span class="cn">false</span>))</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>data1 <span class="op">=</span> <span class="fu">Matrix</span>(CSV.<span class="fu">read</span>(filenames[<span class="fl">2</span>], header <span class="op">=</span> <span class="cn">false</span>))</span>
 <span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a></span>
 <span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="co"># Compute averages across patients (rows) for each day (columns)</span></span>
 <span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="co"># vec convert 1×N matrix to a vector</span></span>
@@ -615,13 +615,13 @@ below:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="im">using</span> <span class="bu">Glob</span></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="im">using</span> <span class="bu">DelimitedFiles</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="im">using</span> <span class="bu">CSV</span></span>
 <span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="im">using</span> <span class="bu">Statistics</span></span>
 <span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
 <span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a></span>
@@ -631,7 +631,7 @@ below:</p>
 <span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a></span>
 <span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="co"># Step 2: Sum data from all files</span></span>
 <span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> filenames</span>
-<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>    data <span class="op">=</span> <span class="fu">readdlm</span>(filename, <span class="ch">','</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>    data <span class="op">=</span> <span class="fu">Matrix</span>(CSV.<span class="fu">read</span>(filename, header <span class="op">=</span> <span class="cn">false</span>))</span>
 <span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a>    composite_data <span class="op">.+=</span> data</span>
 <span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a><span class="cf">end</span></span>
 <span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a></span>
@@ -759,8 +759,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/julia-inflammation/6_analyzing_multiple_files.html",
   "identifier": "https://carpentries-incubator.github.io/julia-inflammation/6_analyzing_multiple_files.html",
   "dateCreated": "2025-04-15",
-  "dateModified": "2026-02-11",
-  "datePublished": "2026-03-17"
+  "dateModified": "2026-03-23",
+  "datePublished": "2026-03-23"
 }
 
   </script><script>

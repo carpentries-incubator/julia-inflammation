@@ -831,7 +831,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-2_analyzing_patient_data"><p>Content from <a href="2_analyzing_patient_data.html">Analyzing Patient Data</a></p>
 <hr>
-<p>Last updated on 2026-02-11 |
+<p>Last updated on 2026-03-23 |
 
         <a href="https://github.com/carpentries-incubator/julia-inflammation/edit/main/episodes/2_analyzing_patient_data.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -912,7 +912,7 @@ this:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>df <span class="op">=</span> CSV.<span class="fu">read</span>(<span class="st">"inflammation-01.csv"</span>, DataFrame)</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>df <span class="op">=</span> CSV.<span class="fu">read</span>(<span class="st">"inflammation-01.csv"</span>, DataFrame, header <span class="op">=</span> <span class="cn">false</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1327,7 +1327,7 @@ last three characters: gen</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1364,7 +1364,7 @@ that contains no characters.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1435,7 +1435,7 @@ syntax</strong>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>Use column indexing with square brackets and combine the slices
 horizontally:</p>
@@ -1519,7 +1519,7 @@ each patient across all days?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ul>
 <li>Set <code>dims=2</code> in <code>diff(data; dims=2)</code> to
@@ -1700,7 +1700,7 @@ graph?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>By default, Plots.jl scales the axes to fit the data range exactly,
 so lines often stop right before the plot edge.</p>
@@ -1728,7 +1728,7 @@ plotting code so that all subplots share the same y-axis.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2521,7 +2521,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-6_analyzing_multiple_files"><p>Content from <a href="6_analyzing_multiple_files.html">Analyzing Multiple Files</a></p>
 <hr>
-<p>Last updated on 2026-02-11 |
+<p>Last updated on 2026-03-23 |
 
         <a href="https://github.com/carpentries-incubator/julia-inflammation/edit/main/episodes/6_analyzing_multiple_files.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -2597,7 +2597,7 @@ then take a slice of the first three filenames:</p>
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="im">using</span> <span class="bu">Glob</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="im">using</span> <span class="bu">DelimitedFiles</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="im">using</span> <span class="bu">CSV</span></span>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
 <span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="im">using</span> <span class="bu">Statistics</span></span>
 <span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a></span>
@@ -2609,7 +2609,7 @@ then take a slice of the first three filenames:</p>
 <span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a>    <span class="fu">println</span>(filename)</span>
 <span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a></span>
 <span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a>    <span class="co"># Load data</span></span>
-<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a>    data <span class="op">=</span> <span class="fu">readdlm</span>(filename, <span class="ch">','</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a>    data <span class="op">=</span> <span class="fu">Matrix</span>(CSV.<span class="fu">read</span>(filename, header <span class="op">=</span> <span class="cn">false</span>))</span>
 <span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a></span>
 <span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a>    <span class="co"># Create subplots</span></span>
 <span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a>    plt1 <span class="op">=</span> <span class="fu">plot</span>(<span class="fu">mean</span>(data, dims<span class="op">=</span><span class="fl">1</span>)<span class="ch">', ylabel="average", legend=false)</span></span>
@@ -2708,19 +2708,19 @@ leftmost plots of the first two figures.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="im">using</span> <span class="bu">DelimitedFiles</span></span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="im">using</span> <span class="bu">CSV</span></span>
 <span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="im">using</span> <span class="bu">Statistics</span></span>
 <span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
 <span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a></span>
 <span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co"># Load data</span></span>
 <span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>filenames <span class="op">=</span> <span class="fu">sort</span>(<span class="fu">glob</span>(<span class="st">"inflammation*.csv"</span>, <span class="st">"."</span>))</span>
-<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>data0 <span class="op">=</span> <span class="fu">readdlm</span>(filenames[<span class="fl">1</span>], <span class="ch">','</span>)</span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>data1 <span class="op">=</span> <span class="fu">readdlm</span>(filenames[<span class="fl">2</span>], <span class="ch">','</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>data0 <span class="op">=</span> <span class="fu">Matrix</span>(CSV.<span class="fu">read</span>(filenames[<span class="fl">1</span>], header <span class="op">=</span> <span class="cn">false</span>))</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>data1 <span class="op">=</span> <span class="fu">Matrix</span>(CSV.<span class="fu">read</span>(filenames[<span class="fl">2</span>], header <span class="op">=</span> <span class="cn">false</span>))</span>
 <span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a></span>
 <span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="co"># Compute averages across patients (rows) for each day (columns)</span></span>
 <span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="co"># vec convert 1×N matrix to a vector</span></span>
@@ -2770,13 +2770,13 @@ below:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="im">using</span> <span class="bu">Glob</span></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="im">using</span> <span class="bu">DelimitedFiles</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="im">using</span> <span class="bu">CSV</span></span>
 <span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="im">using</span> <span class="bu">Statistics</span></span>
 <span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
 <span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a></span>
@@ -2786,7 +2786,7 @@ below:</p>
 <span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a></span>
 <span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="co"># Step 2: Sum data from all files</span></span>
 <span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> filenames</span>
-<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>    data <span class="op">=</span> <span class="fu">readdlm</span>(filename, <span class="ch">','</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>    data <span class="op">=</span> <span class="fu">Matrix</span>(CSV.<span class="fu">read</span>(filename, header <span class="op">=</span> <span class="cn">false</span>))</span>
 <span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a>    composite_data <span class="op">.+=</span> data</span>
 <span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a><span class="cf">end</span></span>
 <span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a></span>
@@ -2852,7 +2852,7 @@ to get a vector of files whose names match a given pattern.</li>
 </div>
 </div></section><section id="aio-7_if_else"><p>Content from <a href="7_if_else.html">If/Else - Conditional Statements in Julia</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-03-23 |
 
         <a href="https://github.com/carpentries-incubator/julia-inflammation/edit/main/episodes/7_if_else.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -3045,9 +3045,9 @@ DelimitedFiles.</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="im">using</span> <span class="bu">DelimitedFiles</span></span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="im">using</span> <span class="bu">CSV</span></span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">readdlm</span>(<span class="st">"inflammation-01.csv"</span>, <span class="ch">','</span>)</span></code></pre>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">Matrix</span>(CSV.<span class="fu">read</span>(<span class="st">"inflammation-01.csv"</span>, header <span class="op">=</span> <span class="cn">false</span>))</span></code></pre>
 </div>
 <p>From the first plots, we noticed that the maximum daily inflammation
 increases by one unit each day. We can check for this suspicious pattern
@@ -3075,7 +3075,7 @@ use else to give the all-clear.</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">readdlm</span>(<span class="st">"inflammation-03.csv"</span>, <span class="ch">','</span>)</span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">Matrix</span>(CSV.<span class="fu">read</span>(<span class="st">"inflammation-03.csv"</span>, header <span class="op">=</span> <span class="cn">false</span>))</span>
 <span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>max_inflam_0 <span class="op">=</span> <span class="fu">maximum</span>(data[<span class="op">:</span>, <span class="fl">1</span>])</span>
 <span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>max_inflam_20 <span class="op">=</span> <span class="fu">maximum</span>(data[<span class="op">:</span>, <span class="fl">21</span>])</span>
@@ -3140,7 +3140,7 @@ Why did you pick this answer?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p><code>B</code> gets printed because <code>4 &gt; 5</code> is false,
 and <code>4 == 4</code> is the first true condition. Even though
@@ -3178,7 +3178,7 @@ numbers?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Hint </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Julia has a built-in function <code>abs()</code> that returns the
 absolute value of a number:</p>
@@ -3201,7 +3201,7 @@ absolute value of a number:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Solution 1 </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3224,7 +3224,7 @@ absolute value of a number:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Solution 2 </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3274,7 +3274,7 @@ or less readable than writing it without in-place operators?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3366,7 +3366,7 @@ can be ignored for now.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3414,7 +3414,7 @@ other_files: ["myscript.jl"]</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Show me the solution </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3471,7 +3471,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-8_functions"><p>Content from <a href="8_functions.html">Creating Functions</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-03-23 |
 
         <a href="https://github.com/carpentries-incubator/julia-inflammation/edit/main/episodes/8_functions.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -3729,7 +3729,7 @@ for those systematics we noticed:</p>
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="kw">function</span> <span class="fu">detect_problems</span>(filename)</span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>    data <span class="op">=</span> <span class="fu">readdlm</span>(filename, <span class="ch">','</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>    data <span class="op">=</span> <span class="fu">Matrix</span>(CSV.<span class="fu">read</span>(filename, header <span class="op">=</span> <span class="cn">false</span>))</span>
 <span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a></span>
 <span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a>    max_inflam_0 <span class="op">=</span> <span class="fu">maximum</span>(data[<span class="op">:</span>, <span class="fl">1</span>])</span>
 <span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a>    max_inflam_20 <span class="op">=</span> <span class="fu">maximum</span>(data[<span class="op">:</span>, <span class="fl">21</span>])</span>
@@ -3797,9 +3797,9 @@ easily verify the output:</p>
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="im">using</span> <span class="bu">DelimitedFiles</span>, <span class="bu">Statistics</span></span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="im">using</span> <span class="bu">CSV</span>, <span class="bu">Statistics</span></span>
 <span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">readdlm</span>(<span class="st">"inflammation-01.csv"</span>, <span class="ch">','</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a>data <span class="op">=</span> <span class="fu">Matrix</span>(CSV.<span class="fu">read</span>(<span class="st">"inflammation-01.csv"</span>, header <span class="op">=</span> <span class="cn">false</span>))</span>
 <span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a><span class="fu">println</span>(<span class="fu">offset_mean</span>(data, <span class="fl">0</span>))</span></code></pre>
 </div>
 <div class="codewrapper">
@@ -3926,7 +3926,7 @@ argument, like <code>typeof(data)</code> ,or keyword argument, like
 </h3>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="im">using</span> <span class="bu">CSV</span>, <span class="bu">DataFrames</span></span>
 <span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a></span>
-<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a>data <span class="op">=</span> CSV.<span class="fu">read</span>(<span class="st">"inflammation-01.csv"</span>, DataFrame; delim<span class="op">=</span><span class="ch">','</span>)</span></code></pre>
+<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a>data <span class="op">=</span> CSV.<span class="fu">read</span>(<span class="st">"inflammation-01.csv"</span>, DataFrame; delim<span class="op">=</span><span class="ch">','</span>, header <span class="op">=</span> <span class="cn">false</span>)</span></code></pre>
 </div>
 <p>Notice that the filename is passed as the first positional argument,
 but we specify <code>delim</code> using a keyword argument.</p>
@@ -5260,8 +5260,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/julia-inflammation/aio.html",
   "identifier": "https://carpentries-incubator.github.io/julia-inflammation/aio.html",
   "dateCreated": "2025-04-15",
-  "dateModified": "2026-03-17",
-  "datePublished": "2026-03-17"
+  "dateModified": "2026-03-23",
+  "datePublished": "2026-03-23"
 }
 
   </script><script>
