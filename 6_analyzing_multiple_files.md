@@ -55,7 +55,7 @@ If we want to begin by analyzing only the first three files in alphabetical orde
 
 ```julia
 using Glob
-using DelimitedFiles
+using CSV
 using Plots
 using Statistics
 
@@ -67,7 +67,7 @@ for filename in filenames
     println(filename)
 
     # Load data
-    data = readdlm(filename, ',')
+    data = Matrix(CSV.read(filename, header = false))
 
     # Create subplots
     plt1 = plot(mean(data, dims=1)', ylabel="average", legend=false)
@@ -149,14 +149,14 @@ i.e., the difference between the leftmost plots of the first two figures.
 ## Solution
 
 ```julia
-using DelimitedFiles
+using CSV
 using Statistics
 using Plots
 
 # Load data
 filenames = sort(glob("inflammation*.csv", "."))
-data0 = readdlm(filenames[1], ',')
-data1 = readdlm(filenames[2], ',')
+data0 = Matrix(CSV.read(filenames[1], header = false))
+data1 = Matrix(CSV.read(filenames[2], header = false))
 
 # Compute averages across patients (rows) for each day (columns)
 # vec convert 1×N matrix to a vector
@@ -200,7 +200,7 @@ Then generate average, max, and min plots for all patients.
 
 ```julia
 using Glob
-using DelimitedFiles
+using CSV
 using Statistics
 using Plots
 
@@ -210,7 +210,7 @@ composite_data = zeros(60, 40)
 
 # Step 2: Sum data from all files
 for filename in filenames
-    data = readdlm(filename, ',')
+    data = Matrix(CSV.read(filename, header = false))
     composite_data .+= data
 end
 

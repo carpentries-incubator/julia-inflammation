@@ -218,7 +218,7 @@ we noticed:
 
 ```julia
 function detect_problems(filename)
-    data = readdlm(filename, ',')
+    data = Matrix(CSV.read(filename, header = false))
 
     max_inflam_0 = maximum(data[:, 1])
     max_inflam_20 = maximum(data[:, 21])
@@ -285,9 +285,9 @@ That looks right. Now we can use the function on our real data:
 
 
 ```julia
-using DelimitedFiles, Statistics
+using CSV, Statistics
 
-data = readdlm("inflammation-01.csv", ',')
+data = Matrix(CSV.read("inflammation-01.csv", header = false))
 println(offset_mean(data, 0))
 ```
 
@@ -408,7 +408,7 @@ For example, we can read a CSV file with:
 ```julia
 using CSV, DataFrames
 
-data = CSV.read("inflammation-01.csv", DataFrame; delim=',')
+data = CSV.read("inflammation-01.csv", DataFrame; delim=',', header = false)
 ```
 
 Notice that the filename is passed as the first positional argument,

@@ -150,9 +150,9 @@ Now that we’ve learned how conditionals work, we can use them to check for the
 We’ll load the CSV file using Julia’s standard library module DelimitedFiles.
 
 ```julia
-using DelimitedFiles
+using CSV
 
-data = readdlm("inflammation-01.csv", ',')
+data = Matrix(CSV.read("inflammation-01.csv", header = false))
 ```
 
 From the first plots, we noticed that the maximum daily inflammation increases by one unit each day.
@@ -177,7 +177,7 @@ end
 We can test it with another dataset:
 
 ```julia
-data = readdlm("inflammation-03.csv", ',')
+data = Matrix(CSV.read("inflammation-03.csv", header = false))
 
 max_inflam_0 = maximum(data[:, 1])
 max_inflam_20 = maximum(data[:, 21])

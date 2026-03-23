@@ -58,7 +58,7 @@ Besides `CSV.jl`, we also need `DataFrames.jl`. You can install it the same way 
 After installing both packages, we can read the data file like this:
 
 ```julia
-df = CSV.read("inflammation-01.csv", DataFrame)
+df = CSV.read("inflammation-01.csv", DataFrame, header = false)
 ```
 ```output
 59×40 DataFrame
