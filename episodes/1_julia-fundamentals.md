@@ -66,6 +66,7 @@ Julia supports various data types. Common ones include:
 - Integer numbers
 - Floating point numbers
 - Strings
+- Symbols
 
 For example, `weight_kg = 60` creates an [integer](<https://en.wikipedia.org/wiki/Integer_(computer_science)>) variable.
 If we want to represent a fractional number, we can use a [floating point number](https://en.wikipedia.org/wiki/Floating-point_arithmetic):
@@ -463,8 +464,65 @@ In a row-major language `A[4]` would have been `4`.
 Further information can be found in [the documentation](https://docs.julialang.org/en/v1/manual/arrays/) and the [`LinearAlgebra` standard library](https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/).
 :::
 
-## Dictionaries
+## Pairs and Dictionaries
 
+Dictionaries map keys to values.
+They are useful when you want fast lookup by a descriptive key rather than by position.
+
+They can be constructed from pairs, where `:a => 1` is a pair linking the value `1` to the symbol `a`:
+
+```julia
+d1 = Dict("a" => 1, "b" => 2)                 # literal syntax
+```
+
+```output
+Dict{String, Int64} with 2 entries:
+  "b" => 2
+  "a" => 1
+```
+
+```julia
+d2 = Dict{Symbol,Int}(:a => 1, :b => 2)       # explicit key/value types
+```
+
+```output
+Dict{Symbol, Int64} with 2 entries:
+  :a => 1
+  :b => 2
+```
+
+::::::::::::::::::::::::::::::::::::::::: callout
+# Dictionary order
+The iteration and display order of Dict is not guaranteed. If you need a stable order for presentation, collect and sort the keys or pairs explicitly (e.g., `sort(collect(keys(d)))`).
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+We can also create an empty dictionary first and add keys to it later with a similar syntax as changing elements of a vector or using `push!`.
+
+```julia
+d3 = Dict{String,Int}()
+d3["a"] = 3
+push!(d3, "b" => 2)
+@show d3
+```
+
+```output
+d3 = Dict{String,Int}("a" => 3, "b" => 2)
+```
+
+When we need the values of a dictionary we can use one of the following:
+
+```julia
+@show d1["a"]                      # exact lookup
+@show haskey(d1, "q")              # check without throwing an error
+@show get(d1, "q", 0)              # returns default; does not insert
+@show get!(d1, "q", 0)             # returns default; inserts if missing
+```
+```output
+d1["a"] = 1
+haskey(d1, "q") = false
+get(d1, "q", 0) = 0
+get!(d1, "q", 0) = 0
+```
 ## Tuples and Named Tuples
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
