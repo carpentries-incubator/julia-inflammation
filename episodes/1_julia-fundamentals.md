@@ -191,207 +191,172 @@ weight in kilograms is now: 65.0
 We create a vector by putting values inside square brackets and separating the values with commas:
 
 ```julia
-odds = [1, 3, 5, 7]
-println("odds are: ", odds)
+nums = [1, 3, 5, 7]
+@show nums
+@show length(nums) eltype(nums) typeof(nums)
 ```
 
 ```output
-odds are: [1, 3, 5, 7]
+nums = [1, 3, 5, 7]
+length(nums) = 4
+eltype(nums) = Int64
+typeof(nums) = Vector{Int64}
 ```
 
 We can access elements of a vector using indices — numbered positions of elements in the vector.
-These positions are numbered starting at 1 in Julia, so the first element has an index of 1.
+Indices start at 1 in Julia.
 
 ```julia
-println("first element: ", odds[1])
-println("last element: ", odds[4])
-println("\"end\" keyword element: ", odds[end])
+@show nums[1] nums[end]
+@show nums[2:3]
+@show nums[1:2:end]
 ```
 
 ```output
-first element: 1
-last element: 7
-"end" keyword element: 7
+nums[1] = 1
+nums[end] = 7
+nums[2:3] = [3, 5]
+nums[1:2:end] = [1, 5]
 ```
 
+```julia
+nums[0]
+```
+
+```error
+```
+
+```julia
+nums[5]
+```
+
+```error
+```
 ::::::::::::::::::::::::::::::::::::::::: callout
 
 ## Ch-Ch-Ch-Ch-Changes
 
 Data which can be modified in place is called [mutable](../learners/reference.md#mutable),
 while data which cannot be modified is called [immutable](../learners/reference.md#immutable).
-Strings and numbers are immutable. This does not mean that variables with string or number values
-are constants, but when we want to change the value of a string or number variable, we can only
-replace the old value with a completely new value.
+Strings and numbers are immutable. Vectors and other collections are mutable: we can change individual elements, append new elements, or reorder the whole vector.
 
-Vectors and other collections, on the other hand, are mutable: we can modify them after they have been
-created. We can change individual elements, append new elements, or reorder the whole vector. For
-some operations, like sorting, we can choose whether to use a function that modifies the data
-in-place or a function that returns a modified copy and leaves the original unchanged.
 
-Be careful when modifying data in-place. If two variables refer to the same vector, and you modify
-the vector value, it will change for both variables!
+In Julia, functions that modify their arguments in place follow a naming convention: their name ends with an exclamation mark `!`.
+For example, `reverse!(v)` reverses a vector in place, while `reverse(v)` returns a new, reversed copy and leaves `v` unchanged.
+
+
+Be careful when modifying data in place. If two variables refer to the same vector (aliasing), and you modify the vector, it changes for both variables.
+Use copy to create an independent vector.
 
 ```julia
-mild_salsa = ["peppers", "onions", "cilantro", "tomatoes"]
-hot_salsa = mild_salsa
-hot_salsa[1] = "hot peppers"
-println("Ingredients in mild salsa: ", mild_salsa)
-println("Ingredients in hot salsa: ", hot_salsa)
+push!(nums, 9)
+@show nums
+
+nums_rev = reverse(nums)      # non-mutating
+@show nums nums_rev
+
+reverse!(nums)                # mutating
+@show nums
 ```
 
 ```output
-Ingredients in mild salsa: ["hot peppers", "onions", "cilantro", "tomatoes"]
-Ingredients in hot salsa: ["hot peppers", "onions", "cilantro", "tomatoes"]
-```
-
-If you want variables with mutable values to be independent, you
-must make a copy of the value when you assign it.
-
-```julia
-mild_salsa = ["peppers", "onions", "cilantro", "tomatoes"]
-hot_salsa = copy(mild_salsa)  # <-- makes a *copy* of the vector
-hot_salsa[1] = "hot peppers"
-println("Ingredients in mild salsa: ", mild_salsa)
-println("Ingredients in hot salsa: ", hot_salsa)
-```
-
-```output
-Ingredients in mild salsa: ["peppers", "onions", "cilantro", "tomatoes"]
-Ingredients in hot salsa: ["hot peppers", "onions", "cilantro", "tomatoes"]
+nums = [1, 3, 5, 7, 9]
+nums = [1, 3, 5, 7, 9]
+nums_rev = [9, 7, 5, 3, 1]
+nums = [9, 7, 5, 3, 1]
 ```
 
 Because of pitfalls like this, code which modifies data in place can be more difficult to
-understand. However, it is often far more efficient to modify a large data structure in place
-than to create a modified copy for every small change. You should consider both of these aspects
-when writing your code.
+understand.
+However, it is often far more efficient to modify a large data structure in place
+than to create a modified copy for every small change.
+You should consider both of these aspects when writing your code.
+
+Slicing with a range (`v[2:4]`) creates a copy; use `@view v[2:4]` to create a non-copying view.:
+
+```julia
+v = [1, 2, 3, 4, 5]
+
+r = v[2:4]         # copy
+r[1] = 20
+@show v r
+
+vw = @view v[2:4]  # view
+vw[1] = 30
+@show v vw
+```
+
+```output
+v = [1, 2, 3, 4, 5]
+r = [20, 3, 4]
+v = [1, 30, 3, 4, 5]
+vw = [30, 3, 4]
+```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::: callout
 
-## Heterogeneous Vectors
+## Heterogeneous Vectors and missing
 
-Vectors in Julia can also contain elements of different types.
+Vectors in Julia can contain elements of different types, but this flexibility comes with a performance cost.
+Prefer a consistent, concrete element type when possible.
+For unknown or unavailable data, prefer Julia has a preset type `Missing` with its single instance `missing`; no need to roll your own.
+Similarly it has a type for the absence of data called `Nothing` with its single instance `nothing`.
 
 ```julia
-sample_ages = Any[10, 12.5, "Unknown"]
+ages = Union{Missing,Float64}[10.0, 12.5, missing]
+@show ages eltype(ages)
+
+mix = [1, 2.0]
+@show mix eltype(mix)
 ```
 
-This gives us flexibility, but comes at a small performance cost compared to vectors where all elements have the same type.
-When possible, you should use vectors with a consistent element type for efficiency.
+```output
+ages = Union{Missing, Float64}[10.0, 12.5, missing]
+eltype(ages) = Union{Missing, Float64}
+mix = [1.0, 2.0]
+eltype(mix) = Float64
+```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-In Julia, functions that modify their arguments in place follow a naming convention: their name ends with an exclamation mark !.
+## 2D-Arrays (matrices)
 
-For example:
-
-`reverse!(odds)` reverses the vector in place
-
-`reverse(odds)` returns a new, reversed copy while leaving odds unchanged
-
-This convention makes it easy to tell at a glance whether a function will mutate its input or not.
-There are many ways to change the contents of vectors besides assigning new values to individual elements.
+Creating 2D-Arrays can be done by using square brackets and separating row elements by spaces and columns by semicolons:
 
 ```julia
-push!(odds, 11)
-println("odds after adding a value: ", odds)
+A = [1 2 3; 4 5 6]
 ```
 
 ```output
-odds after adding a value: [1, 3, 5, 7, 11]
+2×3 Matrix{Int64}:
+ 1  2  3
+ 4  5  6
 ```
 
+And indexing can be done using either one or two indexes:
+
 ```julia
-removed_element = popfirst!(odds)
-println("odds after removing the first element: ", odds)
-println("removed_element: ", removed_element)
+@show A[4]
+@show A[2,1]
+@show A[1, 2:3]
+@show A[:, 2]
+@show A[1:1, 2:3]
+@show A[1:2:end, :]
 ```
 
 ```output
-odds after removing the first element: [3, 5, 7, 11]
-removed_element: 1
+A[4] = 5
+A[2, 1] = 4
+A[1, 2:3] = [2, 3]
+A[:, 2] = [2, 5]
+A[1:1, 2:3] = [2 3]
+A[1:2:end, :] = [1 2 3]
 ```
 
-```julia
-reverse!(odds)
-println("odds after reversing in place: ", odds)
-```
-
-```output
-odds after reversing in place: [11, 7, 5, 3]
-```
-
-Julia also provides **non-mutating versions** of many functions.
-These return a modified _copy_ of the data and leave the original unchanged:
-
-```julia
-odds_copy = reverse(odds)
-println("odds after non-mutating reverse: ", odds)
-println("copy after reverse: ", odds_copy)
-```
-
-```output
-odds after non-mutating reverse: [11, 7, 5, 3]
-copy after reverse: [3, 5, 7, 11]
-```
-
-As we saw earlier, when we modify a vector in-place, multiple variables can refer to the same vector, leading to unintended changes:
-
-```julia
-odds = [3, 5, 7]
-primes = odds
-push!(primes, 2)
-println("primes: ", primes)
-println("odds: ", odds)
-```
-
-```output
-primes: [3, 5, 7, 2]
-odds: [3, 5, 7, 2]
-```
-
-This happens because `primes` and `odds` point to the **same vector in memory**.
-If we want to make an independent copy of a vector, we can use the `copy` function:
-
-```julia
-odds = [3, 5, 7]
-primes = copy(odds)
-push!(primes, 2)
-println("primes: ", primes)
-println("odds: ", odds)
-```
-
-```output
-primes: [3, 5, 7, 2]
-odds: [3, 5, 7]
-```
-
-Subsets of vectors and strings can be accessed using **ranges**:
-
-```julia
-binomial_name = "Drosophila melanogaster"
-group = binomial_name[1:10]
-println("group: ", group)
-
-species = binomial_name[11:23]
-println("species: ", species)
-
-chromosomes = ["X", "Y", "2", "3", "4"]
-autosomes = chromosomes[3:5]
-println("autosomes: ", autosomes)
-
-last = chromosomes[end]
-println("last: ", last)
-```
-
-```output
-group: Drosophila
-species: melanogaster
-autosomes: ["2", "3", "4"]
-last: 4
-```
+As you can see from `A[4] = 5` Julia is _column-major_, which means that column elements are next to each other in memory.
+In a row-major language `A[4]` would have been `4`.
 
 ::::::::::::::::::::::::::::::::::::::: challenge
 
