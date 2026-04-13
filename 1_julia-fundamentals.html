@@ -223,7 +223,7 @@
 <li><a href="#built-in-julia-functions">Built-in Julia Functions</a></li>
 <li><a href="#julia-vectors">Julia vectors</a></li>
 <li><a href="#d-arrays-matrices">2D-Arrays (matrices)</a></li>
-<li><a href="#dictionaries">Dictionaries</a></li>
+<li><a href="#pairs-and-dictionaries">Pairs and Dictionaries</a></li>
 <li><a href="#tuples-and-named-tuples">Tuples and Named Tuples</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
@@ -470,6 +470,7 @@ to be interpreted.</p>
 <ul><li>Integer numbers</li>
 <li>Floating point numbers</li>
 <li>Strings</li>
+<li>Symbols</li>
 </ul><p>For example, <code>weight_kg = 60</code> creates an <a href="https://en.wikipedia.org/wiki/Integer_(computer_science)" class="external-link">integer</a>
 variable. If we want to represent a fractional number, we can use a <a href="https://en.wikipedia.org/wiki/Floating-point_arithmetic" class="external-link">floating
 point number</a>:</p>
@@ -966,8 +967,85 @@ standard library</a>.</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="dictionaries">Dictionaries<a class="anchor" aria-label="anchor" href="#dictionaries"></a></h2>
-<hr class="half-width"></section><section><h2 class="section-heading" id="tuples-and-named-tuples">Tuples and Named Tuples<a class="anchor" aria-label="anchor" href="#tuples-and-named-tuples"></a></h2>
+</section><section><h2 class="section-heading" id="pairs-and-dictionaries">Pairs and Dictionaries<a class="anchor" aria-label="anchor" href="#pairs-and-dictionaries"></a></h2>
+<hr class="half-width"><p>Dictionaries map keys to values. They are useful when you want fast
+lookup by a descriptive key rather than by position.</p>
+<p>They can be constructed from pairs, where <code>:a =&gt; 1</code> is
+a pair linking the value <code>1</code> to the symbol
+<code>a</code>:</p>
+<div class="codewrapper sourceCode" id="cb46">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a>d1 <span class="op">=</span> <span class="fu">Dict</span>(<span class="st">"a"</span> <span class="op">=&gt;</span> <span class="fl">1</span>, <span class="st">"b"</span> <span class="op">=&gt;</span> <span class="fl">2</span>)                 <span class="co"># literal syntax</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Dict{String, Int64} with 2 entries:
+  "b" =&gt; 2
+  "a" =&gt; 1</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb48">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb48-1"><a href="#cb48-1" tabindex="-1"></a>d2 <span class="op">=</span> <span class="fu">Dict</span><span class="dt">{Symbol,Int}</span>(<span class="op">:</span>a <span class="op">=&gt;</span> <span class="fl">1</span>, <span class="op">:</span>b <span class="op">=&gt;</span> <span class="fl">2</span>)       <span class="co"># explicit key/value types</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Dict{Symbol, Int64} with 2 entries:
+  :a =&gt; 1
+  :b =&gt; 2</code></pre>
+</div>
+<div id="dictionary-order" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="dictionary-order" class="callout-inner">
+<h3 class="callout-title">Dictionary order</h3>
+<div class="callout-content">
+<p>The iteration and display order of Dict is not guaranteed. If you
+need a stable order for presentation, collect and sort the keys or pairs
+explicitly (e.g., <code>sort(collect(keys(d)))</code>).</p>
+</div>
+</div>
+</div>
+<p>We can also create an empty dictionary first and add keys to it later
+with a similar syntax as changing elements of a vector or using
+<code>push!</code>.</p>
+<div class="codewrapper sourceCode" id="cb50">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a>d3 <span class="op">=</span> <span class="fu">Dict</span><span class="dt">{String,Int}</span>()</span>
+<span id="cb50-2"><a href="#cb50-2" tabindex="-1"></a>d3[<span class="st">"a"</span>] <span class="op">=</span> <span class="fl">3</span></span>
+<span id="cb50-3"><a href="#cb50-3" tabindex="-1"></a><span class="fu">push!</span>(d3, <span class="st">"b"</span> <span class="op">=&gt;</span> <span class="fl">2</span>)</span>
+<span id="cb50-4"><a href="#cb50-4" tabindex="-1"></a><span class="pp">@show</span> d3</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>d3 = Dict{String,Int}("a" =&gt; 3, "b" =&gt; 2)</code></pre>
+</div>
+<p>When we need the values of a dictionary we can use one of the
+following:</p>
+<div class="codewrapper sourceCode" id="cb52">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb52-1"><a href="#cb52-1" tabindex="-1"></a><span class="pp">@show</span> d1[<span class="st">"a"</span>]                      <span class="co"># exact lookup</span></span>
+<span id="cb52-2"><a href="#cb52-2" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">haskey</span>(d1, <span class="st">"q"</span>)              <span class="co"># check without throwing an error</span></span>
+<span id="cb52-3"><a href="#cb52-3" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">get</span>(d1, <span class="st">"q"</span>, <span class="fl">0</span>)              <span class="co"># returns default; does not insert</span></span>
+<span id="cb52-4"><a href="#cb52-4" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">get!</span>(d1, <span class="st">"q"</span>, <span class="fl">0</span>)             <span class="co"># returns default; inserts if missing</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>d1["a"] = 1
+haskey(d1, "q") = false
+get(d1, "q", 0) = 0
+get!(d1, "q", 0) = 0</code></pre>
+</div>
+</section><section><h2 class="section-heading" id="tuples-and-named-tuples">Tuples and Named Tuples<a class="anchor" aria-label="anchor" href="#tuples-and-named-tuples"></a></h2>
 <hr class="half-width"><div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
