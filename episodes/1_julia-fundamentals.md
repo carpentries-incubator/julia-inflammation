@@ -492,7 +492,8 @@ Dict{Symbol, Int64} with 2 entries:
 ```
 
 ::::::::::::::::::::::::::::::::::::::::: callout
-# Dictionary order
+## Dictionary order
+
 The iteration and display order of Dict is not guaranteed. If you need a stable order for presentation, collect and sort the keys or pairs explicitly (e.g., `sort(collect(keys(d)))`) or use `OrderedDictionary` from `OrderedDictionaries.jl`.
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -524,6 +525,52 @@ get(d1, "q", 0) = 0
 get!(d1, "q", 0) = 0
 ```
 ## Tuples and Named Tuples
+
+Tuples are great when you need small, possibly heterogenous, fixed-size groupings of values.
+They can be constructed using commas and parentheses or the `tuple` function:
+
+```julia
+t = (1, 2.5, "x")
+single = (42,)
+t2 = tuple(1, 2.5, "x")
+single2 = tuple(42)
+```
+
+Tuples can be destructured into parts and combined by __splatting__ using three dots:
+
+```julia
+a, _, name = t
+new_t = (a, single[1], name, t...)
+```
+
+```output
+(1, 42, "x", 1, 2.5, "x")
+```
+
+::::::::::::::::::::::::::::::::::::::::: callout
+## Tuple basics
+
+Parentheses don’t make a tuple—commas do. `(1)` is just `1`, while `(1,)` is a 1‑tuple. Tuples are immutable: you can read elements but not reassign them (`t[1] = 10` is an error). Contained objects may themselves be mutable.
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Named tuples are akin to tuples, but each value has an associated name.
+
+```julia
+nt = (a = 1, b = 2.5, name = "Ada")   # literal named tuple
+```
+
+The values can then be retrieved either by position or by name.
+
+```julia
+@show nt[1]
+@show nt.name
+```
+
+```output
+nt[1] = 1
+nt.name = "Ada"
+```
+
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
