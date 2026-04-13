@@ -1086,7 +1086,9 @@ a pair linking the value <code>1</code> to the symbol
 <div class="callout-content">
 <p>The iteration and display order of Dict is not guaranteed. If you
 need a stable order for presentation, collect and sort the keys or pairs
-explicitly (e.g., <code>sort(collect(keys(d)))</code>).</p>
+explicitly (e.g., <code>sort(collect(keys(d)))</code>) or use
+<code>OrderedDictionary</code> from
+<code>OrderedDictionaries.jl</code>.</p>
 </div>
 </div>
 </div>
@@ -1127,6 +1129,66 @@ get!(d1, "q", 0) = 0</code></pre>
 </section><section><h2 class="section-heading" id="tuples-and-named-tuples">Tuples and Named Tuples<a class="anchor" aria-label="anchor" href="#tuples-and-named-tuples"></a>
 </h2>
 <hr class="half-width">
+<p>Tuples are great when you need small, possibly heterogenous,
+fixed-size groupings of values. They can be constructed using commas and
+parentheses or the <code>tuple</code> function:</p>
+<div class="codewrapper sourceCode" id="cb54">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb54-1"><a href="#cb54-1" tabindex="-1"></a>t <span class="op">=</span> (<span class="fl">1</span>, <span class="fl">2.5</span>, <span class="st">"x"</span>)</span>
+<span id="cb54-2"><a href="#cb54-2" tabindex="-1"></a>single <span class="op">=</span> (<span class="fl">42</span>,)</span>
+<span id="cb54-3"><a href="#cb54-3" tabindex="-1"></a>t2 <span class="op">=</span> <span class="fu">tuple</span>(<span class="fl">1</span>, <span class="fl">2.5</span>, <span class="st">"x"</span>)</span>
+<span id="cb54-4"><a href="#cb54-4" tabindex="-1"></a>single2 <span class="op">=</span> <span class="fu">tuple</span>(<span class="fl">42</span>)</span></code></pre>
+</div>
+<p>Tuples can be destructured into parts and combined by
+<strong>splatting</strong> using three dots:</p>
+<div class="codewrapper sourceCode" id="cb55">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb55-1"><a href="#cb55-1" tabindex="-1"></a>a, _, name <span class="op">=</span> t</span>
+<span id="cb55-2"><a href="#cb55-2" tabindex="-1"></a>new_t <span class="op">=</span> (a, single[<span class="fl">1</span>], name, t<span class="op">...</span>)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>(1, 42, "x", 1, 2.5, "x")</code></pre>
+</div>
+<div id="tuple-basics" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="tuple-basics" class="callout-inner">
+<h3 class="callout-title">Tuple basics</h3>
+<div class="callout-content">
+<p>Parentheses don’t make a tuple—commas do. <code>(1)</code> is just
+<code>1</code>, while <code>(1,)</code> is a 1‑tuple. Tuples are
+immutable: you can read elements but not reassign them
+(<code>t[1] = 10</code> is an error). Contained objects may themselves
+be mutable.</p>
+</div>
+</div>
+</div>
+<p>Named tuples are akin to tuples, but each value has an associated
+name.</p>
+<div class="codewrapper sourceCode" id="cb57">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb57-1"><a href="#cb57-1" tabindex="-1"></a>nt <span class="op">=</span> (a <span class="op">=</span> <span class="fl">1</span>, b <span class="op">=</span> <span class="fl">2.5</span>, name <span class="op">=</span> <span class="st">"Ada"</span>)   <span class="co"># literal named tuple</span></span></code></pre>
+</div>
+<p>The values can then be retrieved either by position or by name.</p>
+<div class="codewrapper sourceCode" id="cb58">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb58-1"><a href="#cb58-1" tabindex="-1"></a><span class="pp">@show</span> nt[<span class="fl">1</span>]</span>
+<span id="cb58-2"><a href="#cb58-2" tabindex="-1"></a><span class="pp">@show</span> nt.name</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code><span><span class="va">nt</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">=</span> <span class="fl">1</span></span>
+<span><span class="va">nt.name</span> <span class="op">=</span> <span class="st">"Ada"</span></span></code></pre>
+</div>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -3214,7 +3276,7 @@ Why did you pick this answer?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p><code>B</code> gets printed because <code>4 &gt; 5</code> is false,
 and <code>4 == 4</code> is the first true condition. Even though
@@ -3252,7 +3314,7 @@ numbers?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Hint </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Julia has a built-in function <code>abs()</code> that returns the
 absolute value of a number:</p>
@@ -3275,7 +3337,7 @@ absolute value of a number:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Solution 1 </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3298,7 +3360,7 @@ absolute value of a number:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Solution 2 </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3348,7 +3410,7 @@ or less readable than writing it without in-place operators?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3440,7 +3502,7 @@ can be ignored for now.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3488,7 +3550,7 @@ other_files: ["myscript.jl"]</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Show me the solution </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4803,7 +4865,7 @@ get that error.</p>
   solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4843,7 +4905,7 @@ you fix it?</p>
   solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Problems: - Missing parentheses in the function definition - Missing
 closing parenthesis in sum numbers Fixed version:</p>
