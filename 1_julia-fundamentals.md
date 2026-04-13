@@ -358,6 +358,10 @@ A[1:2:end, :] = [1 2 3]
 As you can see from `A[4] = 5` Julia is _column-major_, which means that column elements are next to each other in memory.
 In a row-major language `A[4]` would have been `4`.
 
+## Dictionaries
+
+## Tuples and Named Tuples
+
 ::::::::::::::::::::::::::::::::::::::: challenge
 
 ## Check Your Understanding
