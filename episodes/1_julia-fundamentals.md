@@ -418,6 +418,8 @@ mix = [1.0, 2.0]
 eltype(mix) = Float64
 ```
 
+`mix` is not heterogeneous because of [promotion](https://docs.julialang.org/en/v1/manual/conversion-and-promotion/#Promotion).
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## 2D-Arrays (matrices)
