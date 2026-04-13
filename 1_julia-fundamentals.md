@@ -186,6 +186,89 @@ println("weight in kilograms is now: ", weight_kg)
 weight in kilograms is now: 65.0
 ```
 
+::::::::::::::::::::::::::::::::::::::: challenge
+
+## Check Your Understanding
+
+What values do the variables `mass`, `speed` and `age` have?
+
+```julia
+mass = 50.0
+age = 56
+speed = "fast"
+println("very " * speed)
+mass = mass * 2.0
+age_new = age - 20
+```
+
+1. `mass == 50.0, speed == "fast", age == 56`
+2. `mass == 100.0, speed == "very fast", age == 56`
+3. `mass == 100.0, speed == "fast", age == 56`
+4. `mass == 100.0, speed == "fast", age == 36`
+
+::::::::::::::: solution
+
+## Solution
+
+1. `mass` indeed gets reassigned at `mass = mass * 2.0`.
+2. `println("very " * speed)` prints "very fast" as output, but does not alter `speed` itself.
+3. Thats the correct solution
+4. `age_new = age - 20` binds the result of `age - 20` to a new variable and does not change `age` itself.
+
+:::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::: challenge
+
+## Sorting Out References
+
+Julia allows multiple assignments in one line. What will this print?
+
+```julia
+first, second = "Hello", "World!"
+println(first," ", second)
+```
+
+::::::::::::::: solution
+
+```output
+Hello World!
+```
+
+(Note: `println` prints without space by default. We insert a space by adding a string with just one space character `" "`.)
+
+:::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::: challenge
+
+## Seeing Data Types
+
+What are the types of the following?
+
+```julia
+planet = "Earth"
+apples = 5
+distance = 10.5
+```
+
+::::::::::::::: solution
+
+```julia
+typeof(planet)
+typeof(apples)
+typeof(distance)
+```
+
+```output
+String
+Int64
+Float64
+```
+
+:::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 ## Julia vectors
 
 We create a vector by putting values inside square brackets and separating the values with commas:
@@ -224,6 +307,14 @@ nums[0]
 ```
 
 ```error
+ERROR: BoundsError: attempt to access 4-element Vector{Int64} at index [0]
+Stacktrace:
+ [1] throw_boundserror(A::Vector{Int64}, I::Tuple{Int64})
+   @ Base ./essentials.jl:15
+ [2] getindex(A::Vector{Int64}, i::Int64)
+   @ Base ./essentials.jl:919
+ [3] top-level scope
+   @ REPL[17]:1
 ```
 
 ```julia
@@ -231,6 +322,14 @@ nums[5]
 ```
 
 ```error
+ERROR: BoundsError: attempt to access 4-element Vector{Int64} at index [5]
+Stacktrace:
+ [1] throw_boundserror(A::Vector{Int64}, I::Tuple{Int64})
+   @ Base ./essentials.jl:15
+ [2] getindex(A::Vector{Int64}, i::Int64)
+   @ Base ./essentials.jl:919
+ [3] top-level scope
+   @ REPL[18]:1
 ```
 ::::::::::::::::::::::::::::::::::::::::: callout
 
@@ -319,6 +418,8 @@ mix = [1.0, 2.0]
 eltype(mix) = Float64
 ```
 
+`mix` is not heterogeneous because of [promotion](https://docs.julialang.org/en/v1/manual/conversion-and-promotion/#Promotion).
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## 2D-Arrays (matrices)
@@ -358,92 +459,13 @@ A[1:2:end, :] = [1 2 3]
 As you can see from `A[4] = 5` Julia is _column-major_, which means that column elements are next to each other in memory.
 In a row-major language `A[4]` would have been `4`.
 
+:::callout
+Further information can be found in [the documentation](https://docs.julialang.org/en/v1/manual/arrays/) and the [`LinearAlgebra` standard library](https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/).
+:::
+
 ## Dictionaries
 
 ## Tuples and Named Tuples
-
-::::::::::::::::::::::::::::::::::::::: challenge
-
-## Check Your Understanding
-
-What values do the variables `mass`, `speed` and `age` have?
-
-```julia
-mass = 50.0
-age = 56
-speed = "fast"
-println("very " * speed)
-mass = mass * 2.0
-age_new = age - 20
-```
-
-1. `mass == 50.0, speed == "fast", age == 56`
-2. `mass == 100.0, speed == "very fast", age == 56`
-3. `mass == 100.0, speed == "fast", age == 56`
-4. `mass == 100.0, speed == "fast", age == 36`
-
-::::::::::::::: solution
-
-## Solution
-
-1. `mass` indeed gets reassigned at `mass = mass * 2.0`.
-2. `println("very " * speed)` prints "very fast" as output, but does not alter `speed` itself.
-3. Thats the correct solution
-4. `age_new = age - 20` binds the result of `age - 20` to a new variable and does not change `age` itself.
-
-:::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::: challenge
-
-## Sorting Out References
-
-Julia allows multiple assignments in one line. What will this print?
-
-```julia
-first, second = "Hello", "World!"
-println(first," ", second)
-```
-
-::::::::::::::: solution
-
-```output
-Hello World!
-```
-
-(Note: `println` prints without space by default. We insert a space by adding a string with just one space character `" "`.)
-
-:::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::: challenge
-
-## Seeing Data Types
-
-What are the types of the following?
-
-```julia
-planet = "Earth"
-apples = 5
-distance = 10.5
-```
-
-::::::::::::::: solution
-
-```julia
-typeof(planet)
-typeof(apples)
-typeof(distance)
-```
-
-```output
-String
-Int64
-Float64
-```
-
-:::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
