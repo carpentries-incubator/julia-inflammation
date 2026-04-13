@@ -493,7 +493,7 @@ Dict{Symbol, Int64} with 2 entries:
 
 ::::::::::::::::::::::::::::::::::::::::: callout
 # Dictionary order
-The iteration and display order of Dict is not guaranteed. If you need a stable order for presentation, collect and sort the keys or pairs explicitly (e.g., `sort(collect(keys(d)))`).
+The iteration and display order of Dict is not guaranteed. If you need a stable order for presentation, collect and sort the keys or pairs explicitly (e.g., `sort(collect(keys(d)))`) or use `OrderedDictionary` from `OrderedDictionaries.jl`.
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 We can also create an empty dictionary first and add keys to it later with a similar syntax as changing elements of a vector or using `push!`.
