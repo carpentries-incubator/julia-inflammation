@@ -563,11 +563,13 @@ The values can then be retrieved either by position or by name.
 
 ```julia
 @show nt[1]
+@show nt[:b]
 @show nt.name
 ```
 
 ```output
 nt[1] = 1
+nt[:b] = 2.5
 nt.name = "Ada"
 ```
 
