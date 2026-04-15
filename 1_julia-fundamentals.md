@@ -251,6 +251,7 @@ What are the types of the following?
 planet = "Earth"
 apples = 5
 distance = 10.5
+println("The ", planet, " has ", apples, " Apples.")
 ```
 
 ::::::::::::::: solution
@@ -259,12 +260,14 @@ distance = 10.5
 typeof(planet)
 typeof(apples)
 typeof(distance)
+typeof(println("The ", planet, " has ", apples, " Apples."))
 ```
 
 ```output
 String
 Int64
 Float64
+Nothing
 ```
 
 :::::::::::::::::::::::::
@@ -332,6 +335,23 @@ Stacktrace:
  [3] top-level scope
    @ REPL[18]:1
 ```
+
+In Julia vectors can change its size.
+You can add elements with `push!`, `pushfirst!` or `append!`.
+
+
+```julia
+@show push!(nums, 9)
+@show pushfirst!(nums, -1)
+@show append!(nums, [11, 13])
+```
+
+```output
+push!(nums, 9) = [1,3,5,7,9]
+pushfirst!(nums, -1) = [-1,1,3,5,7,9]
+append!(nums, [11, 13]) = [-1,1,3,5,7,9,11,13]
+```
+
 ::::::::::::::::::::::::::::::::::::::::: callout
 
 ## Ch-Ch-Ch-Ch-Changes
@@ -401,7 +421,7 @@ vw = [30, 3, 4]
 
 Vectors in Julia can contain elements of different types, but this flexibility comes with a performance cost.
 Prefer a consistent, concrete element type when possible.
-For unknown or unavailable data, prefer Julia has a preset type `Missing` with its single instance `missing`; no need to roll your own.
+For unknown or unavailable data, Julia has a preset type `Missing` with its single instance `missing`; no need to roll your own.
 Similarly it has a type for the absence of data called `Nothing` with its single instance `nothing`.
 
 ```julia
@@ -578,7 +598,7 @@ nt.name = "Ada"
 
 - Basic data types in Julia include integers, strings, and floating-point numbers.
 - Use `variable = value` to assign a name to a value.
-- Use `println(value)` to display output.
+- Use `println(value)` or `@show` to display output.
 - Julia provides many built-in functions, such as `typeof`.
 - Basic data structures include vectors, dictionaries and tuples.
 - Vectors can contain any Julia object, including other vectors (i.e., a vector of vectors).
