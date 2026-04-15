@@ -251,6 +251,7 @@ What are the types of the following?
 planet = "Earth"
 apples = 5
 distance = 10.5
+println("The ", planet, " has ", apples, " Apples.")
 ```
 
 ::::::::::::::: solution
@@ -259,12 +260,14 @@ distance = 10.5
 typeof(planet)
 typeof(apples)
 typeof(distance)
+println("The ", planet, " has ", apples, " Apples.")
 ```
 
 ```output
 String
 Int64
 Float64
+Nothing
 ```
 
 :::::::::::::::::::::::::
