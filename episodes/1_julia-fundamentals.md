@@ -578,7 +578,7 @@ nt.name = "Ada"
 
 - Basic data types in Julia include integers, strings, and floating-point numbers.
 - Use `variable = value` to assign a name to a value.
-- Use `println(value)` to display output.
+- Use `println(value)` or `@show` to display output.
 - Julia provides many built-in functions, such as `typeof`.
 - Basic data structures include vectors, dictionaries and tuples.
 - Vectors can contain any Julia object, including other vectors (i.e., a vector of vectors).
