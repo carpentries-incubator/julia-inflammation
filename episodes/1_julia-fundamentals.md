@@ -401,7 +401,7 @@ vw = [30, 3, 4]
 
 Vectors in Julia can contain elements of different types, but this flexibility comes with a performance cost.
 Prefer a consistent, concrete element type when possible.
-For unknown or unavailable data, prefer Julia has a preset type `Missing` with its single instance `missing`; no need to roll your own.
+For unknown or unavailable data, Julia has a preset type `Missing` with its single instance `missing`; no need to roll your own.
 Similarly it has a type for the absence of data called `Nothing` with its single instance `nothing`.
 
 ```julia
