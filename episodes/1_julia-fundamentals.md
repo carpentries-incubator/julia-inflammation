@@ -332,6 +332,23 @@ Stacktrace:
  [3] top-level scope
    @ REPL[18]:1
 ```
+
+In Julia vectors can change its size.
+You can add elements with `push!`, `pushfirst!` or `append!`.
+
+
+```julia
+@show push!(nums, 9)
+@show pushfirst!(nums, -1)
+@show append!(nums, [11, 13])
+```
+
+```output
+push!(nums, 9) = [1,3,5,7,9]
+pushfirst!(nums, -1) = [-1,1,3,5,7,9]
+append!(nums, [11, 13]) = [-1,1,3,5,7,9,11,13]
+```
+
 ::::::::::::::::::::::::::::::::::::::::: callout
 
 ## Ch-Ch-Ch-Ch-Changes
