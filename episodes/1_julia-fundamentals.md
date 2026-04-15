@@ -260,7 +260,7 @@ println("The ", planet, " has ", apples, " Apples.")
 typeof(planet)
 typeof(apples)
 typeof(distance)
-println("The ", planet, " has ", apples, " Apples.")
+typeof(println("The ", planet, " has ", apples, " Apples."))
 ```
 
 ```output
