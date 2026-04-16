@@ -15,7 +15,9 @@ exercises: 2
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Assign values to variables.
+- Know basic Julia data types.
+- Assign variables to values.
+- Know basic Julia data structures.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
