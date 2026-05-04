@@ -29,7 +29,7 @@ Darker (blue) pixels in this heat map represent lower values, while lighter (yel
 Let’s calculate the average inflammation per day across all patients and plot it:
 
 ```julia
-plot(mean(data, dims=1)', 
+plot(transpose(mean(data, dims=1)), 
      xlabel="Day", 
      ylabel="Average inflammation", 
      title="Average inflammation over time", 
@@ -38,6 +38,7 @@ plot(mean(data, dims=1)',
 ![](fig/inflammation-01-average.svg){alt='A line graph showing the average inflammation across all patients over a 40-day period.'}
 
 This line of code creates a plot showing the average inflammation over time. The options `xlabel="Day"` and `ylabel="Average inflammation"` label the axes, `title="Average inflammation over time"` adds a title to the graph, and `legend=false` hides the legend since only one line is being shown.
+Note, that we plot the transposed data since `Plots.jl` treats columns as series, not rows.
 
 This plot shows how the average inflammation changes day by day, across all patients.
 It typically starts low, increases steadily, and then decreases — supporting the idea that the treatment takes effect after about three weeks.
