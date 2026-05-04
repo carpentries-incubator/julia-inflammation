@@ -44,7 +44,7 @@ This plot shows how the average inflammation changes day by day, across all pati
 It typically starts low, increases steadily, and then decreases — supporting the idea that the treatment takes effect after about three weeks.
 
 ```julia
-plot(maximum(data, dims=1)', 
+plot(transpose(maximum(data, dims=1)), 
      xlabel="Day", 
      ylabel="Maximum inflammation", 
      title="Maximum inflammation over time", 
@@ -54,7 +54,7 @@ plot(maximum(data, dims=1)',
 ![](fig/inflammation-01-maximum.svg){alt='A line graph showing the maximum inflammation across all patients over a 40-day period.'}
 
 ```julia
-plot(minimum(data, dims=1)', 
+plot(transpose(minimum(data, dims=1)), 
      xlabel="Day", 
      ylabel="Minimum inflammation", 
      title="Minimum inflammation over time", 
@@ -71,9 +71,9 @@ With Plots.jl, it is easy to group multiple plots into a single figure. We first
 
 ```julia
 
-p1 = plot(mean(data, dims=1)', title="Average", ylabel="average", xlabel="Day", legend=false)
-p2 = plot(maximum(data, dims=1)', title="Maximum", ylabel="max", xlabel="Day", legend=false)
-p3 = plot(minimum(data, dims=1)', title="Minimum", ylabel="min", xlabel="Day", legend=false)
+p1 = plot(transpose(mean(data, dims=1)), title="Average", ylabel="average", xlabel="Day", legend=false)
+p2 = plot(transpose(maximum(data, dims=1)), title="Maximum", ylabel="max", xlabel="Day", legend=false)
+p3 = plot(transpose(minimum(data, dims=1)), title="Minimum", ylabel="min", xlabel="Day", legend=false)
 
 plot(p1, p2, p3, layout=(1, 3))
 savefig("inflammation.svg")
@@ -104,9 +104,9 @@ If we want to change this, we can manually set the y-axis limits using the `ylim
 ## Solution
 
 ```julia
-p1 = plot(mean(data, dims=1)', title="Average", ylabel="average", xlabel="Day", ylims=(0, 20), legend=false)
-p2 = plot(maximum(data, dims=1)', title="Maximum", ylabel="max", xlabel="Day", ylims=(0, 20), legend=false)
-p3 = plot(minimum(data, dims=1)', title="Minimum", ylabel="min", xlabel="Day",ylims=(0, 20), legend=false)
+p1 = plot(transpose(mean(data, dims=1)), title="Average", ylabel="average", xlabel="Day", ylims=(0, 20), legend=false)
+p2 = plot(transpose(maximum(data, dims=1)), title="Maximum", ylabel="max", xlabel="Day", ylims=(0, 20), legend=false)
+p3 = plot(transpose(minimum(data, dims=1)), title="Minimum", ylabel="min", xlabel="Day",ylims=(0, 20), legend=false)
 
 plot(p1, p2, p3, layout=(1, 3))
 ```
