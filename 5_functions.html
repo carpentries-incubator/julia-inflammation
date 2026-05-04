@@ -610,10 +610,10 @@ plots:</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" tabindex="-1" aria-label="code-block-19-1"></a><span class="im">using</span> <span class="bu">CSV</span>, <span class="bu">DataFrames</span>, <span class="bu">Plots</span>, <span class="bu">Statistics</span></span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" tabindex="-1" aria-label="code-block-19-1"></a><span class="im">using</span> <span class="bu">CSV</span>, <span class="bu">Plots</span>, <span class="bu">Statistics</span></span>
 <span id="cb19-2"><a href="#cb19-2" tabindex="-1" aria-label="code-block-19-2"></a></span>
 <span id="cb19-3"><a href="#cb19-3" tabindex="-1" aria-label="code-block-19-3"></a><span class="kw">function</span> <span class="fu">visualize</span>(filename)</span>
-<span id="cb19-4"><a href="#cb19-4" tabindex="-1" aria-label="code-block-19-4"></a>    data <span class="op">=</span> <span class="fu">Matrix</span>(CSV.<span class="fu">read</span>(filename, DataFrame; header<span class="op">=</span><span class="cn">false</span>))</span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1" aria-label="code-block-19-4"></a>    data <span class="op">=</span> CSV.<span class="fu">read</span>(filename, CSV.Tables.matrix; header<span class="op">=</span><span class="cn">false</span>)</span>
 <span id="cb19-5"><a href="#cb19-5" tabindex="-1" aria-label="code-block-19-5"></a></span>
 <span id="cb19-6"><a href="#cb19-6" tabindex="-1" aria-label="code-block-19-6"></a>    plt <span class="op">=</span> <span class="fu">plot</span>(layout<span class="op">=</span>(<span class="fl">1</span>,<span class="fl">3</span>), size<span class="op">=</span>(<span class="fl">900</span>,<span class="fl">300</span>))</span>
 <span id="cb19-7"><a href="#cb19-7" tabindex="-1" aria-label="code-block-19-7"></a></span>
@@ -819,9 +819,9 @@ argument, like <code>typeof(data)</code> ,or keyword argument, like
 <div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" tabindex="-1" aria-label="code-block-36-1"></a><span class="im">using</span> <span class="bu">CSV</span>, <span class="bu">DataFrames</span></span>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" tabindex="-1" aria-label="code-block-36-1"></a><span class="im">using</span> <span class="bu">CSV</span></span>
 <span id="cb36-2"><a href="#cb36-2" tabindex="-1" aria-label="code-block-36-2"></a></span>
-<span id="cb36-3"><a href="#cb36-3" tabindex="-1" aria-label="code-block-36-3"></a>data <span class="op">=</span> CSV.<span class="fu">read</span>(<span class="st">"inflammation-01.csv"</span>, DataFrame; delim<span class="op">=</span><span class="ch">','</span>, header <span class="op">=</span> <span class="cn">false</span>)</span></code></pre>
+<span id="cb36-3"><a href="#cb36-3" tabindex="-1" aria-label="code-block-36-3"></a>data <span class="op">=</span> CSV.<span class="fu">read</span>(<span class="st">"inflammation-01.csv"</span>, CSV.Tables.matrix; delim<span class="op">=</span><span class="ch">','</span>, header <span class="op">=</span> <span class="cn">false</span>)</span></code></pre>
 </div>
 <p>Notice that the filename is passed as the first positional argument,
 but we specify <code>delim</code> using a keyword argument.</p>
@@ -1112,7 +1112,7 @@ original.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb61">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1160,7 +1160,7 @@ hand, makes data visible to the program for further use.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Julia will first execute the function <code>add</code> with
 <code>a = 7</code> and <code>b = 3</code>, so it prints
@@ -1212,7 +1212,7 @@ up of just the first and last characters of its input.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb67">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1268,7 +1268,7 @@ format:</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb73">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>

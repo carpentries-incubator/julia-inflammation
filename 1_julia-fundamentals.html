@@ -375,7 +375,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Julia Fundamentals</h1>
-        <p>Last updated on 2026-04-16 |
+        <p>Last updated on 2026-05-04 |
 
         <a href="https://github.com/carpentries-incubator/julia-inflammation/edit/main/episodes/1_julia-fundamentals.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -975,16 +975,179 @@ standard library</a>.</p>
 </div>
 </div>
 </div>
+<div id="slicing-strings" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="slicing-strings" class="callout-inner">
+<h3 class="callout-title">Slicing Strings</h3>
+<div class="callout-content">
+<p>A section of an array is called a <a href="reference.html#slice">slice</a>. We can take slices of strings as
+well:</p>
+<div class="codewrapper sourceCode" id="cb48">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb48-1"><a href="#cb48-1" tabindex="-1" aria-label="code-block-48-1"></a>element <span class="op">=</span> <span class="st">"oxygen"</span></span>
+<span id="cb48-2"><a href="#cb48-2" tabindex="-1" aria-label="code-block-48-2"></a><span class="fu">println</span>(<span class="st">"first three characters: "</span>, element[<span class="fl">1</span><span class="op">:</span><span class="fl">3</span>])</span>
+<span id="cb48-3"><a href="#cb48-3" tabindex="-1" aria-label="code-block-48-3"></a><span class="fu">println</span>(<span class="st">"last three characters: "</span>, element[<span class="fl">4</span><span class="op">:</span><span class="fl">6</span>])</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>first three characters: oxy
+last three characters: gen</code></pre>
+</div>
+<p>What is the value of <code>element[1:4]</code>? What about
+<code>element[5:end]</code>? Or <code>element[:]</code>? What is
+<code>element[end]</code>? What is <code>element[end-1]</code>?</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
+  <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
+</button>
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div class="accordion-body">
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code><span><span class="va">oxyg</span></span>
+<span><span class="va">en</span></span>
+<span><span class="va">oxygen</span></span>
+<span><span class="va">n</span></span>
+<span><span class="va">e</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="thin-slices" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="thin-slices" class="callout-inner">
+<h3 class="callout-title">Thin Slices</h3>
+<div class="callout-content">
+<p>The expression <code>element[4:3]</code> (a range where the start is
+greater than the end) produces an <a href="reference.html#empty-string">empty string</a> in Julia, a string
+that contains no characters.</p>
+<p>If <code>data</code> is an array what does
+<code>data[4:3, 5:4]</code> produce? What about
+<code>data[4:4, :]</code>?</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution5" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
+  <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
+</button>
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb51">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb51-1"><a href="#cb51-1" tabindex="-1" aria-label="code-block-51-1"></a>data[<span class="fl">4</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">5</span><span class="op">:</span><span class="fl">4</span>]   <span class="co"># Empty range in both dimensions</span></span>
+<span id="cb51-2"><a href="#cb51-2" tabindex="-1" aria-label="code-block-51-2"></a>data[<span class="fl">4</span><span class="op">:</span><span class="fl">4</span>, <span class="op">:</span>]     <span class="co"># Just row 4 (as a 1×n matrix)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>0×0 Matrix{Int64}
+1×40 Matrix{Int64}:
+ 0  1  1  3  3  1  3  5  2  4  4  7  6  …  7  7  9  6  3  2  2  4  2  0  1  1</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="stacking-arrays" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="stacking-arrays" class="callout-inner">
+<h3 class="callout-title">Stacking Arrays</h3>
+<div class="callout-content">
+<p>Arrays can be concatenated and stacked on top of one another in Julia
+using <strong>square bracket syntax</strong>.</p>
+<div class="codewrapper sourceCode" id="cb53">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb53-1"><a href="#cb53-1" tabindex="-1" aria-label="code-block-53-1"></a>A <span class="op">=</span> [<span class="fl">1</span> <span class="fl">2</span> <span class="fl">3</span>; <span class="fl">4</span> <span class="fl">5</span> <span class="fl">6</span>; <span class="fl">7</span> <span class="fl">8</span> <span class="fl">9</span>]</span>
+<span id="cb53-2"><a href="#cb53-2" tabindex="-1" aria-label="code-block-53-2"></a></span>
+<span id="cb53-3"><a href="#cb53-3" tabindex="-1" aria-label="code-block-53-3"></a>B <span class="op">=</span> [A A]   <span class="co"># horizontal stacking</span></span>
+<span id="cb53-4"><a href="#cb53-4" tabindex="-1" aria-label="code-block-53-4"></a></span>
+<span id="cb53-5"><a href="#cb53-5" tabindex="-1" aria-label="code-block-53-5"></a>C <span class="op">=</span> [A; A]  <span class="co"># vertical stacking</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>3×3 Matrix{Int64}:
+ 1  2  3
+ 4  5  6
+ 7  8  9
+
+3×6 Matrix{Int64}:
+ 1  2  3  1  2  3
+ 4  5  6  4  5  6
+ 7  8  9  7  8  9
+
+6×3 Matrix{Int64}:
+ 1  2  3
+ 4  5  6
+ 7  8  9
+ 1  2  3
+ 4  5  6
+ 7  8  9</code></pre>
+</div>
+<p>Write additional code that slices the <strong>first and last
+columns</strong> of <code>A</code>, and stacks them side by side into a
+<strong>3×2 array</strong>, using only <strong>square bracket
+syntax</strong>.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution6" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
+  <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
+</button>
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div class="accordion-body">
+<p>Use column indexing with square brackets and combine the slices
+horizontally:</p>
+<div class="codewrapper sourceCode" id="cb55">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb55-1"><a href="#cb55-1" tabindex="-1" aria-label="code-block-55-1"></a>D <span class="op">=</span> [A[<span class="op">:</span>, <span class="fl">1</span>] A[<span class="op">:</span>, <span class="kw">end</span>]]</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>D =
+[1 3
+ 4 6
+ 7 9]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section><section><h2 class="section-heading" id="pairs-and-dictionaries">Pairs and Dictionaries<a class="anchor" aria-label="anchor" href="#pairs-and-dictionaries"></a></h2>
 <hr class="half-width"><p>Dictionaries map keys to values. They are useful when you want fast
 lookup by a descriptive key rather than by position.</p>
 <p>They can be constructed from pairs, where <code>:a =&gt; 1</code> is
 a pair linking the value <code>1</code> to the symbol
 <code>a</code>:</p>
-<div class="codewrapper sourceCode" id="cb48">
+<div class="codewrapper sourceCode" id="cb57">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb48-1"><a href="#cb48-1" tabindex="-1" aria-label="code-block-48-1"></a>d1 <span class="op">=</span> <span class="fu">Dict</span>(<span class="st">"a"</span> <span class="op">=&gt;</span> <span class="fl">1</span>, <span class="st">"b"</span> <span class="op">=&gt;</span> <span class="fl">2</span>)                 <span class="co"># literal syntax</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb57-1"><a href="#cb57-1" tabindex="-1" aria-label="code-block-57-1"></a>d1 <span class="op">=</span> <span class="fu">Dict</span>(<span class="st">"a"</span> <span class="op">=&gt;</span> <span class="fl">1</span>, <span class="st">"b"</span> <span class="op">=&gt;</span> <span class="fl">2</span>)                 <span class="co"># literal syntax</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -993,10 +1156,10 @@ a pair linking the value <code>1</code> to the symbol
   "b" =&gt; 2
   "a" =&gt; 1</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb50">
+<div class="codewrapper sourceCode" id="cb59">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb50-1"><a href="#cb50-1" tabindex="-1" aria-label="code-block-50-1"></a>d2 <span class="op">=</span> <span class="fu">Dict</span><span class="dt">{Symbol,Int}</span>(<span class="op">:</span>a <span class="op">=&gt;</span> <span class="fl">1</span>, <span class="op">:</span>b <span class="op">=&gt;</span> <span class="fl">2</span>)       <span class="co"># explicit key/value types</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb59-1"><a href="#cb59-1" tabindex="-1" aria-label="code-block-59-1"></a>d2 <span class="op">=</span> <span class="fu">Dict</span><span class="dt">{Symbol,Int}</span>(<span class="op">:</span>a <span class="op">=&gt;</span> <span class="fl">1</span>, <span class="op">:</span>b <span class="op">=&gt;</span> <span class="fl">2</span>)       <span class="co"># explicit key/value types</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1024,13 +1187,13 @@ explicitly (e.g., <code>sort(collect(keys(d)))</code>) or use
 <p>We can also create an empty dictionary first and add keys to it later
 with a similar syntax as changing elements of a vector or using
 <code>push!</code>.</p>
-<div class="codewrapper sourceCode" id="cb52">
+<div class="codewrapper sourceCode" id="cb61">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb52-1"><a href="#cb52-1" tabindex="-1" aria-label="code-block-52-1"></a>d3 <span class="op">=</span> <span class="fu">Dict</span><span class="dt">{String,Int}</span>()</span>
-<span id="cb52-2"><a href="#cb52-2" tabindex="-1" aria-label="code-block-52-2"></a>d3[<span class="st">"a"</span>] <span class="op">=</span> <span class="fl">3</span></span>
-<span id="cb52-3"><a href="#cb52-3" tabindex="-1" aria-label="code-block-52-3"></a><span class="fu">push!</span>(d3, <span class="st">"b"</span> <span class="op">=&gt;</span> <span class="fl">2</span>)</span>
-<span id="cb52-4"><a href="#cb52-4" tabindex="-1" aria-label="code-block-52-4"></a><span class="pp">@show</span> d3</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb61-1"><a href="#cb61-1" tabindex="-1" aria-label="code-block-61-1"></a>d3 <span class="op">=</span> <span class="fu">Dict</span><span class="dt">{String,Int}</span>()</span>
+<span id="cb61-2"><a href="#cb61-2" tabindex="-1" aria-label="code-block-61-2"></a>d3[<span class="st">"a"</span>] <span class="op">=</span> <span class="fl">3</span></span>
+<span id="cb61-3"><a href="#cb61-3" tabindex="-1" aria-label="code-block-61-3"></a><span class="fu">push!</span>(d3, <span class="st">"b"</span> <span class="op">=&gt;</span> <span class="fl">2</span>)</span>
+<span id="cb61-4"><a href="#cb61-4" tabindex="-1" aria-label="code-block-61-4"></a><span class="pp">@show</span> d3</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1039,13 +1202,13 @@ with a similar syntax as changing elements of a vector or using
 </div>
 <p>When we need the values of a dictionary we can use one of the
 following:</p>
-<div class="codewrapper sourceCode" id="cb54">
+<div class="codewrapper sourceCode" id="cb63">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb54-1"><a href="#cb54-1" tabindex="-1" aria-label="code-block-54-1"></a><span class="pp">@show</span> d1[<span class="st">"a"</span>]                      <span class="co"># exact lookup</span></span>
-<span id="cb54-2"><a href="#cb54-2" tabindex="-1" aria-label="code-block-54-2"></a><span class="pp">@show</span> <span class="fu">haskey</span>(d1, <span class="st">"q"</span>)              <span class="co"># check without throwing an error</span></span>
-<span id="cb54-3"><a href="#cb54-3" tabindex="-1" aria-label="code-block-54-3"></a><span class="pp">@show</span> <span class="fu">get</span>(d1, <span class="st">"q"</span>, <span class="fl">0</span>)              <span class="co"># returns default; does not insert</span></span>
-<span id="cb54-4"><a href="#cb54-4" tabindex="-1" aria-label="code-block-54-4"></a><span class="pp">@show</span> <span class="fu">get!</span>(d1, <span class="st">"q"</span>, <span class="fl">0</span>)             <span class="co"># returns default; inserts if missing</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb63-1"><a href="#cb63-1" tabindex="-1" aria-label="code-block-63-1"></a><span class="pp">@show</span> d1[<span class="st">"a"</span>]                      <span class="co"># exact lookup</span></span>
+<span id="cb63-2"><a href="#cb63-2" tabindex="-1" aria-label="code-block-63-2"></a><span class="pp">@show</span> <span class="fu">haskey</span>(d1, <span class="st">"q"</span>)              <span class="co"># check without throwing an error</span></span>
+<span id="cb63-3"><a href="#cb63-3" tabindex="-1" aria-label="code-block-63-3"></a><span class="pp">@show</span> <span class="fu">get</span>(d1, <span class="st">"q"</span>, <span class="fl">0</span>)              <span class="co"># returns default; does not insert</span></span>
+<span id="cb63-4"><a href="#cb63-4" tabindex="-1" aria-label="code-block-63-4"></a><span class="pp">@show</span> <span class="fu">get!</span>(d1, <span class="st">"q"</span>, <span class="fl">0</span>)             <span class="co"># returns default; inserts if missing</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1059,21 +1222,21 @@ get!(d1, "q", 0) = 0</code></pre>
 <hr class="half-width"><p>Tuples are great when you need small, possibly heterogenous,
 fixed-size groupings of values. They can be constructed using commas and
 parentheses or the <code>tuple</code> function:</p>
-<div class="codewrapper sourceCode" id="cb56">
+<div class="codewrapper sourceCode" id="cb65">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb56-1"><a href="#cb56-1" tabindex="-1" aria-label="code-block-56-1"></a>t <span class="op">=</span> (<span class="fl">1</span>, <span class="fl">2.5</span>, <span class="st">"x"</span>)</span>
-<span id="cb56-2"><a href="#cb56-2" tabindex="-1" aria-label="code-block-56-2"></a>single <span class="op">=</span> (<span class="fl">42</span>,)</span>
-<span id="cb56-3"><a href="#cb56-3" tabindex="-1" aria-label="code-block-56-3"></a>t2 <span class="op">=</span> <span class="fu">tuple</span>(<span class="fl">1</span>, <span class="fl">2.5</span>, <span class="st">"x"</span>)</span>
-<span id="cb56-4"><a href="#cb56-4" tabindex="-1" aria-label="code-block-56-4"></a>single2 <span class="op">=</span> <span class="fu">tuple</span>(<span class="fl">42</span>)</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb65-1"><a href="#cb65-1" tabindex="-1" aria-label="code-block-65-1"></a>t <span class="op">=</span> (<span class="fl">1</span>, <span class="fl">2.5</span>, <span class="st">"x"</span>)</span>
+<span id="cb65-2"><a href="#cb65-2" tabindex="-1" aria-label="code-block-65-2"></a>single <span class="op">=</span> (<span class="fl">42</span>,)</span>
+<span id="cb65-3"><a href="#cb65-3" tabindex="-1" aria-label="code-block-65-3"></a>t2 <span class="op">=</span> <span class="fu">tuple</span>(<span class="fl">1</span>, <span class="fl">2.5</span>, <span class="st">"x"</span>)</span>
+<span id="cb65-4"><a href="#cb65-4" tabindex="-1" aria-label="code-block-65-4"></a>single2 <span class="op">=</span> <span class="fu">tuple</span>(<span class="fl">42</span>)</span></code></pre>
 </div>
 <p>Tuples can be destructured into parts and combined by
 <strong>splatting</strong> using three dots:</p>
-<div class="codewrapper sourceCode" id="cb57">
+<div class="codewrapper sourceCode" id="cb66">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb57-1"><a href="#cb57-1" tabindex="-1" aria-label="code-block-57-1"></a>a, _, name <span class="op">=</span> t</span>
-<span id="cb57-2"><a href="#cb57-2" tabindex="-1" aria-label="code-block-57-2"></a>new_t <span class="op">=</span> (a, single[<span class="fl">1</span>], name, t<span class="op">...</span>)</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb66-1"><a href="#cb66-1" tabindex="-1" aria-label="code-block-66-1"></a>a, _, name <span class="op">=</span> t</span>
+<span id="cb66-2"><a href="#cb66-2" tabindex="-1" aria-label="code-block-66-2"></a>new_t <span class="op">=</span> (a, single[<span class="fl">1</span>], name, t<span class="op">...</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1098,18 +1261,18 @@ be mutable.</p>
 </div>
 <p>Named tuples are akin to tuples, but each value has an associated
 name.</p>
-<div class="codewrapper sourceCode" id="cb59">
+<div class="codewrapper sourceCode" id="cb68">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb59-1"><a href="#cb59-1" tabindex="-1" aria-label="code-block-59-1"></a>nt <span class="op">=</span> (a <span class="op">=</span> <span class="fl">1</span>, b <span class="op">=</span> <span class="fl">2.5</span>, name <span class="op">=</span> <span class="st">"Ada"</span>)   <span class="co"># literal named tuple</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb68-1"><a href="#cb68-1" tabindex="-1" aria-label="code-block-68-1"></a>nt <span class="op">=</span> (a <span class="op">=</span> <span class="fl">1</span>, b <span class="op">=</span> <span class="fl">2.5</span>, name <span class="op">=</span> <span class="st">"Ada"</span>)   <span class="co"># literal named tuple</span></span></code></pre>
 </div>
 <p>The values can then be retrieved either by position or by name.</p>
-<div class="codewrapper sourceCode" id="cb60">
+<div class="codewrapper sourceCode" id="cb69">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb60-1"><a href="#cb60-1" tabindex="-1" aria-label="code-block-60-1"></a><span class="pp">@show</span> nt[<span class="fl">1</span>]</span>
-<span id="cb60-2"><a href="#cb60-2" tabindex="-1" aria-label="code-block-60-2"></a><span class="pp">@show</span> nt[<span class="op">:</span>b]</span>
-<span id="cb60-3"><a href="#cb60-3" tabindex="-1" aria-label="code-block-60-3"></a><span class="pp">@show</span> nt.name</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb69-1"><a href="#cb69-1" tabindex="-1" aria-label="code-block-69-1"></a><span class="pp">@show</span> nt[<span class="fl">1</span>]</span>
+<span id="cb69-2"><a href="#cb69-2" tabindex="-1" aria-label="code-block-69-2"></a><span class="pp">@show</span> nt[<span class="op">:</span>b]</span>
+<span id="cb69-3"><a href="#cb69-3" tabindex="-1" aria-label="code-block-69-3"></a><span class="pp">@show</span> nt.name</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1207,7 +1370,7 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/julia-inflammation/1_julia-fundamentals.html",
   "identifier": "https://carpentries-incubator.github.io/julia-inflammation/1_julia-fundamentals.html",
   "dateCreated": "2025-04-15",
-  "dateModified": "2026-04-16",
+  "dateModified": "2026-05-04",
   "datePublished": "2026-05-04"
 }
 

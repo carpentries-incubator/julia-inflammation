@@ -443,14 +443,9 @@ place).</li>
 <ul>
 <li>Use <code>Pkg.add("PackageName")</code> to install and
 <code>using PackageName</code> to load packages in Julia.</li>
-<li>Load CSV data into a DataFrame with
-<code>CSV.read("file.csv", DataFrame)</code>.</li>
-<li>Use <code>df[row, column]</code> to access specific values; use
-<code>df[!, column]</code> to access entire columns.</li>
-<li>Use <code>size(df)</code>, <code>nrow(df)</code>, and
-<code>ncol(df)</code> to inspect DataFrame dimensions.</li>
-<li>Convert a DataFrame to a matrix using <code>Matrix(df)</code> for
-numerical operations.</li>
+<li>Load CSV data into a Matrix with
+<code>CSV.read("file.csv", CSV.Tables.matrix)</code>.</li>
+<li>Use <code>size(df)</code> to inspect Matrix dimensions.</li>
 <li>Use <code>mean</code>, <code>maximum</code>, <code>minimum</code>,
 and <code>std</code> to compute statistics on data arrays.</li>
 <li>Use <code>mean(data, dims=1)</code> for column-wise and
