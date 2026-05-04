@@ -198,10 +198,10 @@ we can make our inflammation analysis easier to read and easier to reuse.
 First, let's make a `visualize` function that generates our plots:
 
 ```julia
-using CSV, DataFrames, Plots, Statistics
+using CSV, Plots, Statistics
 
 function visualize(filename)
-    data = Matrix(CSV.read(filename, DataFrame; header=false))
+    data = CSV.read(filename, CSV.Tables.matrix; header=false)
 
     plt = plot(layout=(1,3), size=(900,300))
 
@@ -406,9 +406,9 @@ positional argument, like `typeof(data)`
 For example, we can read a CSV file with:
 
 ```julia
-using CSV, DataFrames
+using CSV
 
-data = CSV.read("inflammation-01.csv", DataFrame; delim=',', header = false)
+data = CSV.read("inflammation-01.csv", CSV.Tables.matrix; delim=',', header = false)
 ```
 
 Notice that the filename is passed as the first positional argument,
