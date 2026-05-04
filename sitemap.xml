@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://carpentries-incubator.github.io/julia-inflammation/10_debugging.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/julia-inflammation/10_tests.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/julia-inflammation/11_debugging.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/julia-inflammation/11_recap.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/julia-inflammation/12_recap.html</loc>
@@ -22,7 +28,13 @@
     <loc>https://carpentries-incubator.github.io/julia-inflammation/404.html</loc>
   </url>
   <url>
+    <loc>https://carpentries-incubator.github.io/julia-inflammation/4_if_else.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/julia-inflammation/4_vectors.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/julia-inflammation/5_functions.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/julia-inflammation/5_loops.html</loc>
@@ -31,13 +43,25 @@
     <loc>https://carpentries-incubator.github.io/julia-inflammation/6_analyzing_multiple_files.html</loc>
   </url>
   <url>
+    <loc>https://carpentries-incubator.github.io/julia-inflammation/6_loops.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/julia-inflammation/7_analyzing_multiple_files.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/julia-inflammation/7_if_else.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/julia-inflammation/8_errors.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/julia-inflammation/8_functions.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/julia-inflammation/9_errors.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/julia-inflammation/9_tests.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/julia-inflammation/CODE_OF_CONDUCT.html</loc>
@@ -58,10 +82,16 @@
     <loc>https://carpentries-incubator.github.io/julia-inflammation/index.html</loc>
   </url>
   <url>
+    <loc>https://carpentries-incubator.github.io/julia-inflammation/instructor/10_debugging.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/julia-inflammation/instructor/10_tests.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/julia-inflammation/instructor/11_debugging.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/julia-inflammation/instructor/11_recap.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/julia-inflammation/instructor/12_recap.html</loc>
@@ -79,7 +109,13 @@
     <loc>https://carpentries-incubator.github.io/julia-inflammation/instructor/404.html</loc>
   </url>
   <url>
+    <loc>https://carpentries-incubator.github.io/julia-inflammation/instructor/4_if_else.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/julia-inflammation/instructor/4_vectors.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/julia-inflammation/instructor/5_functions.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/julia-inflammation/instructor/5_loops.html</loc>
@@ -88,13 +124,25 @@
     <loc>https://carpentries-incubator.github.io/julia-inflammation/instructor/6_analyzing_multiple_files.html</loc>
   </url>
   <url>
+    <loc>https://carpentries-incubator.github.io/julia-inflammation/instructor/6_loops.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/julia-inflammation/instructor/7_analyzing_multiple_files.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/julia-inflammation/instructor/7_if_else.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/julia-inflammation/instructor/8_errors.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/julia-inflammation/instructor/8_functions.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/julia-inflammation/instructor/9_errors.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/julia-inflammation/instructor/9_tests.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/julia-inflammation/instructor/CODE_OF_CONDUCT.html</loc>
