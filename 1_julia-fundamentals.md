@@ -486,6 +486,131 @@ In a row-major language `A[4]` would have been `4`.
 Further information can be found in [the documentation](https://docs.julialang.org/en/v1/manual/arrays/) and the [`LinearAlgebra` standard library](https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/).
 :::
 
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Slicing Strings
+
+A section of an array is called a [slice](../learners/reference.md#slice).
+We can take slices of strings as well:
+
+```julia
+element = "oxygen"
+println("first three characters: ", element[1:3])
+println("last three characters: ", element[4:6])
+```
+
+```output
+first three characters: oxy
+last three characters: gen
+```
+
+What is the value of `element[1:4]`?
+What about `element[5:end]`?
+Or `element[:]`?
+What is `element[end]`?
+What is `element[end-1]`?
+
+:::::::::::::::  solution
+
+## Solution
+
+```output
+oxyg
+en
+oxygen
+n
+e
+```
+:::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+## Thin Slices
+
+The expression `element[4:3]` (a range where the start is greater than the end)
+produces an [empty string](../learners/reference.md#empty-string) in Julia, a string that contains no characters.
+
+If `data` is an array
+what does `data[4:3, 5:4]` produce?
+What about `data[4:4, :]`?
+
+:::::::::::::::::::::::::::  solution
+
+## Solution
+
+```julia
+data[4:3, 5:4]   # Empty range in both dimensions
+data[4:4, :]     # Just row 4 (as a 1×n matrix)
+```
+
+```output
+0×0 Matrix{Int64}
+1×40 Matrix{Int64}:
+ 0  1  1  3  3  1  3  5  2  4  4  7  6  …  7  7  9  6  3  2  2  4  2  0  1  1
+```
+::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Stacking Arrays
+
+Arrays can be concatenated and stacked on top of one another in Julia using **square bracket syntax**.
+
+```julia
+A = [1 2 3; 4 5 6; 7 8 9]
+
+B = [A A]   # horizontal stacking
+
+C = [A; A]  # vertical stacking
+
+```
+
+```output
+3×3 Matrix{Int64}:
+ 1  2  3
+ 4  5  6
+ 7  8  9
+
+3×6 Matrix{Int64}:
+ 1  2  3  1  2  3
+ 4  5  6  4  5  6
+ 7  8  9  7  8  9
+
+6×3 Matrix{Int64}:
+ 1  2  3
+ 4  5  6
+ 7  8  9
+ 1  2  3
+ 4  5  6
+ 7  8  9
+```
+
+Write additional code that slices the **first and last columns** of `A`,
+and stacks them side by side into a **3×2 array**, using only **square bracket syntax**.
+
+:::::::::::::::::::::::::::  solution
+
+## Solution
+
+Use column indexing with square brackets and combine the slices horizontally:
+
+```julia
+D = [A[:, 1] A[:, end]]
+```
+
+```output
+D =
+[1 3
+ 4 6
+ 7 9]
+```
+
+:::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 ## Pairs and Dictionaries
 
 Dictionaries map keys to values.

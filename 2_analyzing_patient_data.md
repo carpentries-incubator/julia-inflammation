@@ -53,207 +53,58 @@ After installing the package, you still need to load it before using its functio
 ```julia
 using CSV
 ```
-Besides `CSV.jl`, we also need `DataFrames.jl`. You can install it the same way — give it a try!
 
-After installing both packages, we can read the data file like this:
+After installing the package, we can read the data file like this:
 
 ```julia
-using DataFrames
-df = CSV.read("inflammation-01.csv", DataFrame, header = false)
+data = CSV.read("inflammation-01.csv", CSV.Tables.matrix, header = false)
 ```
+
 ```output
-60×40 DataFrame
- Row │ Column1  Column2  Column3  Column4   ⋯
-     │ Int64    Int64    Int64    Int64     ⋯
-─────┼────────────────────────────────────────
-   1 │       0        0        1        3   ⋯
-   2 │       0        1        2        1  
-   3 │       0        1        1        3   
-   4 │       0        0        2        0   
-   5 │       0        1        1        3   ⋯
-   6 │       0        0        1        2
-   7 │       0        0        2        2
-   8 │       0        0        1        2
-   9 │       0        0        0        3   ⋯
-  10 │       0        1        1        2
-  11 │       0        1        0        0
-  12 │       0        1        0        0
-  13 │       0        0        2        1   ⋯
-  ⋮  │       ⋮        ⋮        ⋮        ⋮   ⋱
-  48 │       0        1        1        3
-  49 │       0        0        1        3
-  50 │       0        0        1        2
-  51 │       0        1        2        1   ⋯
-  52 │       0        1        2        2
-  53 │       0        0        0        2
-  54 │       0        0        2        1
-  55 │       0        1        2        1   ⋯
-  56 │       0        0        1        3
-  57 │       0        1        1        2
-  58 │       0        1        1        1
-  59 │       0        0        0        1    ⋯
-  60 │       0        0        1        0
-                                          25 columns and 34 rows omitted
+60×40 Matrix{Int64}:
+ 0  0  1  3  1  2  4  7  8  3   3   3  10   5 
+ 0  1  2  1  2  1  3  2  2  6  10  11   5   9 
+ 0  1  1  3  3  2  6  2  5  9   5   7   4   5 
+ 0  0  2  0  4  2  2  1  6  7  10   7   9  13 
+ 0  1  1  3  3  1  3  5  2  4   4   7   6   5 
+ 0  0  1  2  2  4  2  1  6  4   7   6   6   9 
+ ⋮              ⋮               ⋮            
+ 0  1  2  1  1  4  5  4  4  5   9   7  10   3 
+ 0  0  1  3  2  3  6  4  5  7   2   4  11  11 
+ 0  1  1  2  2  5  1  7  4  2   5   5   4   6 
+ 0  1  1  1  4  1  6  4  6  3   6   5   6   4 
+ 0  0  0  1  4  5  6  3  8  7   9  10   8   6 
+ 0  0  1  0  3  2  5  4  8  2   9   3   3  10 
 ```
 If we want to check that the data loaded correctly, we can just print it:
 
 ```julia
-print(df)
-```
-
-Or view the first few rows using:
-
-```julia
-first(df, 5)
+print(data)
 ```
 
 We can check the type of object we’ve created:
 
 ```julia
-typeof(df)
+typeof(data)
 ```
 
 ```output
-DataFrame
+Matrix{Int64} (alias for Array{Int64, 2})
 ```
 
 To see how many rows and columns the data contains, we can use:
 
 ```julia
-size(df)
+size(data)
 ```
 
 ```output
 (60,40)
 ```
 
-We can also get just the number of rows or columns:
-
-```julia
-nrow(df)
-ncol(df)
-```
-
-```output
-60
-40
-```
-
-## Accessing Elements
-
-In Julia, you can access data in a `DataFrame` by column, by name, or by specifying row and column indices.
-
-
-### Accessing a Single Column
-
-You can access a single column by its **position** (column number) or its **name**:
-
-```julia
-df[!, 1]        # First column (by index)
-df[!, :column1] # Column named `:column1`
-```
-
-The `!` means you're accessing the actual data — a **view**, not a copy.
-
-Important:
-`df[!, 1]` gives you a **view** into the DataFrame.
-If you modify this vector, it will also change the original DataFrame.
-Use `df[:, 1]` instead if you want a **copy** of the data.
-
-
-### Accessing a Specific Value
-
-You can access individual values by specifying row and column numbers:
-
-```julia
-df[30, 20]  # value at row 30, column 20
-```
-
-Or mix names and indices:
-
-```julia
-df[30, :column_name]  # value at row 30, column named `:column_name`
-```
-
-
-### Checking the Type of a Column
-
-To inspect the type of data stored in a column:
-
-```julia
-eltype(df[!, 1])      
-eltype(df[!, :column1])  
-```
-
-This is useful when you want to confirm whether a column contains `Float64`, `Int`, `String`, etc.
-
-
-## Slicing data 
-
-An index like [30, 20] selects a single element of an array, but we can select whole sections as well. For example, we can select the first ten columns of values for the first four patients (rows) like this:
-
-
-```julia
-print(df[1:4, 1:10])
-```
-
-```output
-4×10 DataFrame
- Row │ 0      0_1    1      3      1_1    2      4      7      8      3_1   
-     │ Int64  Int64  Int64  Int64  Int64  Int64  Int64  Int64  Int64  Int64 
-─────┼──────────────────────────────────────────────────────────────────────
-   1 │     0      1      2      1      2      1      3      2      2      6
-   2 │     0      1      1      3      3      2      6      2      5      9
-   3 │     0      0      2      0      4      2      2      1      6      7
-   4 │     0      1      1      3      3      1      3      5      2      4
-```
-
-The slice `1:4` means, “Start at index 1 and go up to and including index 4”.
-Julia uses **1-based indexing**, so indices start at 1.
-
-We don’t have to start slices at 1:
-
-```julia
-println(df[6:10, 1:10])
-```
-
-```output
-5×10 DataFrame
- Row │ 0      0_1    1      3      1_1    2      4      7      8      3_1   
-     │ Int64  Int64  Int64  Int64  Int64  Int64  Int64  Int64  Int64  Int64 
-─────┼──────────────────────────────────────────────────────────────────────
-   1 │     0      0      2      2      4      2      2      5      5      8
-   2 │     0      0      1      2      3      1      2      3      5      3
-   3 │     0      0      0      3      1      5      6      5      5      8
-   4 │     0      1      1      2      1      3      5      3      5      8
-   5 │     0      1      0      0      4      3      3      5      5      4
-```
-
-We can also use `end` to select everything from a certain position up to the last element.
-If we use `:` on its own, it includes everything:
-
-```julia
-smaller_df = df[1:3, 37:end]
-```
-
-This selects rows 1 through 3 and columns 37 through to the end of the array.
-
-```output
-3×4 DataFrame
- Row │ 2_1    3_5    0_2    0_3   
-     │ Int64  Int64  Int64  Int64 
-─────┼────────────────────────────
-   1 │     1      1      0      1
-   2 │     2      2      1      1
-   3 │     2      3      2      1
-```
-
-
-
-
 ## Analyzing Data
 
-Julia provides powerful tools for analyzing data stored in a `DataFrame`.
+Julia provides powerful tools for analyzing data.
 To calculate the **average inflammation** for **all patients** on **all days**, we can use the `mean` function from the `Statistics` standard library.
 
 **Tip:** Make sure to install the required packages first 
@@ -262,25 +113,17 @@ To calculate the **average inflammation** for **all patients** on **all days**, 
 Then load the packages:
 
 ```julia
-using DataFrames
 using Statistics
 ```
 
 
 ```julia
-mean(Matrix(df))
+mean(data)
 ```
 
 ```output
 6.160593220338983
 ```
-
-Here’s what’s happening:
-
-* `Matrix(df)` converts the DataFrame to a regular array of numbers.
-* `mean(...)` calculates the average of all the values.
-
-
 
 ## Descriptive Statistics in Julia
 
@@ -291,7 +134,7 @@ We can use **multiple assignment** to store all the results in one line.
 
 ```julia
 
-maxval, minval, stdval = maximum(Matrix(df)), minimum(Matrix(df)), std(Matrix(df))
+maxval, minval, stdval = maximum(data), minimum(data), std(data)
 
 println("maximum inflammation: ", maxval)
 println("minimum inflammation: ", minval)
@@ -339,7 +182,7 @@ One way is to first select the data for a single patient (row), then apply a fun
 
 ```julia
 # Select data for patient 1
-patient_1 = df[1, :]  
+patient_1 = data[1, :]  
 
 println("maximum inflammation for patient 1: ", maximum(patient_1))
 ```
@@ -351,17 +194,11 @@ maximum inflammation for patient 1: 18
 We don't need to store the row separately — we can combine selecting the data and applying the function in one step:
 
 ```julia
-println("maximum inflammation for patient 3: ", maximum(df[3, :]))
+println("maximum inflammation for patient 3: ", maximum(data[3, :]))
 ```
 
 ```output
 maximum inflammation for patient 3: 17
-```
-It is much easier to work with an **array** than with a **DataFrame** for many numerical operations.
-To convert a DataFrame to an array, use:
-
-```julia
-data = Matrix(df)
 ```
 
 What if we want the maximum inflammation **for each patient** across all days (i.e., row-wise maximum), or the average inflammation **for each day** across all patients (i.e., column-wise average)?
@@ -399,127 +236,7 @@ println(patient_avg)
 [5.45; 5.425; 6.1; 5.9; 5.55; ...]
 ```
 
-:::::::::::::::::::::::::::::::::::::::  challenge
 
-## Slicing Strings
-
-A section of an array is called a [slice](../learners/reference.md#slice).
-We can take slices of character strings as well:
-
-```julia
-element = "oxygen"
-println("first three characters: ", element[1:3])
-println("last three characters: ", element[4:6])
-```
-
-```output
-first three characters: oxy
-last three characters: gen
-```
-
-What is the value of `element[1:4]`?
-What about `element[5:end]`?
-Or `element[:]`?
-What is `element[end]`?
-What is `element[end-1]`?
-
-:::::::::::::::  solution
-
-## Solution
-
-```output
-oxyg
-en
-oxygen
-n
-e
-```
-:::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::::
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Thin Slices
-
-The expression `element[4:3]` (a range where the start is greater than the end)
-produces an [empty string](../learners/reference.md#empty-string) in Julia, a string that contains no characters.
-
-If `data` is an array
-what does `data[4:3, 5:4]` produce?
-What about `data[4:4, :]`?
-
-:::::::::::::::::::::::::::  solution
-
-## Solution
-
-```julia
-data[4:3, 5:4]   # Empty range in both dimensions
-data[4:4, :]     # Just row 4 (as a 1×n matrix)
-```
-
-```output
-0×0 Matrix{Int64}
-1×40 Matrix{Int64}:
- 0  1  1  3  3  1  3  5  2  4  4  7  6  …  7  7  9  6  3  2  2  4  2  0  1  1
-```
-::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::::
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Stacking Arrays
-
-Arrays can be concatenated and stacked on top of one another in Julia using **square bracket syntax**.
-
-```julia
-A = [1 2 3; 4 5 6; 7 8 9]
-
-B = [A A]   # horizontal stacking
-
-C = [A; A]  # vertical stacking
-
-```
-
-```output
-3×3 Matrix{Int64}:
- 1  2  3
- 4  5  6
- 7  8  9
-
-3×6 Matrix{Int64}:
- 1  2  3  1  2  3
- 4  5  6  4  5  6
- 7  8  9  7  8  9
-
-6×3 Matrix{Int64}:
- 1  2  3
- 4  5  6
- 7  8  9
- 1  2  3
- 4  5  6
- 7  8  9
-```
-
-Write additional code that slices the **first and last columns** of `A`,
-and stacks them side by side into a **3×2 array**, using only **square bracket syntax**.
-
-:::::::::::::::::::::::::::  solution
-
-## Solution
-
-Use column indexing with square brackets and combine the slices horizontally:
-
-```julia
-D = [A[:, 1] A[:, end]]
-```
-
-```output
-D =
-[1 3
- 4 6
- 7 9]
-```
-
-:::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::::
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Change in Inflammation
@@ -583,10 +300,8 @@ This returns a **60×1 array**, where each entry is the maximum absolute change 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
 - Use `Pkg.add("PackageName")` to install and `using PackageName` to load packages in Julia.
-- Load CSV data into a DataFrame with `CSV.read("file.csv", DataFrame)`.
-- Use `df[row, column]` to access specific values; use `df[!, column]` to access entire columns.
-- Use `size(df)`, `nrow(df)`, and `ncol(df)` to inspect DataFrame dimensions.
-- Convert a DataFrame to a matrix using `Matrix(df)` for numerical operations.
+- Load CSV data into a Matrix with `CSV.read("file.csv", CSV.Tables.matrix)`.
+- Use `size(df)` to inspect Matrix dimensions.
 - Use `mean`, `maximum`, `minimum`, and `std` to compute statistics on data arrays.
 - Use `mean(data, dims=1)` for column-wise and `dims=2` for row-wise operations.
 - Use `diff(data; dims=2)` to calculate daily changes per patient.
