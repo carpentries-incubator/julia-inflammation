@@ -92,13 +92,14 @@ Note that to test for equality we use a double equals sign `==`
 rather than a single equals sign `=`, which is used to assign values.
 
 
-## Comparing in Julia
+## Comparisons
 
 To compare values we can use the following operators:
 
 - `>` : greater than
 - `<` : less than
 - `==` : equal to
+- `===`: identical
 - `!=` : not equal to
 - `>=` : greater than or equal to
 - `<=` : less than or equal to
