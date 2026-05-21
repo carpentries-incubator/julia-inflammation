@@ -20,7 +20,7 @@ exercises: 20
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Loading data into Julia
+## Loading data
 
 To begin processing the clinical trial inflammation data, we need to load it into Julia. 
 Depending on the file format we have to use different packages. Some examples are [XLSX.jl](https://felipenoris.github.io/XLSX.jl/stable/) or [JSON.jl](https://juliaio.github.io/JSON.jl/stable/).
@@ -125,7 +125,7 @@ mean(data)
 6.160593220338983
 ```
 
-## Descriptive Statistics in Julia
+## Descriptive Statistics
 
 Let’s use three Julia functions to get some basic descriptive statistics from our dataset:
 **maximum**, **minimum**, and **standard deviation**.
@@ -147,7 +147,7 @@ standard deviation: 4.625075651890539
 ```
 
 :::::::::::::::::::::::::::::::::::::::::  callout
-## Exploring Functions in Julia
+## Exploring Functions
 
 How can you find out what functions are available in a Julia module and how to use them?
 
