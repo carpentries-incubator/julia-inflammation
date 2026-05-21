@@ -222,9 +222,9 @@
 
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#loading-data-into-julia">Loading data into Julia</a></li>
+        <ul><li><a href="#loading-data">Loading data</a></li>
 <li><a href="#analyzing-data">Analyzing Data</a></li>
-<li><a href="#descriptive-statistics-in-julia">Descriptive Statistics in Julia</a></li>
+<li><a href="#descriptive-statistics">Descriptive Statistics</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -370,7 +370,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Analyzing Patient Data</h1>
-        <p>Last updated on 2026-05-04 |
+        <p>Last updated on 2026-05-21 |
 
         <a href="https://github.com/carpentries-incubator/julia-inflammation/edit/main/episodes/2_analyzing_patient_data.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -409,7 +409,7 @@
 </div>
 </div>
 </div>
-<section><h2 class="section-heading" id="loading-data-into-julia">Loading data into Julia<a class="anchor" aria-label="anchor" href="#loading-data-into-julia"></a></h2>
+<section><h2 class="section-heading" id="loading-data">Loading data<a class="anchor" aria-label="anchor" href="#loading-data"></a></h2>
 <hr class="half-width"><p>To begin processing the clinical trial inflammation data, we need to
 load it into Julia. Depending on the file format we have to use
 different packages. Some examples are <a href="https://felipenoris.github.io/XLSX.jl/stable/" class="external-link">XLSX.jl</a> or <a href="https://juliaio.github.io/JSON.jl/stable/" class="external-link">JSON.jl</a>. In this
@@ -522,7 +522,7 @@ first</p>
 </h3>
 <pre class="output" tabindex="0"><code><span><span class="fl">6.160593220338983</span></span></code></pre>
 </div>
-</section><section><h2 class="section-heading" id="descriptive-statistics-in-julia">Descriptive Statistics in Julia<a class="anchor" aria-label="anchor" href="#descriptive-statistics-in-julia"></a></h2>
+</section><section><h2 class="section-heading" id="descriptive-statistics">Descriptive Statistics<a class="anchor" aria-label="anchor" href="#descriptive-statistics"></a></h2>
 <hr class="half-width"><p>Let’s use three Julia functions to get some basic descriptive
 statistics from our dataset: <strong>maximum</strong>,
 <strong>minimum</strong>, and <strong>standard deviation</strong>.</p>
@@ -541,13 +541,13 @@ results in one line.</p>
 <pre class="outout"><code>maximum inflammation: 20
 minimum inflammation: 0
 standard deviation: 4.625075651890539</code></pre>
-<div id="exploring-functions-in-julia" class="callout">
+<div id="exploring-functions" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <span class="callout-header">Callout</span>
-<div id="exploring-functions-in-julia" class="callout-inner">
-<h3 class="callout-title">Exploring Functions in Julia</h3>
+<div id="exploring-functions" class="callout-inner">
+<h3 class="callout-title">Exploring Functions</h3>
 <div class="callout-content">
 <p>How can you find out what functions are available in a Julia module
 and how to use them?</p>
@@ -720,7 +720,7 @@ each patient across all days?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ul><li>Set <code>dims=2</code> in <code>diff(data; dims=2)</code> to
 compute differences <strong>along each row</strong> (across days for
@@ -827,8 +827,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/julia-inflammation/instructor/2_analyzing_patient_data.html",
   "identifier": "https://carpentries-incubator.github.io/julia-inflammation/instructor/2_analyzing_patient_data.html",
   "dateCreated": "2025-04-15",
-  "dateModified": "2026-05-04",
-  "datePublished": "2026-05-19"
+  "dateModified": "2026-05-21",
+  "datePublished": "2026-05-21"
 }
 
   </script><script>
