@@ -13,7 +13,7 @@ on:
       version:
         description: 'Workflows version number (e.g. 0.0.1), branch name (e.g. main), or "latest"'
         required: false
-        default: 'latest'
+        default: 'main'
       clean:
         description: 'Workflow files/file extensions to clean (no wildcards, enter "" for none)'
         required: false
