@@ -1,7 +1,7 @@
 ---
 title: Automating Repetition with Loops
 teaching: 30
-exercises: 0
+exercises: 30
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives
@@ -273,10 +273,10 @@ end
 
 How many times is the body of the loop executed?
 
-* 3 times
-* 4 times
-* 5 times
-* 6 times
+1. 1 times
+2. Throws an error
+3. 0 times
+4. 6 times
 
 ---
 
@@ -343,30 +343,189 @@ so `[124, 402, 36]` prints `562`.
 
 ```julia
 numbers = [124, 402, 36] 
-sum = 0
+result = 0
 for num in numbers
-    sum = sum + num
+    result = result + num
 end
-println(sum)
+println(result)
 ```
 
 ```output
 562
 ```
-A shorter way to reach the goal would be:
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::: challenge
+
+## Analyzing Multiple Patients' Data
+
+In this exercise, we'll use loops to analyze patient data from our clinical trial.
+
+Assume we have loaded the inflammation data as before:
 
 ```julia
-numbers = [124, 402, 36] 
-sum = 0
-for num in numbers
-    sum += num
-end
-println(sum)
+using CSV, Statistics
+
+data = Matrix(CSV.read("inflammation-01.csv", header = false))
 ```
 
-```output
-562
+This gives us a 60×40 matrix where each row represents a patient and each column represents a day.
+
+### Part 1: Patient Statistics
+
+Write a loop that calculates and prints the average inflammation for each patient (each row):
+
+Expected output format:
 ```
+Patient 1 average: 5.45
+Patient 2 average: 5.425
+...
+```
+
+::::::::::::::: solution
+
+## Solution
+
+```julia
+for i in 1:size(data, 1)
+    patient_avg = mean(data[i, :])
+    println("Patient ", i, " average: ", patient_avg)
+end
+```
+
+:::::::::::::::::::::::::
+
+### Part 2: Day-by-Day Analysis
+
+Write a loop that finds the maximum inflammation value for each day (each column) and prints it:
+
+Expected output format:
+```
+Day 1 max: 8
+Day 2 max: 11
+...
+```
+
+::::::::::::::: solution
+
+## Solution
+
+```julia
+for j in 1:size(data, 2)
+    day_max = maximum(data[:, j])
+    println("Day ", j, " max: ", day_max)
+end
+```
+
+:::::::::::::::::::::::::
+
+### Part 3: Finding High-Inflammation Days
+
+A day is considered "high-inflammation" if the average inflammation for that day is above 8.0.
+
+Write a loop that:
+1. Calculates the average inflammation for each day
+2. Counts how many days have average inflammation above 8.0
+3. Prints the count and the list of those days
+
+::::::::::::::: solution
+
+## Solution
+
+```julia
+high_inflammation_days = 0
+high_days_list = []
+
+for j in 1:size(data, 2)
+    day_avg = mean(data[:, j])
+    if day_avg > 8.0
+        high_inflammation_days += 1
+        push!(high_days_list, j)
+    end
+end
+
+println("Number of high-inflammation days: ", high_inflammation_days)
+println("High-inflammation days: ", high_days_list)
+```
+
+:::::::::::::::::::::::::
+
+### Part 4: Patient Trajectory Analysis
+
+For each patient, calculate:
+- The inflammation on day 1
+- The inflammation on the last day (day 40)
+- Whether their inflammation increased, decreased, or stayed about the same
+
+A patient's condition is considered:
+- **Improved** if the last day's value is at least 3 less than day 1
+- **Worsened** if the last day's value is at least 3 more than day 1
+- **Stable** otherwise
+
+Write a loop that prints this analysis for each patient:
+
+Expected output format:
+```
+Patient 1: Improved (day 1: 0, day 40: 0)
+Patient 2: Stable (day 1: 0, day 40: 9)
+...
+```
+
+::::::::::::::: solution
+
+## Solution
+
+```julia
+for i in 1:size(data, 1)
+    day1 = data[i, 1]
+    day40 = data[i, end]
+    change = day40 - day1
+    
+    if change <= -3
+        status = "Improved"
+    elseif change >= 3
+        status = "Worsened"
+    else
+        status = "Stable"
+    end
+    
+    println("Patient ", i, ": ", status, " (day 1: ", day1, ", day 40: ", day40, ")")
+end
+```
+
+:::::::::::::::::::::::::
+
+### Part 5: While Loop Challenge
+
+Write a `while` loop that finds the first day where the average inflammation across all patients exceeds 7.0:
+
+::::::::::::::: solution
+
+## Solution
+
+```julia
+day = 1
+found = false
+
+while day <= size(data, 2) && !found
+    day_avg = mean(data[:, day])
+    if day_avg > 7.0
+        found = true
+    else
+        day += 1
+    end
+end
+
+if found
+    println("First day with average inflammation > 7.0: Day ", day, " (average: ", mean(data[:, day]), ")")
+else
+    println("No day found with average inflammation > 7.0")
+end
+```
+
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
