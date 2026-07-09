@@ -118,7 +118,7 @@
     <a id="search-button" class="btn btn-primary" href="../instructor/aio.html" role="button" aria-label="Search the All In One page">Search the All In One page</a>
   </div><!--/div.container-fluid -->
 </nav><aside class="col-md-12 lesson-progress"><div class="progress software">
-    <div class="progress-bar software" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" aria-label="Lesson Progress">65%</div>
+    <div class="progress-bar software" role="progressbar" style="width: 59%" aria-valuenow="59" aria-valuemin="0" aria-valuemax="100" aria-label="Lesson Progress">59%</div>
   </div>
 </aside><div class="container">
       <div class="row">
@@ -364,13 +364,13 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Automating Repetition with Loops</h1>
-        <p>Last updated on 2026-05-04 |
+        <p>Last updated on 2026-07-09 |
 
         <a href="https://github.com/carpentries-incubator/julia-inflammation/edit/main/episodes/6_loops.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
 
 
-        <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 30 minutes</p>
+        <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 60 minutes</p>
 
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -675,11 +675,11 @@ changes.</p>
 <span id="cb22-4"><a href="#cb22-4" tabindex="-1" aria-label="code-block-22-4"></a><span class="cf">end</span></span></code></pre>
 </div>
 <p>How many times is the body of the loop executed?</p>
-<ul><li>3 times</li>
-<li>4 times</li>
-<li>5 times</li>
+<ol style="list-style-type: decimal"><li>1 times</li>
+<li>Throws an error</li>
+<li>0 times</li>
 <li>6 times</li>
-</ul><hr></div>
+</ol><hr></div>
 </div>
 </div>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
@@ -687,7 +687,7 @@ changes.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The body of the loop is executed 6 times, once for each character in
 <code>"oxygen"</code>.</p>
@@ -724,7 +724,7 @@ using multiplication (and without exponentiation).</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -763,38 +763,251 @@ adding each element and printing the final value, so
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" tabindex="-1" aria-label="code-block-27-1"></a>numbers <span class="op">=</span> [<span class="fl">124</span>, <span class="fl">402</span>, <span class="fl">36</span>] </span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1" aria-label="code-block-27-2"></a>sum <span class="op">=</span> <span class="fl">0</span></span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1" aria-label="code-block-27-2"></a>result <span class="op">=</span> <span class="fl">0</span></span>
 <span id="cb27-3"><a href="#cb27-3" tabindex="-1" aria-label="code-block-27-3"></a><span class="cf">for</span> num <span class="kw">in</span> numbers</span>
-<span id="cb27-4"><a href="#cb27-4" tabindex="-1" aria-label="code-block-27-4"></a>    sum <span class="op">=</span> sum <span class="op">+</span> num</span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1" aria-label="code-block-27-4"></a>    result <span class="op">=</span> result <span class="op">+</span> num</span>
 <span id="cb27-5"><a href="#cb27-5" tabindex="-1" aria-label="code-block-27-5"></a><span class="cf">end</span></span>
-<span id="cb27-6"><a href="#cb27-6" tabindex="-1" aria-label="code-block-27-6"></a><span class="fu">println</span>(sum)</span></code></pre>
+<span id="cb27-6"><a href="#cb27-6" tabindex="-1" aria-label="code-block-27-6"></a><span class="fu">println</span>(result)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code><span><span class="fl">562</span></span></code></pre>
 </div>
-<p>A shorter way to reach the goal would be:</p>
+</div>
+</div>
+</div>
+</div>
+<div id="analyzing-multiple-patients-data" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="analyzing-multiple-patients-data" class="callout-inner">
+<h3 class="callout-title">Analyzing Multiple Patients’ Data</h3>
+<div class="callout-content">
+<p>In this exercise, we’ll use loops to analyze patient data from our
+clinical trial.</p>
+<p>Assume we have loaded the inflammation data as before:</p>
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" tabindex="-1" aria-label="code-block-29-1"></a>numbers <span class="op">=</span> [<span class="fl">124</span>, <span class="fl">402</span>, <span class="fl">36</span>] </span>
-<span id="cb29-2"><a href="#cb29-2" tabindex="-1" aria-label="code-block-29-2"></a>sum <span class="op">=</span> <span class="fl">0</span></span>
-<span id="cb29-3"><a href="#cb29-3" tabindex="-1" aria-label="code-block-29-3"></a><span class="cf">for</span> num <span class="kw">in</span> numbers</span>
-<span id="cb29-4"><a href="#cb29-4" tabindex="-1" aria-label="code-block-29-4"></a>    sum <span class="op">+=</span> num</span>
-<span id="cb29-5"><a href="#cb29-5" tabindex="-1" aria-label="code-block-29-5"></a><span class="cf">end</span></span>
-<span id="cb29-6"><a href="#cb29-6" tabindex="-1" aria-label="code-block-29-6"></a><span class="fu">println</span>(sum)</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" tabindex="-1" aria-label="code-block-29-1"></a><span class="im">using</span> <span class="bu">CSV</span>, <span class="bu">Statistics</span></span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1" aria-label="code-block-29-2"></a></span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1" aria-label="code-block-29-3"></a>data <span class="op">=</span> <span class="fu">Matrix</span>(CSV.<span class="fu">read</span>(<span class="st">"inflammation-01.csv"</span>, header <span class="op">=</span> <span class="cn">false</span>))</span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<p>This gives us a 60×40 matrix where each row represents a patient and
+each column represents a day.</p>
+<div class="section level3">
+<h3 id="part-1-patient-statistics">Part 1: Patient Statistics<a class="anchor" aria-label="anchor" href="#part-1-patient-statistics"></a></h3>
+<p>Write a loop that calculates and prints the average inflammation for
+each patient (each row):</p>
+<p>Expected output format:</p>
+<pre><code>Patient 1 average: 5.45
+Patient 2 average: 5.425
+...</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
+  <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
+</button>
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb31">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code><span><span class="fl">562</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" tabindex="-1" aria-label="code-block-31-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu">size</span>(data, <span class="fl">1</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1" aria-label="code-block-31-2"></a>    patient_avg <span class="op">=</span> <span class="fu">mean</span>(data[i, <span class="op">:</span>])</span>
+<span id="cb31-3"><a href="#cb31-3" tabindex="-1" aria-label="code-block-31-3"></a>    <span class="fu">println</span>(<span class="st">"Patient "</span>, i, <span class="st">" average: "</span>, patient_avg)</span>
+<span id="cb31-4"><a href="#cb31-4" tabindex="-1" aria-label="code-block-31-4"></a><span class="cf">end</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="part-2-day-by-day-analysis" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="part-2-day-by-day-analysis" class="callout-inner">
+<h3 class="callout-title">Part 2: Day-by-Day Analysis</h3>
+<div class="callout-content">
+<p>Write a loop that finds the maximum inflammation value for each day
+(each column) and prints it:</p>
+<p>Expected output format:</p>
+<pre><code>Day 1 max: 8
+Day 2 max: 11
+...</code></pre>
+</div>
+</div>
+</div>
+<div id="accordionSolution5" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
+  <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
+</button>
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb33">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1" tabindex="-1" aria-label="code-block-33-1"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu">size</span>(data, <span class="fl">2</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1" aria-label="code-block-33-2"></a>    day_max <span class="op">=</span> <span class="fu">maximum</span>(data[<span class="op">:</span>, j])</span>
+<span id="cb33-3"><a href="#cb33-3" tabindex="-1" aria-label="code-block-33-3"></a>    <span class="fu">println</span>(<span class="st">"Day "</span>, j, <span class="st">" max: "</span>, day_max)</span>
+<span id="cb33-4"><a href="#cb33-4" tabindex="-1" aria-label="code-block-33-4"></a><span class="cf">end</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="part-3-finding-high-inflammation-days" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="part-3-finding-high-inflammation-days" class="callout-inner">
+<h3 class="callout-title">Part 3: Finding High-Inflammation Days</h3>
+<div class="callout-content">
+<p>A day is considered “high-inflammation” if the average inflammation
+for that day is above 8.0.</p>
+<p>Write a loop that: 1. Calculates the average inflammation for each
+day 2. Counts how many days have average inflammation above 8.0 3.
+Prints the count and the list of those days</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution6" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
+  <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
+</button>
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb34">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb34-1"><a href="#cb34-1" tabindex="-1" aria-label="code-block-34-1"></a>high_inflammation_days <span class="op">=</span> <span class="fl">0</span></span>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1" aria-label="code-block-34-2"></a>high_days_list <span class="op">=</span> []</span>
+<span id="cb34-3"><a href="#cb34-3" tabindex="-1" aria-label="code-block-34-3"></a></span>
+<span id="cb34-4"><a href="#cb34-4" tabindex="-1" aria-label="code-block-34-4"></a><span class="cf">for</span> j <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu">size</span>(data, <span class="fl">2</span>)</span>
+<span id="cb34-5"><a href="#cb34-5" tabindex="-1" aria-label="code-block-34-5"></a>    day_avg <span class="op">=</span> <span class="fu">mean</span>(data[<span class="op">:</span>, j])</span>
+<span id="cb34-6"><a href="#cb34-6" tabindex="-1" aria-label="code-block-34-6"></a>    <span class="cf">if</span> day_avg <span class="op">&gt;</span> <span class="fl">8.0</span></span>
+<span id="cb34-7"><a href="#cb34-7" tabindex="-1" aria-label="code-block-34-7"></a>        high_inflammation_days <span class="op">+=</span> <span class="fl">1</span></span>
+<span id="cb34-8"><a href="#cb34-8" tabindex="-1" aria-label="code-block-34-8"></a>        <span class="fu">push!</span>(high_days_list, j)</span>
+<span id="cb34-9"><a href="#cb34-9" tabindex="-1" aria-label="code-block-34-9"></a>    <span class="cf">end</span></span>
+<span id="cb34-10"><a href="#cb34-10" tabindex="-1" aria-label="code-block-34-10"></a><span class="cf">end</span></span>
+<span id="cb34-11"><a href="#cb34-11" tabindex="-1" aria-label="code-block-34-11"></a></span>
+<span id="cb34-12"><a href="#cb34-12" tabindex="-1" aria-label="code-block-34-12"></a><span class="fu">println</span>(<span class="st">"Number of high-inflammation days: "</span>, high_inflammation_days)</span>
+<span id="cb34-13"><a href="#cb34-13" tabindex="-1" aria-label="code-block-34-13"></a><span class="fu">println</span>(<span class="st">"High-inflammation days: "</span>, high_days_list)</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="part-4-patient-trajectory-analysis" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="part-4-patient-trajectory-analysis" class="callout-inner">
+<h3 class="callout-title">Part 4: Patient Trajectory Analysis</h3>
+<div class="callout-content">
+<p>For each patient, calculate: - The inflammation on day 1 - The
+inflammation on the last day (day 40) - Whether their inflammation
+increased, decreased, or stayed about the same</p>
+<p>A patient’s condition is considered: - <strong>Improved</strong> if
+the last day’s value is at least 3 less than day 1 -
+<strong>Worsened</strong> if the last day’s value is at least 3 more
+than day 1 - <strong>Stable</strong> otherwise</p>
+<p>Write a loop that prints this analysis for each patient:</p>
+<p>Expected output format:</p>
+<pre><code>Patient 1: Improved (day 1: 0, day 40: 0)
+Patient 2: Stable (day 1: 0, day 40: 9)
+...</code></pre>
+</div>
+</div>
+</div>
+<div id="accordionSolution7" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
+  <h4 class="accordion-header" id="headingSolution7"> Show me the solution </h4>
+</button>
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb36">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" tabindex="-1" aria-label="code-block-36-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu">size</span>(data, <span class="fl">1</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" tabindex="-1" aria-label="code-block-36-2"></a>    day1 <span class="op">=</span> data[i, <span class="fl">1</span>]</span>
+<span id="cb36-3"><a href="#cb36-3" tabindex="-1" aria-label="code-block-36-3"></a>    day40 <span class="op">=</span> data[i, <span class="kw">end</span>]</span>
+<span id="cb36-4"><a href="#cb36-4" tabindex="-1" aria-label="code-block-36-4"></a>    change <span class="op">=</span> day40 <span class="op">-</span> day1</span>
+<span id="cb36-5"><a href="#cb36-5" tabindex="-1" aria-label="code-block-36-5"></a>    </span>
+<span id="cb36-6"><a href="#cb36-6" tabindex="-1" aria-label="code-block-36-6"></a>    <span class="cf">if</span> change <span class="op">&lt;=</span> <span class="op">-</span><span class="fl">3</span></span>
+<span id="cb36-7"><a href="#cb36-7" tabindex="-1" aria-label="code-block-36-7"></a>        status <span class="op">=</span> <span class="st">"Improved"</span></span>
+<span id="cb36-8"><a href="#cb36-8" tabindex="-1" aria-label="code-block-36-8"></a>    <span class="cf">elseif</span> change <span class="op">&gt;=</span> <span class="fl">3</span></span>
+<span id="cb36-9"><a href="#cb36-9" tabindex="-1" aria-label="code-block-36-9"></a>        status <span class="op">=</span> <span class="st">"Worsened"</span></span>
+<span id="cb36-10"><a href="#cb36-10" tabindex="-1" aria-label="code-block-36-10"></a>    <span class="cf">else</span></span>
+<span id="cb36-11"><a href="#cb36-11" tabindex="-1" aria-label="code-block-36-11"></a>        status <span class="op">=</span> <span class="st">"Stable"</span></span>
+<span id="cb36-12"><a href="#cb36-12" tabindex="-1" aria-label="code-block-36-12"></a>    <span class="cf">end</span></span>
+<span id="cb36-13"><a href="#cb36-13" tabindex="-1" aria-label="code-block-36-13"></a>    </span>
+<span id="cb36-14"><a href="#cb36-14" tabindex="-1" aria-label="code-block-36-14"></a>    <span class="fu">println</span>(<span class="st">"Patient "</span>, i, <span class="st">": "</span>, status, <span class="st">" (day 1: "</span>, day1, <span class="st">", day 40: "</span>, day40, <span class="st">")"</span>)</span>
+<span id="cb36-15"><a href="#cb36-15" tabindex="-1" aria-label="code-block-36-15"></a><span class="cf">end</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="part-5-while-loop-challenge" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="part-5-while-loop-challenge" class="callout-inner">
+<h3 class="callout-title">Part 5: While Loop Challenge</h3>
+<div class="callout-content">
+<p>Write a <code>while</code> loop that finds the first day where the
+average inflammation across all patients exceeds 7.0:</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution8" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
+  <h4 class="accordion-header" id="headingSolution8"> Show me the solution </h4>
+</button>
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb37">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb37-1"><a href="#cb37-1" tabindex="-1" aria-label="code-block-37-1"></a>day <span class="op">=</span> <span class="fl">1</span></span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1" aria-label="code-block-37-2"></a>found <span class="op">=</span> <span class="cn">false</span></span>
+<span id="cb37-3"><a href="#cb37-3" tabindex="-1" aria-label="code-block-37-3"></a></span>
+<span id="cb37-4"><a href="#cb37-4" tabindex="-1" aria-label="code-block-37-4"></a><span class="cf">while</span> day <span class="op">&lt;=</span> <span class="fu">size</span>(data, <span class="fl">2</span>) <span class="op">&amp;&amp;</span> !found</span>
+<span id="cb37-5"><a href="#cb37-5" tabindex="-1" aria-label="code-block-37-5"></a>    day_avg <span class="op">=</span> <span class="fu">mean</span>(data[<span class="op">:</span>, day])</span>
+<span id="cb37-6"><a href="#cb37-6" tabindex="-1" aria-label="code-block-37-6"></a>    <span class="cf">if</span> day_avg <span class="op">&gt;</span> <span class="fl">7.0</span></span>
+<span id="cb37-7"><a href="#cb37-7" tabindex="-1" aria-label="code-block-37-7"></a>        found <span class="op">=</span> <span class="cn">true</span></span>
+<span id="cb37-8"><a href="#cb37-8" tabindex="-1" aria-label="code-block-37-8"></a>    <span class="cf">else</span></span>
+<span id="cb37-9"><a href="#cb37-9" tabindex="-1" aria-label="code-block-37-9"></a>        day <span class="op">+=</span> <span class="fl">1</span></span>
+<span id="cb37-10"><a href="#cb37-10" tabindex="-1" aria-label="code-block-37-10"></a>    <span class="cf">end</span></span>
+<span id="cb37-11"><a href="#cb37-11" tabindex="-1" aria-label="code-block-37-11"></a><span class="cf">end</span></span>
+<span id="cb37-12"><a href="#cb37-12" tabindex="-1" aria-label="code-block-37-12"></a></span>
+<span id="cb37-13"><a href="#cb37-13" tabindex="-1" aria-label="code-block-37-13"></a><span class="cf">if</span> found</span>
+<span id="cb37-14"><a href="#cb37-14" tabindex="-1" aria-label="code-block-37-14"></a>    <span class="fu">println</span>(<span class="st">"First day with average inflammation &gt; 7.0: Day "</span>, day, <span class="st">" (average: "</span>, <span class="fu">mean</span>(data[<span class="op">:</span>, day]), <span class="st">")"</span>)</span>
+<span id="cb37-15"><a href="#cb37-15" tabindex="-1" aria-label="code-block-37-15"></a><span class="cf">else</span></span>
+<span id="cb37-16"><a href="#cb37-16" tabindex="-1" aria-label="code-block-37-16"></a>    <span class="fu">println</span>(<span class="st">"No day found with average inflammation &gt; 7.0"</span>)</span>
+<span id="cb37-17"><a href="#cb37-17" tabindex="-1" aria-label="code-block-37-17"></a><span class="cf">end</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -882,8 +1095,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/julia-inflammation/instructor/6_loops.html",
   "identifier": "https://carpentries-incubator.github.io/julia-inflammation/instructor/6_loops.html",
   "dateCreated": "2025-04-15",
-  "dateModified": "2026-05-04",
-  "datePublished": "2026-07-07"
+  "dateModified": "2026-07-09",
+  "datePublished": "2026-07-09"
 }
 
   </script><script>
