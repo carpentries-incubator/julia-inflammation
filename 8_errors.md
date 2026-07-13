@@ -202,6 +202,30 @@ In Julia, variable names are case-sensitive: `Count` and `count` are two differe
 Here we defined `Count`, but tried to use `count`, so Julia reports it as undefined.
 
 
+## Method Errors
+
+Julia uses multiple dispatch, which means functions can have different implementations (methods) for different argument types. A `MethodError` occurs when you call a function with arguments for which no method is defined.
+
+For example:
+
+```julia
+function greet(name::String)
+    return "Hello, " * name
+end
+
+greet(123)
+```
+
+```error
+ERROR: MethodError: no method matching greet(::Int64)
+```
+
+The error tells us that the `greet` function exists, but there's no method that accepts an `Int64` argument. To fix this, you could either:
+
+1. Pass the correct type: `greet("Alice")`
+2. Define a new method for the function: `greet(n::Integer) = "Hello, number " * string(n)`
+
+
 ## File Errors
 
 Another common type of error occurs when working with files.
