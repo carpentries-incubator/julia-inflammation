@@ -274,6 +274,7 @@
       <div class="accordion-body">
         <ul><li><a href="#syntax-errors">Syntax Errors</a></li>
 <li><a href="#variable-name-errors">Variable Name Errors</a></li>
+<li><a href="#method-errors">Method Errors</a></li>
 <li><a href="#file-errors">File Errors</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
@@ -366,7 +367,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Handling errors</h1>
-        <p>Last updated on 2026-05-04 |
+        <p>Last updated on 2026-07-13 |
 
         <a href="https://github.com/carpentries-incubator/julia-inflammation/edit/main/episodes/8_errors.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -570,14 +571,42 @@ Stacktrace:
 <code>count</code> are two different variables. Here we defined
 <code>Count</code>, but tried to use <code>count</code>, so Julia
 reports it as undefined.</p>
-</section><section><h2 class="section-heading" id="file-errors">File Errors<a class="anchor" aria-label="anchor" href="#file-errors"></a></h2>
-<hr class="half-width"><p>Another common type of error occurs when working with files. If you
-try to open a file that does not exist, Julia will raise a
-<code>SystemError</code> telling you so.</p>
+</section><section><h2 class="section-heading" id="method-errors">Method Errors<a class="anchor" aria-label="anchor" href="#method-errors"></a></h2>
+<hr class="half-width"><p>Julia uses multiple dispatch, which means functions can have
+different implementations (methods) for different argument types. A
+<code>MethodError</code> occurs when you call a function with arguments
+for which no method is defined.</p>
+<p>For example:</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="fu">open</span>(<span class="st">"myfile.txt"</span>, <span class="st">"r"</span>)</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="kw">function</span> <span class="fu">greet</span>(name<span class="op">::</span><span class="dt">String</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1" aria-label="code-block-16-2"></a>    <span class="cf">return</span> <span class="st">"Hello, "</span> <span class="op">*</span> name</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1" aria-label="code-block-16-3"></a><span class="kw">end</span></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1" aria-label="code-block-16-4"></a></span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1" aria-label="code-block-16-5"></a><span class="fu">greet</span>(<span class="fl">123</span>)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>ERROR: MethodError: no method matching greet(::Int64)</code></pre>
+</div>
+<p>The error tells us that the <code>greet</code> function exists, but
+there’s no method that accepts an <code>Int64</code> argument. To fix
+this, you could either:</p>
+<ol style="list-style-type: decimal"><li>Pass the correct type: <code>greet("Alice")</code>
+</li>
+<li>Define a new method for the function:
+<code>greet(n::Integer) = "Hello, number " * string(n)</code>
+</li>
+</ol></section><section><h2 class="section-heading" id="file-errors">File Errors<a class="anchor" aria-label="anchor" href="#file-errors"></a></h2>
+<hr class="half-width"><p>Another common type of error occurs when working with files. If you
+try to open a file that does not exist, Julia will raise a
+<code>SystemError</code> telling you so.</p>
+<div class="codewrapper sourceCode" id="cb18">
+<h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a><span class="fu">open</span>(<span class="st">"myfile.txt"</span>, <span class="st">"r"</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -610,16 +639,16 @@ Stacktrace:
 <span>  <span class="va">writing</span><span class="op">/</span></span>
 <span>    <span class="va">myfile.txt</span></span></code></pre>
 <p>and you try:</p>
-<div class="codewrapper sourceCode" id="cb19">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" tabindex="-1" aria-label="code-block-19-1"></a><span class="fu">open</span>(<span class="st">"myfile.txt"</span>, <span class="st">"r"</span>)</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a><span class="fu">open</span>(<span class="st">"myfile.txt"</span>, <span class="st">"r"</span>)</span></code></pre>
 </div>
 <p>Julia will throw an error, because the correct path is:</p>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" tabindex="-1" aria-label="code-block-20-1"></a><span class="fu">open</span>(<span class="st">"writing/myfile.txt"</span>, <span class="st">"r"</span>)</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" tabindex="-1" aria-label="code-block-22-1"></a><span class="fu">open</span>(<span class="st">"writing/myfile.txt"</span>, <span class="st">"r"</span>)</span></code></pre>
 </div>
 <p>These are the most common errors with files, though many others
 exist. If you get an error that you’ve never seen before, searching the
@@ -634,11 +663,11 @@ get that error.</p>
 <h3 class="callout-title">Index Error</h3>
 <div class="callout-content">
 <p>What is the error here? Fix it.</p>
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a>numbers <span class="op">=</span> [<span class="fl">10</span>, <span class="fl">20</span>, <span class="fl">30</span>]</span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1" aria-label="code-block-21-2"></a><span class="fu">println</span>(numbers[<span class="fl">4</span>])</span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" tabindex="-1" aria-label="code-block-23-1"></a>numbers <span class="op">=</span> [<span class="fl">10</span>, <span class="fl">20</span>, <span class="fl">30</span>]</span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1" aria-label="code-block-23-2"></a><span class="fu">println</span>(numbers[<span class="fl">4</span>])</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -655,12 +684,12 @@ get that error.</p>
   solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb23">
+<div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" tabindex="-1" aria-label="code-block-23-1"></a><span class="fu">println</span>(numbers[<span class="fl">3</span>])   </span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" tabindex="-1" aria-label="code-block-25-1"></a><span class="fu">println</span>(numbers[<span class="fl">3</span>])   </span></code></pre>
 </div>
 </div>
 </div>
@@ -677,13 +706,13 @@ get that error.</p>
 <p>The following function is supposed to calculate the average of a list
 of numbers. But it has a syntax error. What is the error, and how can
 you fix it?</p>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" tabindex="-1" aria-label="code-block-24-1"></a><span class="kw">function</span> average numbers</span>
-<span id="cb24-2"><a href="#cb24-2" tabindex="-1" aria-label="code-block-24-2"></a>    total <span class="op">=</span> <span class="fu">sum</span>(numbers</span>
-<span id="cb24-3"><a href="#cb24-3" tabindex="-1" aria-label="code-block-24-3"></a>    <span class="cf">return</span> total <span class="op">/</span> <span class="fu">length</span>(numbers)</span>
-<span id="cb24-4"><a href="#cb24-4" tabindex="-1" aria-label="code-block-24-4"></a><span class="kw">end</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" tabindex="-1" aria-label="code-block-26-1"></a><span class="kw">function</span> average numbers</span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1" aria-label="code-block-26-2"></a>    total <span class="op">=</span> <span class="fu">sum</span>(numbers</span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1" aria-label="code-block-26-3"></a>    <span class="cf">return</span> total <span class="op">/</span> <span class="fu">length</span>(numbers)</span>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1" aria-label="code-block-26-4"></a><span class="kw">end</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -695,17 +724,17 @@ you fix it?</p>
   solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Problems: - Missing parentheses in the function definition - Missing
 closing parenthesis in sum numbers Fixed version:</p>
-<div class="codewrapper sourceCode" id="cb25">
+<div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" tabindex="-1" aria-label="code-block-25-1"></a><span class="kw">function</span> <span class="fu">average</span>(numbers)</span>
-<span id="cb25-2"><a href="#cb25-2" tabindex="-1" aria-label="code-block-25-2"></a>    total <span class="op">=</span> <span class="fu">sum</span>(numbers)</span>
-<span id="cb25-3"><a href="#cb25-3" tabindex="-1" aria-label="code-block-25-3"></a>    <span class="cf">return</span> total <span class="op">/</span> <span class="fu">length</span>(numbers)</span>
-<span id="cb25-4"><a href="#cb25-4" tabindex="-1" aria-label="code-block-25-4"></a><span class="kw">end</span></span></code></pre>
+<pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" tabindex="-1" aria-label="code-block-27-1"></a><span class="kw">function</span> <span class="fu">average</span>(numbers)</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1" aria-label="code-block-27-2"></a>    total <span class="op">=</span> <span class="fu">sum</span>(numbers)</span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1" aria-label="code-block-27-3"></a>    <span class="cf">return</span> total <span class="op">/</span> <span class="fu">length</span>(numbers)</span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1" aria-label="code-block-27-4"></a><span class="kw">end</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -797,8 +826,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/julia-inflammation/instructor/8_errors.html",
   "identifier": "https://carpentries-incubator.github.io/julia-inflammation/instructor/8_errors.html",
   "dateCreated": "2025-04-15",
-  "dateModified": "2026-05-04",
-  "datePublished": "2026-07-09"
+  "dateModified": "2026-07-13",
+  "datePublished": "2026-07-13"
 }
 
   </script><script>
