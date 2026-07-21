@@ -15,8 +15,8 @@ type: dataset
 authors:
   - given-names: Katharina
     family-names: Finke
-  - given-names: Christ
-    family-names: Simon
+  - given-names: Simon
+    family-names: Christ
 abstract: >-
   An introduction to programming for beginners using the Julia progamming laguage.
 license: CC-BY-4.0
