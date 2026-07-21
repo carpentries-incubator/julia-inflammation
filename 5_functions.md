@@ -599,6 +599,15 @@ add_together(1.0, 2.0)
 3.0
 ```
 
+Since these do the same though, lets define this as the default case for any arguments and define some custom behaviour when adding numbers and strings:
+
+```julia
+add_together(a, b) = a + b  # default for any arguments
+add_together(a::String, b::Number) = string(a, b)  # append number to string
+add_together(a::Number, b::String) = string(a, b)  # prepend number to string
+add_together(a::String, b::String) = a * b  # concatenate two strings
+```
+
 This feature allows you to write clean, readable code while handling many different types naturally.
 
 
@@ -649,6 +658,16 @@ Meaningful variable names and breaking code into logical sections with blank lin
 
 Readable code is useful not only when sharing with others but also for your future self:
 if you revisit code months later, good readability will save you a lot of headache!
+
+::::::::::::::::::::::::::::::::::::::: callout
+
+## Do not reinvent the (square) wheel
+
+Functions like `std_dev` are a good way to illustrate how to write better code, but if you really need to calculate a standard deviation, use `std` of the `Statistics` standard library.
+Usually, battle tested solutions like these behave better than an ad-hoc solution.
+Also, reusing existing code lets you focus on the new code that actually needs to be developed.
+
+::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
