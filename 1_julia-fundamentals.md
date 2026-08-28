@@ -247,13 +247,13 @@ Hello World!
 
 ## Seeing Data Types
 
-What are the types of the following?
+What are the types of each of these variables?
 
 ```julia
 planet = "Earth"
 apples = 5
 distance = 10.5
-println("The ", planet, " has ", apples, " Apples.")
+printed = println("The ", planet, " has ", apples, " Apples.")
 ```
 
 ::::::::::::::: solution
@@ -262,7 +262,7 @@ println("The ", planet, " has ", apples, " Apples.")
 typeof(planet)
 typeof(apples)
 typeof(distance)
-typeof(println("The ", planet, " has ", apples, " Apples."))
+typeof(printed)
 ```
 
 ```output
@@ -271,7 +271,7 @@ Int64
 Float64
 Nothing
 ```
-
+Note, that `printl` prints to the screen, but does not return the string it printed.
 :::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -292,7 +292,7 @@ eltype(nums) = Int64
 typeof(nums) = Vector{Int64}
 ```
 
-We can access elements of a vector using indices — numbered positions of elements in the vector.
+We can access elements of a vector using indices — numbered positions of elements in the vector — or ranges or integers.
 Indices start at 1 in Julia.
 
 ```julia

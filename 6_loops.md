@@ -258,70 +258,156 @@ This will print `0` endlessly because `x` never changes.
 
 
 
-::::::::::::::::::::::::::::::::::::::: challenge
+:::::::::::::::::::::::::::::::::::::::  challenge
 
-## Understanding the loops
+## In-Place Operators
 
-Given the following loop:
+Julia also provides in-place operators that modify a variable in place. For example:
 
 ```julia
-word = "oxygen"
-for letter in word
-    println(letter)
-end
+x = 1   # original value
+x += 1  # add one to x
+x *= 3  # multiply x by 3
+println(x)
 ```
 
-How many times is the body of the loop executed?
+```output
+6
+```
 
-1. 1 times
-2. Throws an error
-3. 0 times
-4. 6 times
+Write some code that sums the positive and negative numbers in a vector separately, using in-place operators.
+Do you think this is more or less readable than writing it without in-place operators?
 
----
-
-::::::::::::::::::::::: solution
+:::::::::::::::  solution
 
 ## Solution
 
-The body of the loop is executed 6 times, once for each character in `"oxygen"`.
+```julia
+positive_sum = 0
+negative_sum = 0
+test_vector = [3, 4, 6, 1, -1, -5, 0, 7, -8]
+
+for num in test_vector
+    if num > 0
+        positive_sum += num
+    elseif num == 0
+        # do nothing
+    else
+        negative_sum += num
+    end
+end
+
+println("Sum of positives: ", positive_sum)
+println("Sum of negatives: ", negative_sum)
+```
+
+Here, the `elseif num == 0` branch is optional since neither sum changes for zero values, but it illustrates the use of `elseif`.
 
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::: challenge
+:::::::::::::::::::::::::::::::::::::::  challenge
 
-## Computing Powers With Loops
+## Sorting Filenames Into Buckets
 
-Exponentiation is built into Julia:
+In our `data` folder, large datasets are stored in files whose names start with `"inflammation-"`
+and small datasets are in files whose names start with `"small-"`.
+Other files can be ignored for now.
+
+Your task is to sort these filenames into three separate vectors: `large_files`, `small_files`, and `other_files`.
+
+Hint: 
+
+use `startswith`:
 
 ```julia
-println(5 ^ 3)
+println(startswith("string", "str"))   
+println(startswith("string", "abc"))     
 ```
-
 ```output
-125
+true
+false
 ```
 
-Write a loop that calculates the same result as `5 ^ 3` using
-multiplication (and without exponentiation).
+### Starting Point
 
+```julia
+filenames = ["inflammation-01.csv",
+             "myscript.jl",
+             "inflammation-02.csv",
+             "small-01.csv",
+             "small-02.csv"]
 
-::::::::::::::::::::::: solution
+large_files = String[]
+small_files = String[]
+other_files = String[]
+```
+
+### Your Task
+
+1. Loop over the filenames.
+2. Determine which category each filename belongs to.
+3. Append the filename to the corresponding vector.
+
+:::::::::::::::  solution
 
 ## Solution
 
 ```julia
-result = 1
-for i in 1:3
-    result = result * 5
+for filename in filenames
+    if startswith(filename, "inflammation-")
+        push!(large_files, filename)
+    elseif startswith(filename, "small-")
+        push!(small_files, filename)
+    else
+        push!(other_files, filename)
+    end
 end
-println(result)
+
+println("large_files: ", large_files)
+println("small_files: ", small_files)
+println("other_files: ", other_files)
+```
+
+```outout
+large_files: ["inflammation-01.csv", "inflammation-02.csv"]
+small_files: ["small-01.csv", "small-02.csv"]
+other_files: ["myscript.jl"]
+```
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+
+## Counting Vowels
+
+1. Write a loop that counts the number of vowels in a string.
+2. Test it on a few words and full sentences.
+3. Compare your solution with a neighbor’s — did you handle the letter `y` the same way?
+
+:::::::::::::::  solution
+
+## Solution
+
+```julia
+vowels = "aeiouAEIOU"
+sentence = "Hallo World!."
+count = 0
+
+for char in sentence
+    if char in vowels
+        count += 1
+    end
+end
+
+println("The number of vowels in this string is ", count)
 ```
 
 ```output
-125
+The number of vowels in this string is 3
 ```
 :::::::::::::::::::::::::
 

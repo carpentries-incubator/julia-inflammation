@@ -111,6 +111,15 @@ p3 = plot(transpose(minimum(data, dims=1)), title="Minimum", ylabel="min", xlabe
 plot(p1, p2, p3, layout=(1, 3))
 ```
 
+or
+
+```julia
+p1 = plot(transpose(mean(data, dims=1)), title="Average", ylabel="average", xlabel="Day", legend=false)
+p2 = plot(transpose(maximum(data, dims=1)), title="Maximum", ylabel="max", xlabel="Day", legend=false)
+p3 = plot(transpose(minimum(data, dims=1)), title="Minimum", ylabel="min", xlabel="Day", legend=false)
+
+plot(p1, p2, p3, layout=(1, 3), ylims = (0, 20))
+```
 
 :::::::::::::::::::::::::
 
