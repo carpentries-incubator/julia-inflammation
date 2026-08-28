@@ -365,13 +365,13 @@
           Home
         </a>
         <a class="chapter-link float-end" href="2_analyzing_patient_data.html" rel="next">
-          Next: Analyzing Patient...
+          Next: Analyzing Patient Data...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Julia Fundamentals</h1>
-        <p>Last updated on 2026-05-04 |
+        <p>Last updated on 2026-08-28 |
 
         <a href="https://github.com/carpentries-incubator/julia-inflammation/edit/main/episodes/1_julia-fundamentals.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -623,7 +623,7 @@ and <code>age</code> have?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>
 <code>mass</code> indeed gets reassigned at
@@ -664,7 +664,7 @@ print?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -686,14 +686,14 @@ insert a space by adding a string with just one space character
 <div id="seeing-data-types" class="callout-inner">
 <h3 class="callout-title">Seeing Data Types</h3>
 <div class="callout-content">
-<p>What are the types of the following?</p>
+<p>What are the types of each of these variables?</p>
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" tabindex="-1" aria-label="code-block-25-1"></a>planet <span class="op">=</span> <span class="st">"Earth"</span></span>
 <span id="cb25-2"><a href="#cb25-2" tabindex="-1" aria-label="code-block-25-2"></a>apples <span class="op">=</span> <span class="fl">5</span></span>
 <span id="cb25-3"><a href="#cb25-3" tabindex="-1" aria-label="code-block-25-3"></a>distance <span class="op">=</span> <span class="fl">10.5</span></span>
-<span id="cb25-4"><a href="#cb25-4" tabindex="-1" aria-label="code-block-25-4"></a><span class="fu">println</span>(<span class="st">"The "</span>, planet, <span class="st">" has "</span>, apples, <span class="st">" Apples."</span>)</span></code></pre>
+<span id="cb25-4"><a href="#cb25-4" tabindex="-1" aria-label="code-block-25-4"></a>printed <span class="op">=</span> <span class="fu">println</span>(<span class="st">"The "</span>, planet, <span class="st">" has "</span>, apples, <span class="st">" Apples."</span>)</span></code></pre>
 </div>
 </div>
 </div>
@@ -703,7 +703,7 @@ insert a space by adding a string with just one space character
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -711,7 +711,7 @@ insert a space by adding a string with just one space character
 <pre class="sourceCode julia" tabindex="0"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" tabindex="-1" aria-label="code-block-26-1"></a><span class="fu">typeof</span>(planet)</span>
 <span id="cb26-2"><a href="#cb26-2" tabindex="-1" aria-label="code-block-26-2"></a><span class="fu">typeof</span>(apples)</span>
 <span id="cb26-3"><a href="#cb26-3" tabindex="-1" aria-label="code-block-26-3"></a><span class="fu">typeof</span>(distance)</span>
-<span id="cb26-4"><a href="#cb26-4" tabindex="-1" aria-label="code-block-26-4"></a><span class="fu">typeof</span>(<span class="fu">println</span>(<span class="st">"The "</span>, planet, <span class="st">" has "</span>, apples, <span class="st">" Apples."</span>))</span></code></pre>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1" aria-label="code-block-26-4"></a><span class="fu">typeof</span>(printed)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -721,6 +721,8 @@ insert a space by adding a string with just one space character
 <span><span class="va">Float64</span></span>
 <span><span class="va">Nothing</span></span></code></pre>
 </div>
+<p>Note, that <code>printl</code> prints to the screen, but does not
+return the string it printed.</p>
 </div>
 </div>
 </div>
@@ -744,7 +746,8 @@ eltype(nums) = Int64
 typeof(nums) = Vector{Int64}</code></pre>
 </div>
 <p>We can access elements of a vector using indices — numbered positions
-of elements in the vector. Indices start at 1 in Julia.</p>
+of elements in the vector — or ranges or integers. Indices start at 1 in
+Julia.</p>
 <div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1005,7 +1008,7 @@ last three characters: gen</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1042,7 +1045,7 @@ that contains no characters.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb51">
 <h3 class="code-label">JULIA<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1113,7 +1116,7 @@ syntax</strong>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <p>Use column indexing with square brackets and combine the slices
 horizontally:</p>
@@ -1318,7 +1321,7 @@ any links that you are not going to use.
           Home
         </a>
         <a class="chapter-link float-end" href="2_analyzing_patient_data.html" rel="next">
-          Next: Analyzing Patient...
+          Next: Analyzing Patient Data...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -1344,7 +1347,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.1.1)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.21.0)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.1.2)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1366,8 +1369,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/julia-inflammation/1_julia-fundamentals.html",
   "identifier": "https://carpentries-incubator.github.io/julia-inflammation/1_julia-fundamentals.html",
   "dateCreated": "2025-04-15",
-  "dateModified": "2026-05-04",
-  "datePublished": "2026-08-25"
+  "dateModified": "2026-08-28",
+  "datePublished": "2026-08-28"
 }
 
   </script><script>
