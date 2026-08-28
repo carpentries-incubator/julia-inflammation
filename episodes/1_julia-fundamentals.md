@@ -292,7 +292,7 @@ eltype(nums) = Int64
 typeof(nums) = Vector{Int64}
 ```
 
-We can access elements of a vector using indices — numbered positions of elements in the vector.
+We can access elements of a vector using indices — numbered positions of elements in the vector — or ranges or integers.
 Indices start at 1 in Julia.
 
 ```julia
